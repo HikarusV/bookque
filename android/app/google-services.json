@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "135434374178",
+    "project_id": "bookque-cpsg10",
+    "storage_bucket": "bookque-cpsg10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135434374178:android:b2ba806ac98faa96c04e7b",
+        "android_client_info": {
+          "package_name": "com.cpsg10.bookque"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135434374178-v35for70qlb0248b3is71urls40vjm01.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cpsg10.bookque",
+            "certificate_hash": "152211901c4b424b591e25a5903424838f440565"
+          }
+        },
+        {
+          "client_id": "135434374178-vfdn6qebircl8o0ihcd8lsp10s3n39cu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4TyOEoxXZlKguJxcq2l24C8B04CFByP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135434374178-vfdn6qebircl8o0ihcd8lsp10s3n39cu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
