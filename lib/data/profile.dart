@@ -44,8 +44,8 @@ class Profile {
 
   String toJson() => json.encode(toMap());
 
-  factory Profile.fromJson(String source) =>
-      Profile.fromMap(json.decode(source));
+  factory Profile.fromJson(Map<String, dynamic> source) =>
+      Profile.fromMap(source);
 
   @override
   String toString() => 'Profile(error: $error, message: $message, user: $user)';

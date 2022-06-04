@@ -2,31 +2,23 @@ import 'dart:convert';
 
 class User {
   final String userid;
-  final String photoid;
-  final String nama;
-  final String username;
-  final String email;
+  final String name;
+  final String usermail;
   User({
     required this.userid,
-    required this.photoid,
-    required this.nama,
-    required this.username,
-    required this.email,
+    required this.name,
+    required this.usermail,
   });
 
   User copyWith({
     String? userid,
-    String? photoid,
-    String? nama,
-    String? username,
-    String? email,
+    String? name,
+    String? usermail,
   }) {
     return User(
       userid: userid ?? this.userid,
-      photoid: photoid ?? this.photoid,
-      nama: nama ?? this.nama,
-      username: username ?? this.username,
-      email: email ?? this.email,
+      name: name ?? this.name,
+      usermail: usermail ?? this.usermail,
     );
   }
 
@@ -34,10 +26,8 @@ class User {
     final result = <String, dynamic>{};
 
     result.addAll({'userid': userid});
-    result.addAll({'photoid': photoid});
-    result.addAll({'nama': nama});
-    result.addAll({'username': username});
-    result.addAll({'email': email});
+    result.addAll({'name': name});
+    result.addAll({'usermail': usermail});
 
     return result;
   }
@@ -45,10 +35,8 @@ class User {
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
       userid: map['userid'] ?? '',
-      photoid: map['photoid'] ?? '',
-      nama: map['nama'] ?? '',
-      username: map['username'] ?? '',
-      email: map['email'] ?? '',
+      name: map['name'] ?? '',
+      usermail: map['usermail'] ?? '',
     );
   }
 
@@ -57,9 +45,8 @@ class User {
   factory User.fromJson(String source) => User.fromMap(json.decode(source));
 
   @override
-  String toString() {
-    return 'User(userid: $userid, photoid: $photoid, nama: $nama, username: $username, email: $email)';
-  }
+  String toString() =>
+      'User(userid: $userid, name: $name, usermail: $usermail)';
 
   @override
   bool operator ==(Object other) {
@@ -67,18 +54,10 @@ class User {
 
     return other is User &&
         other.userid == userid &&
-        other.photoid == photoid &&
-        other.nama == nama &&
-        other.username == username &&
-        other.email == email;
+        other.name == name &&
+        other.usermail == usermail;
   }
 
   @override
-  int get hashCode {
-    return userid.hashCode ^
-        photoid.hashCode ^
-        nama.hashCode ^
-        username.hashCode ^
-        email.hashCode;
-  }
+  int get hashCode => userid.hashCode ^ name.hashCode ^ usermail.hashCode;
 }
