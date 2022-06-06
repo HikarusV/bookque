@@ -26,7 +26,7 @@ var hintTitleLarge = GoogleFonts.poppins(
   color: Colors.grey,
 );
 var hintTitle = GoogleFonts.poppins(
-  fontSize: 16,
+  fontSize: 14,
   fontWeight: FontWeight.w500,
   color: Colors.grey,
 );

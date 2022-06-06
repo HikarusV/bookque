@@ -1,8 +1,9 @@
 import 'package:bookque/presentation/pages/upload/upload.dart';
+import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:flutter/material.dart';
-
-import '../../../data/models/books.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/custom3/item_collection.dart';
+import '../../../data/models/books.dart';
 import '../../widgets/custom3/item_filter.dart';
 import '../../widgets/custom3/user_profile.dart';
 
@@ -19,25 +20,24 @@ class Profile extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  const UserProfile(),
+                  Consumer<AccountProv>(
+                      builder: (context, value, _) => const UserProfile()),
                   Positioned(
                     right: 0,
                     child: GestureDetector(
-                      onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => const SettingPage()));
+                      onTap: () async {
+                        await context.read<AccountProv>().logOut();
                       },
                       child: const Icon(
-                        Icons.settings_outlined,
+                        // Icons.settings_outlined,
+                        Icons.logout,
                         size: 28,
                       ),
                     ),
                   ),
                 ],
               ),
-              ItemFilter(),
+              const ItemFilter(),
               const SizedBox(
                 height: 15,
               ),

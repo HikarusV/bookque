@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
+
 class TextInput extends StatelessWidget {
   const TextInput({
     Key? key,
     required this.controller,
+    this.title = 'Text',
     this.text = 'Text Hint',
     this.maxLines = 1,
     this.minLines = 1,
   }) : super(key: key);
   final TextEditingController controller;
+  final String title;
   final String text;
   final int maxLines;
   final int minLines;
@@ -22,9 +26,9 @@ class TextInput extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            text,
+            title,
             style:
-            GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500),
+                GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500),
           ),
           const SizedBox(
             height: 5,
@@ -39,9 +43,10 @@ class TextInput extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: controller,
                 maxLines: maxLines,
                 minLines: minLines,
-                style: GoogleFonts.poppins(),
+                style: hintTitle,
                 decoration: InputDecoration(
                   hintText: text,
                   hintStyle: GoogleFonts.poppins(color: Colors.grey),

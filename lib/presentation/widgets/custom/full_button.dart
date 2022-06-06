@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FullButton extends StatelessWidget {
-  const FullButton({Key? key, this.onPressed, this.text = 'Button', this.marginTop = 25, this.marginBot = 15})
+  const FullButton(
+      {Key? key,
+      this.onPressed,
+      this.text = 'Button',
+      this.marginTop = 25,
+      this.marginBot = 15})
       : super(key: key);
   final Function()? onPressed;
   final String text;
@@ -23,8 +28,8 @@ class FullButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
         ),
-        child: Text('Daftar',
-            style: GoogleFonts.poppins(fontSize: 22, color: Colors.white)),
+        child: Text(text,
+            style: GoogleFonts.poppins(fontSize: 18, color: Colors.white)),
       ),
     );
   }

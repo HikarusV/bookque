@@ -1,4 +1,8 @@
+import 'package:bookque/presentation/main_page.dart';
+import 'package:bookque/presentation/pages/auth/register.dart';
+import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/custom/bottom_text_button.dart';
 import '../../widgets/custom/full_button.dart';
 import '../../widgets/custom/heading_title.dart';
@@ -8,11 +12,15 @@ import '../../../common/styles.dart';
 import '../../widgets/custom/text_input.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  Login({Key? key}) : super(key: key);
+
+  final TextEditingController email = TextEditingController();
+  final TextEditingController pass = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
@@ -29,25 +37,63 @@ class Login extends StatelessWidget {
                   ),
                   Flexible(
                     flex: 0,
-                    child: SizedBox(
-                      height: 140,
-                      width: 257,
-                      child: FittedBox(
-                        child: Image.asset('assets/bookque_icon.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
+                    child: Padding(
+                        padding: const EdgeInsets.all(25),
+                        child: Container(
+                          height: 100,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/bookque_icon.png'))),
+                        )
+                        // SizedBox(
+                        //   height: 140,
+                        //   width: 257,
+                        //   child: FittedBox(
+                        //     child: Image.asset('assets/bookque_icon.png'),
+                        //     fit: BoxFit.contain,
+                        //   ),
+                        // ),
+                        ),
                   ),
                   Flexible(
                     flex: 0,
                     child: Column(
                       children: [
                         TextInput(
-                          controller: TextEditingController(),
+                          controller: email,
+                          text: 'examplemail@mail.com',
+                          title: 'E-mail',
                         ),
-                        PasswordField(controller: TextEditingController()),
+                        PasswordField(
+                          controller: pass,
+                          passConfirmation: NoneConfirmation(),
+                        ),
                         FullButton(
-                          onPressed: () => '',
+                          onPressed: () async {
+                            print(email.text);
+                            print(pass.text);
+                            await context
+                                .read<AccountProv>()
+                                .signInMailPass(email.text, pass.text)
+                                .onError((error, stackTrace) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    error.toString(),
+                                  ),
+                                  duration: const Duration(seconds: 4),
+                                ),
+                              );
+                              print(error);
+                            });
+                          },
+                          //     Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => const MainPage()),
+                          // ),
+                          text: 'Masuk',
                         ),
                       ],
                     ),
@@ -60,7 +106,7 @@ class Login extends StatelessWidget {
                   children: [
                     Text(
                       'Atau masuk menggunakan',
-                      style: titleSmall,
+                      style: buttonSmall,
                     ),
                     const SizedBox(
                       height: 15,
@@ -72,7 +118,22 @@ class Login extends StatelessWidget {
                           image: const AssetImage(
                             'assets/facebook.png',
                           ),
-                          onPressed: () => '',
+                          onPressed: () async {
+                            await context
+                                .read<AccountProv>()
+                                .signInFacebook()
+                                .onError((error, stackTrace) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    error.toString(),
+                                  ),
+                                  duration: const Duration(seconds: 4),
+                                ),
+                              );
+                              print('disini error : $error');
+                            });
+                          },
                         ),
                         const SizedBox(
                           width: 20,
@@ -81,7 +142,21 @@ class Login extends StatelessWidget {
                           image: const AssetImage(
                             'assets/google.png',
                           ),
-                          onPressed: () => '',
+                          onPressed: () async {
+                            await context
+                                .read<AccountProv>()
+                                .signInGoogle()
+                                .onError((error, stackTrace) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    error.toString(),
+                                  ),
+                                  duration: const Duration(seconds: 4),
+                                ),
+                              );
+                            });
+                          },
                         ),
                       ],
                     ),
@@ -89,7 +164,14 @@ class Login extends StatelessWidget {
                 ),
               ),
               Flexible(
-                child: BottomTextButton(),
+                child: BottomTextButton(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Register(),
+                    ),
+                  ),
+                ),
               )
             ],
           ),

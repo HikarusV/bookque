@@ -14,7 +14,7 @@ class ImageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressed,
       child: Image(
         image: image,
         width: iconSize,

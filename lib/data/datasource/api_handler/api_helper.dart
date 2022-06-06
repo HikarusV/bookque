@@ -70,6 +70,24 @@ class HandleApi {
     return items;
   }
 
+  static Future postEmailVerification(String email) async {
+    try {
+      final response = await http.post(
+        Uri.parse('http://103.214.185.190:5000/email/verify/regist'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, dynamic>{
+          "email": email,
+        }),
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      print(e);
+      return {'error': true};
+    }
+  }
+
   static Future postItem(
       String idUser,
       String cover,

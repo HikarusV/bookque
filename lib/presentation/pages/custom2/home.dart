@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../../data/models/categories.dart';
+import '../../provider/account_provider.dart';
 import '../../widgets/custom2/search_box_decoration.dart';
 import '../../widgets/custom2/categories_item.dart';
 import '../../widgets/scroll_behavior_without_glow.dart';
@@ -44,7 +46,7 @@ class Home extends StatelessWidget {
                   SafeArea(
                     child: Container(
                       margin:
-                      const EdgeInsets.only(left: 15, right: 15, top: 15),
+                          const EdgeInsets.only(left: 15, right: 15, top: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -55,16 +57,19 @@ class Home extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Hello, Kim Jennie Blackpink',
+                                      'Hello, ${context.read<AccountProv>().userData!.displayName ?? 'Kosong broh'}',
                                       style: GoogleFonts.poppins(fontSize: 24),
                                       maxLines: 2,
                                     ),
                                   ],
                                 ),
                               ),
-                              const CircleAvatar(
-                                backgroundImage:
-                                AssetImage('assets/jennie.jpg'),
+                              CircleAvatar(
+                                backgroundImage: NetworkImage(context
+                                        .read<AccountProv>()
+                                        .userData!
+                                        .photoURL ??
+                                    'https://image.shutterstock.com/image-vector/man-icon-vector-260nw-1040084344.jpg'),
                                 radius: 40,
                               ),
                             ],
@@ -96,22 +101,21 @@ class Home extends StatelessWidget {
                               // );
                             },
                           ),
-                          CategoriesItem(
-                            onItemTap: () {
-                              //     Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => DetailCategoryPage(
-                              //       category: listCategory[0],
-                              //     ),
-                              //   ),
-                              // ),
-                            }
-                          ),
+                          CategoriesItem(onItemTap: () {
+                            //     Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => DetailCategoryPage(
+                            //       category: listCategory[0],
+                            //     ),
+                            //   ),
+                            // ),
+                          }),
                           const HeadingHome(
                               title: 'Rekomendasi', moreButton: false),
                           const RowBooks(),
-                          const HeadingHome(title: 'Terbaru', moreButton: false),
+                          const HeadingHome(
+                              title: 'Terbaru', moreButton: false),
                           const DoubleListBooks(),
                         ],
                       ),
