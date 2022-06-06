@@ -1,7 +1,8 @@
 import 'package:bookque/presentation/pages/upload/upload.dart';
 import 'package:flutter/material.dart';
-import '../../widgets/custom3/item_collection.dart';
+
 import '../../../data/models/books.dart';
+import '../../widgets/custom3/item_collection.dart';
 import '../../widgets/custom3/item_filter.dart';
 import '../../widgets/custom3/user_profile.dart';
 
@@ -36,7 +37,7 @@ class Profile extends StatelessWidget {
                   ),
                 ],
               ),
-              const ItemFilter(),
+              ItemFilter(),
               const SizedBox(
                 height: 15,
               ),
