@@ -1,9 +1,13 @@
+import 'package:bookque/data/cache/cache_auth.dart';
+import 'package:bookque/data/datasource/api_handler/api_helper.dart';
 import 'package:bookque/presentation/widgets/custom/send_email_verification_again.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/styles.dart';
+import '../../provider/account_provider.dart';
 
 class CodeValidation extends StatelessWidget {
   const CodeValidation(
@@ -26,6 +30,9 @@ class CodeValidation extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               Text(
                 'Kami telah mengirim kode verifikasi ke email kamu',
                 style: titleSmall,
@@ -65,8 +72,22 @@ class CodeValidation extends StatelessWidget {
                               child: CircularProgressIndicator(),
                             ),
                           );
-                          if (await isValid('333')) {
-                            whenValid();
+                          if (await isValid(text)) {
+                            bool result = await HandleApi.postNewUser(
+                              AuthCache.data['pass'],
+                              AuthCache.data['mail'],
+                              AuthCache.data['name'],
+                            );
+
+                            print(result);
+
+                            if (!result) {
+                              await context.read<AccountProv>().signInMailPass(
+                                    AuthCache.data['mail'],
+                                    AuthCache.data['pass'],
+                                  );
+                              whenValid();
+                            }
                           } else {
                             Navigator.pop(context);
                             whenError();
@@ -110,7 +131,8 @@ class CodeValidation extends StatelessWidget {
   }
 
   Future<bool> isValid(String code) async {
-    await Future.delayed(const Duration(seconds: 3));
-    return false;
+    bool result = await HandleApi.codeValidation(AuthCache.data['mail'], code);
+    print(result);
+    return result;
   }
 }

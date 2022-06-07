@@ -71,8 +71,6 @@ class Login extends StatelessWidget {
                         ),
                         FullButton(
                           onPressed: () async {
-                            print(email.text);
-                            print(pass.text);
                             await context
                                 .read<AccountProv>()
                                 .signInMailPass(email.text, pass.text)
@@ -85,14 +83,8 @@ class Login extends StatelessWidget {
                                   duration: const Duration(seconds: 4),
                                 ),
                               );
-                              print(error);
                             });
                           },
-                          //     Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => const MainPage()),
-                          // ),
                           text: 'Masuk',
                         ),
                       ],
@@ -106,7 +98,7 @@ class Login extends StatelessWidget {
                   children: [
                     Text(
                       'Atau masuk menggunakan',
-                      style: buttonSmall,
+                      style: descText,
                     ),
                     const SizedBox(
                       height: 15,
@@ -165,7 +157,7 @@ class Login extends StatelessWidget {
               ),
               Flexible(
                 child: BottomTextButton(
-                  onTap: () => Navigator.push(
+                  onTap: () => Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => Register(),

@@ -21,7 +21,7 @@ class AccountProv extends ChangeNotifier {
 
   void getCurentUser() {
     userData = FirebaseAuth.instance.currentUser;
-    print(userData ?? 'kosong');
+    // print(userData ?? 'kosong');
   }
 
   void getReloadCurentUser() async {
@@ -40,7 +40,7 @@ class AccountProv extends ChangeNotifier {
   Future signInGoogle() async {
     final googleUser = await GoogleSignIn().signIn().onError(
       (error, stackTrace) {
-        print('Error Mas broh $error');
+        // print('Error Mas broh $error');
       },
     );
     if (googleUser == null) return;

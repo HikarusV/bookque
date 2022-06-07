@@ -88,6 +88,45 @@ class HandleApi {
     }
   }
 
+  static Future codeValidation(String email, String code) async {
+    try {
+      final codeResponse = await http.post(
+        Uri.parse('http://103.214.185.190:5000/email/verify/code'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, dynamic>{"email": email, "code": code}),
+      );
+
+      final response = jsonDecode(codeResponse.body);
+
+      print('response $response');
+
+      return !response['error'];
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  static Future postNewUser(String pass, String email, String name) async {
+    try {
+      final createResponse = await http.post(
+        Uri.parse('http://103.214.185.190:5000/user/adddata/email'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(
+            <String, dynamic>{"pass": pass, "email": email, "name": name}),
+      );
+
+      return jsonDecode(createResponse.body)['error'];
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
   static Future postItem(
       String idUser,
       String cover,

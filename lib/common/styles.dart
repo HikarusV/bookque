@@ -20,6 +20,10 @@ var titleSmall = GoogleFonts.poppins(
   fontSize: 16,
   fontWeight: FontWeight.w500,
 );
+var descText = GoogleFonts.poppins(
+  fontSize: 14,
+  // fontWeight: FontWeight.w500,
+);
 var hintTitleLarge = GoogleFonts.poppins(
   fontSize: 24,
   fontWeight: FontWeight.w500,

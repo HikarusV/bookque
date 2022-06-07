@@ -37,7 +37,7 @@ class Profile extends StatelessWidget {
                   ),
                 ],
               ),
-              const ItemFilter(),
+              ItemFilter(),
               const SizedBox(
                 height: 15,
               ),

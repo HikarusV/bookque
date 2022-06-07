@@ -22,16 +22,17 @@ class AuthAccount extends StatelessWidget {
           );
         } else if (snapshot.hasData) {
           context.read<AccountProv>().getCurentUser();
-          try {
-            print(context.read<AccountProv>().userData!.email);
-          } catch (e) {
-            context.read<AccountProv>().logOut();
-          }
+          // try {
+          //   print(context.read<AccountProv>().userData!.email);
+          // } catch (e) {
+          //   context.read<AccountProv>().logOut();
+          // }
           // if (!context.read<AccountProv>().isNormalLogin) {
           //   if (!FirebaseAuth.instance.currentUser!.emailVerified) {
           //     return const EmailVerification();
           //   }
           // }
+          // print('photourl : ${context.read<AccountProv>().userData!.photoURL}');
           return const MainPage();
         } else if (snapshot.hasError) {
           return const Center(

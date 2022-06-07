@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../common/styles.dart';
 import '../../../data/models/poster.dart';
+import '../../pages/detail/detail.dart';
 
 class DoubleListBooks extends StatelessWidget {
-  const DoubleListBooks({Key? key, this.isScroolable = false}) : super(key: key);
+  const DoubleListBooks({Key? key, this.isScroolable = false})
+      : super(key: key);
   final bool isScroolable;
 
   @override
@@ -19,14 +21,14 @@ class DoubleListBooks extends StatelessWidget {
       crossAxisSpacing: 15,
       mainAxisSpacing: 15,
       children: listPoster.map(
-            (poster) {
+        (poster) {
           return GestureDetector(
             onTap: () {
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => const DetailPage(),
-              //   ),
-              // );
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const Detail(),
+                ),
+              );
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
