@@ -2,15 +2,21 @@
 
 capstone project cpsg10
 
-## Getting Started
+## Backend
+This project uses a backend system, but because the data is private, we cannot share the entire backend code.
 
-This project is a starting point for a Flutter application.
+## teknologi we used
+- [Dart (2.17.0)] (https://dart.dev/)
+- [Flutter (3.0.1)] (https://flutter.dev/)
+- [NodeJS ()] (https://nodejs.org/en/)
+- [Hapi ()] (https://hapi.dev/)
+- [Mysql (8.0)] (https://www.mysql.com/)
+- [Firebase Authentication] (https://firebase.google.com/)
+- [Icons8] (https://icons8.com/)
+- [Figma] (https://www.figma.com/)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## teams
+- [Faras] (https://github.com/FARRAS-DARKUNO)
+- [Sapta] (https://github.com/HikarusV)
+- [Wildhan] (https://github.com/wildan090801)
+- [Yudhis] (https://github.com/yudhistirahry33)
