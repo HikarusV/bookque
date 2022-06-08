@@ -6,8 +6,8 @@ class PasswordField extends StatefulWidget {
   const PasswordField({
     Key? key,
     required this.controller,
-    this.title = 'Password',
-    this.text = 'type password',
+    this.title = 'Kata Sandi',
+    this.text = 'Masukan Kata Sandi',
     this.passConfirmation,
   }) : super(key: key);
   final TextEditingController controller;

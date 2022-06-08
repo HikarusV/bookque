@@ -1,11 +1,9 @@
 import 'package:bookque/presentation/main_page.dart';
-import 'package:bookque/presentation/pages/auth/email_verification.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../custom2/home.dart';
 import 'login.dart';
 
 class AuthAccount extends StatelessWidget {

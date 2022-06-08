@@ -1,4 +1,4 @@
-import 'package:bookque/presentation/pages/search/search_page.dart';
+import 'package:bookque/presentation/pages/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,7 +11,7 @@ class SearchBoxDecoration extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => const SearchPage(),
+            builder: (context) => const Search(),
           ),
         );
       },

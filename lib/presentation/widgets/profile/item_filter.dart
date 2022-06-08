@@ -1,7 +1,8 @@
 import 'package:bookque/data/models/filter.dart';
-import 'package:bookque/presentation/widgets/custom3/list_filter_selected.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'list_filter_selected.dart';
 
 class ItemFilter extends StatelessWidget {
   ItemFilter({Key? key}) : super(key: key);

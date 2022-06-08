@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../../widgets/custom2/double_list_books.dart';
+import '../../widgets/custom_scaffold.dart';
 import '../../widgets/scroll_behavior_without_glow.dart';
 import '../../widgets/search/filter_search.dart';
 import '../../widgets/search/search_box.dart';
 
-import '../../widgets/custom_scaffold.dart';
-
-class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+class Search extends StatefulWidget {
+  const Search({Key? key}) : super(key: key);
 
   @override
-  State<SearchPage> createState() => _SearchPageState();
+  State<Search> createState() => _SearchState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(

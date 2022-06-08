@@ -1,6 +1,7 @@
 import 'package:bookque/data/models/filter.dart';
-import 'package:bookque/presentation/widgets/custom3/filter_item_selected.dart';
 import 'package:flutter/material.dart';
+
+import 'filter_item_selected.dart';
 
 class ListFilterSelected extends StatelessWidget {
   const ListFilterSelected({Key? key, required this.items, required this.count})

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import 'pages/custom2/bookmark_new.dart';
-import 'pages/custom2/home.dart';
-import 'pages/custom3/profile.dart';
+import 'pages/bookmark/bookmark.dart';
+import 'pages/home/home.dart';
+import 'pages/profile/profile.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _MainPageState extends State<MainPage> {
   int currentIndex = 0;
   final screens = [
     const Home(),
-    const BookmarkNew(),
+    const Bookmark(),
     const Profile(),
   ];
 

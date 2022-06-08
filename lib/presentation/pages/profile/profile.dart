@@ -2,10 +2,11 @@ import 'package:bookque/presentation/pages/upload/upload.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/custom3/item_collection.dart';
+
 import '../../../data/models/books.dart';
-import '../../widgets/custom3/item_filter.dart';
-import '../../widgets/custom3/user_profile.dart';
+import '../../widgets/profile/item_collection.dart';
+import '../../widgets/profile/item_filter.dart';
+import '../../widgets/profile/user_profile.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);

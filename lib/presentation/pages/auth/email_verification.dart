@@ -1,9 +1,8 @@
 import 'dart:async';
 
+import 'package:bookque/presentation/pages/home/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../custom2/home.dart';
 
 class EmailVerification extends StatefulWidget {
   const EmailVerification({Key? key}) : super(key: key);
