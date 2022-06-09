@@ -1,12 +1,14 @@
+import 'package:bookque/common/styles.dart';
+import 'package:bookque/data/models/books.dart';
+import 'package:bookque/presentation/pages/detail/user_detail.dart';
+import 'package:bookque/presentation/pages/settings/settings.dart';
 import 'package:bookque/presentation/pages/upload/upload.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
+import 'package:bookque/presentation/widgets/profile/item_collection.dart';
+import 'package:bookque/presentation/widgets/profile/item_filter.dart';
+import 'package:bookque/presentation/widgets/profile/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../data/models/books.dart';
-import '../../widgets/profile/item_collection.dart';
-import '../../widgets/profile/item_filter.dart';
-import '../../widgets/profile/user_profile.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -26,13 +28,19 @@ class Profile extends StatelessWidget {
                   Positioned(
                     right: 0,
                     child: GestureDetector(
-                      onTap: () async {
-                        await context.read<AccountProv>().logOut();
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Settings(),
+                          ),
+                        );
                       },
                       child: const Icon(
                         // Icons.settings_outlined,
-                        Icons.logout,
+                        Icons.settings,
                         size: 28,
+                        color: primaryColor,
                       ),
                     ),
                   ),
@@ -42,11 +50,21 @@ class Profile extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              ItemCollection(items: listBook, onItemTap: () => print('Tapped'))
+              ItemCollection(
+                items: listBook,
+                onItemTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const UserDetail(),
+                    ),
+                  );
+                },
+              )
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: primaryColor,
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(

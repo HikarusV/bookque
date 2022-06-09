@@ -7,12 +7,12 @@ class PasswordField extends StatefulWidget {
     Key? key,
     required this.controller,
     this.title = 'Kata Sandi',
-    this.text = 'Masukan Kata Sandi',
+    this.textHint = 'Masukkan Kata Sandi',
     this.passConfirmation,
   }) : super(key: key);
   final TextEditingController controller;
   final String title;
-  final String text;
+  final String textHint;
   final PassConfirmation? passConfirmation;
 
   @override
@@ -51,8 +51,7 @@ class _PasswordFieldState extends State<PasswordField> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(widget.title,
-              style: GoogleFonts.poppins(
-                  fontSize: 14, fontWeight: FontWeight.w500)),
+              style: subText),
           const SizedBox(
             height: 5,
           ),
@@ -90,10 +89,10 @@ class _PasswordFieldState extends State<PasswordField> {
                     }
                   });
                 },
-                style: hintTitle,
+                style: titleSmall,
                 decoration: InputDecoration(
-                  hintText: widget.text,
-                  hintStyle: GoogleFonts.poppins(color: Colors.grey),
+                  hintText: widget.textHint,
+                  hintStyle: hintTitle,
                   contentPadding: const EdgeInsets.only(
                       top: 13, bottom: 12, left: 15, right: 15),
                   isDense: true,
@@ -117,7 +116,9 @@ class _PasswordFieldState extends State<PasswordField> {
                     }),
                     child: Icon(!showPassword
                         ? Icons.visibility
-                        : Icons.visibility_off),
+                        : Icons.visibility_off,
+                      color: primaryColor,
+                    ),
                   ),
                 ),
               ),
@@ -192,12 +193,12 @@ class StrengthPassword implements PassConfirmation {
 
   @override
   Map dataMessage = {
-    0: 'minimum length is 6',
-    1: 'very weak',
-    2: 'weak',
-    3: 'good',
-    4: 'strong',
-    5: 'strong'
+    0: 'Kata sandi minimal harus 6 karakter',
+    1: 'Sangat Lemah',
+    2: 'Lemah',
+    3: 'Bagus',
+    4: 'Kuat',
+    5: 'Sangat Kuat'
   };
 
   @override

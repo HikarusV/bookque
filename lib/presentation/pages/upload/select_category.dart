@@ -14,6 +14,7 @@ class SelectCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      title: 'Pilih Kategori',
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: ScrollConfiguration(
@@ -31,8 +32,9 @@ class SelectCategory extends StatelessWidget {
                 flex: 0,
                 child: FullButton(
                   onPressed: () => '',
-                  marginTop: 5,
-                  marginBot: 10,
+                  text: 'Simpan',
+                  marginTop: 15,
+                  marginBottom: 15,
                 ),
               )
             ],

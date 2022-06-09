@@ -1,3 +1,4 @@
+import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -47,8 +48,8 @@ class _FilterJenisState extends State<FilterJenis> {
                       width: 95,
                       height: 35,
                       color: choiceType == listPencarian[index]
-                          ? Colors.blue
-                          : Colors.blue.shade100,
+                          ? primaryColor
+                          : secondaryColor,
                       child: TextButton(
                         onPressed: () {
                           setState(() {
@@ -57,10 +58,9 @@ class _FilterJenisState extends State<FilterJenis> {
                         },
                         child: Text(
                           listPencarian[index],
-                          style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400),
+                          style: choiceType == listPencarian[index]
+                              ? subTextWhite
+                              : subTextGrey,
                         ),
                       ),
                     ),

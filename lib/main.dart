@@ -1,4 +1,9 @@
+import 'package:bookque/common/styles.dart';
+import 'package:bookque/presentation/main_page.dart';
 import 'package:bookque/presentation/pages/auth/code_validation.dart';
+import 'package:bookque/presentation/pages/auth/login.dart';
+import 'package:bookque/presentation/pages/profile/profile.dart';
+import 'package:bookque/presentation/pages/settings/settings.dart';
 import 'package:bookque/presentation/pages/splashscreen.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:flutter/material.dart';
@@ -24,12 +29,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'BookQue',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+          primary: primaryColor,
+          onPrimary: Colors.white,
+          secondary: secondaryColor,
+        ),
       ),
       routes: {
-        '/': (context) => const SplashScreen(),
+        '/': (context) => SplashScreen(),
       },
     );
   }

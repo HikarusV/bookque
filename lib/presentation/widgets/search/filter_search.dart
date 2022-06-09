@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../common/styles.dart';
 import '../../widgets/search/filter_jenis.dart';
 import '../../widgets/search/filter_pencarian.dart';
 import '../../widgets/search/filter_urutkan.dart';
@@ -43,10 +44,7 @@ class FilterSearch extends StatelessWidget {
                 ),
                 Text(
                   'Filter',
-                  style: GoogleFonts.poppins(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: titleMedium,
                 ),
                 const SizedBox(
                   height: 15,

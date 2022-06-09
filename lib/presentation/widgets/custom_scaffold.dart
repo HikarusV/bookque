@@ -1,10 +1,12 @@
+import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({Key? key, this.title = 'Title', this.child})
+  const CustomScaffold({Key? key, this.title = 'Title', this.child, this.actions})
       : super(key: key);
   final String title;
   final Widget? child;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +22,9 @@ class CustomScaffold extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        title: Text(title),
+        title: Text(title, style: appBarTitle),
         elevation: 0,
+        actions: actions,
       ),
       body: child ?? Container(),
     );

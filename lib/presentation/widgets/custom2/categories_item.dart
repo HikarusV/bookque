@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
+
 class CategoriesItem extends StatelessWidget {
   CategoriesItem({Key? key, this.onItemTap}) : super(key: key);
   final Function()? onItemTap;
@@ -20,7 +22,7 @@ class CategoriesItem extends StatelessWidget {
             ),
             Text(
               'Investasi',
-              style: GoogleFonts.poppins(fontSize: 10),
+              style: subTextSmall,
             ),
           ],
         ),

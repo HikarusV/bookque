@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
+
 class BottomTextButton extends StatelessWidget {
-  const BottomTextButton({Key? key, required this.onTap}) : super(key: key);
+  const BottomTextButton(
+      {Key? key,
+      required this.onTap,
+      this.textButton = 'Button',
+      this.text = ''})
+      : super(key: key);
   final Function() onTap;
+
+  final String text;
+  final String textButton;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(top: 15, bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Sudah memiliki akun? ',
-              style: GoogleFonts.poppins(fontSize: 14)),
+          Text(text,
+              style: titleSmall),
           GestureDetector(
             onTap: onTap,
-            child: Text('Daftar',
-                style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0xff63B1F2))),
+            child: Text(textButton,
+                style: titleButton),
           )
         ],
       ),

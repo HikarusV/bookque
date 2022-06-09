@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
+
 class ChooseCategories extends StatelessWidget {
   const ChooseCategories({Key? key, this.text = 'Pilih Kategori', this.onTap})
       : super(key: key);
@@ -12,14 +14,13 @@ class ChooseCategories extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Kategori',
-              style: GoogleFonts.poppins(
-                  fontSize: 14, fontWeight: FontWeight.w500),
+              style: subText,
             ),
             const SizedBox(
               height: 5,
@@ -39,12 +40,12 @@ class ChooseCategories extends StatelessWidget {
                   children: [
                     Text(
                       'Pilih Kategori',
-                      style:
-                      GoogleFonts.poppins(fontSize: 16, color: Colors.grey),
+                      style: hintTitle,
                     ),
-                    Icon(
+                    const Icon(
                       Icons.arrow_forward_ios,
-                      color: Colors.blue.shade500,
+                      color: primaryColor,
+                      size: 18,
                     ),
                   ],
                 ),

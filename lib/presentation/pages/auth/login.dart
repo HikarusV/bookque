@@ -1,4 +1,5 @@
 import 'package:bookque/presentation/pages/auth/register.dart';
+import 'package:bookque/presentation/pages/auth/sent_verification.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,8 @@ import '../../widgets/custom/text_input.dart';
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
 
-  final TextEditingController email = TextEditingController();
-  final TextEditingController pass = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +35,12 @@ class Login extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      const HeadingTitle(),
+                      const HeadingTitle(
+                        title: 'Masuk',
+                        subTitle: 'Masuk untuk melanjutkan',
+                      ),
                       Padding(
-                          padding: const EdgeInsets.all(25),
+                          padding: const EdgeInsets.all(20),
                           child: Container(
                             height: 100,
                             decoration: const BoxDecoration(
@@ -56,19 +60,19 @@ class Login extends StatelessWidget {
                       Column(
                         children: [
                           TextInput(
-                            controller: email,
-                            text: 'emailcontoh@mail.com',
-                            title: 'Alamat Email',
+                            controller: emailController,
+                            title: 'Email',
+                            textHint: 'Masukkan Alamat Email',
                           ),
                           PasswordField(
-                            controller: pass,
+                            controller: passController,
                             passConfirmation: NoneConfirmation(),
                           ),
                           FullButton(
                             onPressed: () async {
                               await context
                                   .read<AccountProv>()
-                                  .signInMailPass(email.text, pass.text)
+                                  .signInMailPass(emailController.text, passController.text)
                                   .onError((error, stackTrace) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -81,6 +85,16 @@ class Login extends StatelessWidget {
                               });
                             },
                             text: 'Masuk',
+                            marginBottom: 5,
+                          ),
+                          BottomTextButton(
+                            textButton: 'Lupa Kata Sandi?',
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SentVerification(),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -88,9 +102,12 @@ class Login extends StatelessWidget {
                   ),
                   Column(
                     children: [
+                      const SizedBox(
+                        height: 15,
+                      ),
                       Text(
                         'Atau masuk menggunakan',
-                        style: descText,
+                        style: titleSmall,
                       ),
                       const SizedBox(
                         height: 15,
@@ -147,13 +164,15 @@ class Login extends StatelessWidget {
                     ],
                   ),
                   BottomTextButton(
+                    text: 'Belum memiliki akun? ',
+                    textButton: 'Daftar',
                     onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => Register(),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

@@ -7,14 +7,14 @@ class TextInput extends StatelessWidget {
   const TextInput({
     Key? key,
     required this.controller,
-    this.title = 'Text',
-    this.text = 'Text Hint',
+    this.title = '',
+    this.textHint = 'Text Hint',
     this.maxLines = 1,
     this.minLines = 1,
   }) : super(key: key);
   final TextEditingController controller;
   final String title;
-  final String text;
+  final String textHint;
   final int maxLines;
   final int minLines;
 
@@ -27,8 +27,7 @@ class TextInput extends StatelessWidget {
         children: [
           Text(
             title,
-            style:
-                GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500),
+            style: subText,
           ),
           const SizedBox(
             height: 5,
@@ -46,10 +45,10 @@ class TextInput extends StatelessWidget {
                 controller: controller,
                 maxLines: maxLines,
                 minLines: minLines,
-                style: hintTitle,
+                style: titleSmall,
                 decoration: InputDecoration(
-                  hintText: text,
-                  hintStyle: GoogleFonts.poppins(color: Colors.grey),
+                  hintText: textHint,
+                  hintStyle: hintTitle,
                   contentPadding: const EdgeInsets.only(
                       top: 13, bottom: 12, left: 15, right: 15),
                   isDense: true,

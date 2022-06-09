@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
 import 'list_filter_selected.dart';
 
 class FilterItemsSelected extends StatefulWidget {
@@ -39,19 +40,16 @@ class _FilterItemsSelectedState extends State<FilterItemsSelected> {
           children: [
             Text(
               widget.title,
-              style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              style: titleSmall,
             ),
             isSelected
-                ? Icon(
+                ? const Icon(
                     Icons.circle,
-                    color: Colors.blue.shade500,
+                    color: primaryColor,
                   )
-                : Icon(
+                : const Icon(
                     Icons.circle_outlined,
-                    color: Colors.blue.shade200,
+                    color: primaryColor,
                   ),
           ],
         ),

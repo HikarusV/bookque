@@ -2,6 +2,7 @@ import 'package:bookque/data/models/filter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
 import 'list_filter_selected.dart';
 
 class ItemFilter extends StatelessWidget {
@@ -42,10 +43,7 @@ class ItemFilter extends StatelessWidget {
                 ),
                 Text(
                   'Urutkan Unggahan',
-                  style: GoogleFonts.poppins(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: titleMedium,
                 ),
                 const SizedBox(
                   height: 15,
@@ -63,7 +61,7 @@ class ItemFilter extends StatelessWidget {
         padding: const EdgeInsets.only(left: 15, right: 15),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: const Color(0xff63B1F2),
+          color: primaryColor,
           borderRadius: BorderRadius.circular(12),
         ),
         height: 30,
@@ -74,19 +72,11 @@ class ItemFilter extends StatelessWidget {
           children: [
             Text(
               'Urutkan :',
-              style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+              style: filterTitle,
             ),
             Text(
               'Unggahan Terbaru',
-              style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+              style: filterTitle,
             ),
             const Icon(
               Icons.arrow_drop_down,

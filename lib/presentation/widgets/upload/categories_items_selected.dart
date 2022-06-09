@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
 import 'list_categories_selected.dart';
 
 class CategoriesItemsSelected extends StatefulWidget {
@@ -37,7 +38,7 @@ class _CategoriesItemsSelectedState extends State<CategoriesItemsSelected> {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.blue.shade200,
+            color: primaryColor,
           ),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -47,19 +48,16 @@ class _CategoriesItemsSelectedState extends State<CategoriesItemsSelected> {
           children: [
             Text(
               widget.title,
-              style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              style: titleSmall,
             ),
             isSelected
-                ? Icon(
+                ? const Icon(
                     Icons.check_circle,
-                    color: Colors.blue.shade500,
+                    color: primaryColor,
                   )
-                : Icon(
+                : const Icon(
                     Icons.circle_outlined,
-                    color: Colors.blue.shade200,
+                    color: primaryColor
                   ),
           ],
         ),

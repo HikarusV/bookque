@@ -9,8 +9,8 @@ var appBarTitle = GoogleFonts.poppins(
   fontWeight: FontWeight.w600,
 );
 var titleLarge = GoogleFonts.poppins(
-  fontSize: 24,
-  fontWeight: FontWeight.bold,
+  fontSize: 22,
+  fontWeight: FontWeight.w600,
 );
 var titleMedium = GoogleFonts.poppins(
   fontSize: 20,
@@ -30,7 +30,7 @@ var hintTitleLarge = GoogleFonts.poppins(
   color: Colors.grey,
 );
 var hintTitle = GoogleFonts.poppins(
-  fontSize: 14,
+  fontSize: 16,
   fontWeight: FontWeight.w500,
   color: Colors.grey,
 );
@@ -45,12 +45,21 @@ var subTextWhite = GoogleFonts.poppins(
   fontSize: 14,
   color: Colors.white,
 );
+var subTextSmall = GoogleFonts.poppins(
+  fontSize: 10,
+);
+var filterTitle = GoogleFonts.poppins(
+  fontSize: 14,
+  fontWeight: FontWeight.w500,
+  color: Colors.white,
+);
 var popUpTitle = GoogleFonts.poppins(
   fontSize: 22,
   color: Colors.white,
 );
 var buttonLarge = GoogleFonts.poppins(
   fontSize: 22,
+  color: Colors.white,
 );
 var buttonMedium = GoogleFonts.poppins(
   fontSize: 16,
@@ -64,3 +73,7 @@ var buttonMediumBlack = GoogleFonts.poppins(
 var buttonSmall = GoogleFonts.poppins(
   fontSize: 12,
 );
+var titleButton = GoogleFonts.poppins(
+    fontSize: 16, fontWeight: FontWeight.w500, color: primaryColor);
+var titleButtonSmall = GoogleFonts.poppins(
+    fontSize: 14, fontWeight: FontWeight.w500, color: primaryColor);

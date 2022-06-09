@@ -1,13 +1,13 @@
+import 'package:bookque/common/styles.dart';
+import 'package:bookque/data/models/poster.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/detail/bookmark_button.dart';
+import 'package:bookque/presentation/widgets/detail/container_detail_categories_item.dart';
 import 'package:bookque/presentation/widgets/detail/detail_categories_item.dart';
+import 'package:bookque/presentation/widgets/detail/report_dialog.dart';
+import 'package:bookque/presentation/widgets/detail/small_button.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
-
-import '../../../common/styles.dart';
-import '../../../data/models/poster.dart';
-import '../../widgets/detail/container_detail_categories_item.dart';
-import '../../widgets/detail/small_button.dart';
 
 class Detail extends StatelessWidget {
   const Detail({Key? key}) : super(key: key);
@@ -16,6 +16,21 @@ class Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: 'Detail',
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(
+            Icons.report,
+            size: 28,
+          ),
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const ReportDialog();
+                });
+          },
+        )
+      ],
       child: ScrollConfiguration(
         behavior: ScrollBehaviorWithoutGlow(),
         child: SingleChildScrollView(
@@ -27,6 +42,7 @@ class Detail extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Column(
                     children: [
+                      const SizedBox(height: 10),
                       Text(
                         'Mantappu Jiwa *Buku Latihan',
                         style: titleLarge,
@@ -93,7 +109,7 @@ class Detail extends StatelessWidget {
                   child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: listPoster.map((poster) {
-                        return InkWell(
+                        return GestureDetector(
                           onTap: () {},
                           child: Padding(
                             padding:

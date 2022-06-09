@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+import '../common/styles.dart';
 import 'pages/bookmark/bookmark.dart';
 import 'pages/home/home.dart';
 import 'pages/profile/profile.dart';
@@ -34,14 +35,20 @@ class _MainPageState extends State<MainPage> {
               SalomonBottomBarItem(
                 icon: const Icon(Icons.home),
                 title: const Text("Home"),
+                selectedColor: primaryColor,
+                unselectedColor: Colors.grey,
               ),
               SalomonBottomBarItem(
                 icon: const Icon(Icons.bookmark),
                 title: const Text("Bookmark"),
+                selectedColor: primaryColor,
+                unselectedColor: Colors.grey,
               ),
               SalomonBottomBarItem(
                 icon: const Icon(Icons.person),
                 title: const Text("Profile"),
+                selectedColor: primaryColor,
+                unselectedColor: Colors.grey,
               ),
             ]),
       ),

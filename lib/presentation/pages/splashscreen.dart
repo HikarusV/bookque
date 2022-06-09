@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 15,
                   ),
                   Text(
-                    'Find your favorite category easily',
+                    'Cari kategori favoritmu dengan mudah',
                     style: GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.w400,
@@ -88,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 15,
                   ),
                   Text(
-                    'Enjoy your more time to read favorite book',
+                    'Nikmati lebih banyak waktu untuk membaca buku favoritmu',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       fontSize: 20,
@@ -121,7 +121,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 15,
                   ),
                   Text(
-                    'Enjoy your more time to read favorite book',
+                    'Berbagai macam fitur yang mudah untuk kamu gunakan',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       fontSize: 20,
@@ -149,7 +149,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 );
               },
-              child: isLastPage ? const Text('') : const Text('SKIP'),
+              child: isLastPage ? const Text('') : Text('LEWATI', style: GoogleFonts.poppins()),
             ),
             Center(
               child: SmoothPageIndicator(
@@ -176,14 +176,14 @@ class _SplashScreenState extends State<SplashScreen> {
                         ),
                       );
                     },
-                    child: const Text('START'),
+                    child: Text('MULAI', style: GoogleFonts.poppins()),
                   )
                 : TextButton(
                     onPressed: () => controller.nextPage(
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,
                     ),
-                    child: const Text('NEXT'),
+                    child: Text('LANJUT', style: GoogleFonts.poppins()),
                   ),
           ],
         ),

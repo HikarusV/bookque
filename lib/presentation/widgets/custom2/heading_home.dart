@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
+
 class HeadingHome extends StatelessWidget {
   const HeadingHome({Key? key, this.title = 'Title', this.moreButton = false, this.onMoreTap})
       : super(key: key);
@@ -18,21 +20,14 @@ class HeadingHome extends StatelessWidget {
           children: [
             Text(
               title,
-              style: GoogleFonts.poppins(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
+              style: titleMedium,
             ),
             moreButton
                 ? TextButton(
               onPressed: () {},
               child: Text(
                 'Lihat Semua',
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blue.shade700,
-                ),
+                style: titleButtonSmall,
               ),
             )
                 : Container(),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/styles.dart';
+
 class FilterUrutkan extends StatefulWidget {
   const FilterUrutkan({Key? key}) : super(key: key);
 
@@ -24,7 +26,7 @@ class _FilterUrutkanState extends State<FilterUrutkan> {
       children: [
         Text(
           'Urutkan',
-          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
+          style: titleSmall,
         ),
         const SizedBox(
           height: 10,
@@ -46,8 +48,8 @@ class _FilterUrutkanState extends State<FilterUrutkan> {
                       width: 95,
                       height: 35,
                       color: choiceType == listPencarian[index]
-                          ? Colors.blue
-                          : Colors.blue.shade100,
+                          ? primaryColor
+                          : secondaryColor,
                       child: TextButton(
                         onPressed: () {
                           setState(() {
@@ -56,10 +58,9 @@ class _FilterUrutkanState extends State<FilterUrutkan> {
                         },
                         child: Text(
                           listPencarian[index],
-                          style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400),
+                          style: choiceType == listPencarian[index]
+                              ? subTextWhite
+                              : subTextGrey,
                         ),
                       ),
                     ),

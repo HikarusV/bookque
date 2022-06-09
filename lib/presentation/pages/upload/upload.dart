@@ -1,5 +1,6 @@
 import 'package:bookque/presentation/pages/upload/select_category.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
+import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom/full_button.dart';
@@ -23,11 +24,25 @@ class Upload extends StatelessWidget {
             child: Column(
               children: [
                 const ImagePick(),
-                TextInput(controller: TextEditingController()),
-                TextInput(controller: TextEditingController()),
-                TextInput(controller: TextEditingController()),
                 TextInput(
                   controller: TextEditingController(),
+                  title: 'Tautan',
+                  textHint: 'Masukkan Referensi Tautan',
+                ),
+                TextInput(
+                  controller: TextEditingController(),
+                  title: 'Judul',
+                  textHint: 'Masukkan Judul',
+                ),
+                TextInput(
+                  controller: TextEditingController(),
+                  title: 'Nama Penulis',
+                  textHint: 'Masukkan Nama Penulis',
+                ),
+                TextInput(
+                  controller: TextEditingController(),
+                  title: 'Deskripsi',
+                  textHint: 'Masukkan Deskripsi',
                   minLines: 6,
                   maxLines: 6,
                 ),
@@ -39,7 +54,11 @@ class Upload extends StatelessWidget {
                     ),
                   ),
                 ),
-                FullButton(onPressed: () => ''),
+                FullButton(
+                  onPressed: () => '',
+                  text: 'Unggah',
+                  marginBottom: 15,
+                ),
               ],
             ),
           ),
