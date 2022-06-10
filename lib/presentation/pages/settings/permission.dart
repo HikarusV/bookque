@@ -2,15 +2,13 @@ import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/settings/switch_button.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/localizations.dart';
-
 class Permission extends StatelessWidget {
   const Permission({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: AppLocalizations.of(context)!.accessPermissionText,
+      title: 'Izin Akses',
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -19,10 +17,10 @@ class Permission extends StatelessWidget {
               child: Column(
                 children: [
                   SwitchButton(
-                    text: AppLocalizations.of(context)!.notificationText,
+                    text: 'Notifikasi',
                   ),
                   SwitchButton(
-                    text: AppLocalizations.of(context)!.storageText,
+                    text: 'Penyimpanan',
                   ),
                 ],
               ),

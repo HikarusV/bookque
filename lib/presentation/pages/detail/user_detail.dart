@@ -3,6 +3,7 @@ import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/detail/bookmark_button.dart';
 import 'package:bookque/presentation/widgets/detail/container_detail_categories_item.dart';
 import 'package:bookque/presentation/widgets/detail/detail_categories_item.dart';
+import 'package:bookque/presentation/widgets/detail/report_dialog.dart';
 import 'package:bookque/presentation/widgets/detail/small_button.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
@@ -21,37 +22,37 @@ class UserDetail extends StatelessWidget {
               size: 28,
             ),
             onSelected: (value) {
-              if (value == MenuItem.item1) {
-              } else if (value == MenuItem.item2) {}
+              if (value == MenuItem.item1) {}
+              else if (value == MenuItem.item2) {}
             },
             itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: MenuItem.item1,
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.create,
-                          color: Colors.black,
-                        ),
-                        const SizedBox(width: 5),
-                        Text('Ubah', style: titleSmall),
-                      ],
+              PopupMenuItem(
+                value: MenuItem.item1,
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.create,
+                      color: Colors.black,
                     ),
-                  ),
-                  PopupMenuItem(
-                    value: MenuItem.item2,
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.delete,
-                          color: Colors.black,
-                        ),
-                        const SizedBox(width: 5),
-                        Text('Hapus', style: titleSmall),
-                      ],
+                    const SizedBox(width: 5),
+                    Text('Ubah', style: titleSmall),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: MenuItem.item2,
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.delete,
+                      color: Colors.black,
                     ),
-                  ),
-                ]),
+                    const SizedBox(width: 5),
+                    Text('Hapus', style: titleSmall),
+                  ],
+                ),
+              ),
+            ]),
       ],
       child: ScrollConfiguration(
         behavior: ScrollBehaviorWithoutGlow(),
@@ -71,10 +72,7 @@ class UserDetail extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 10),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset('assets/buku1.png', height: 240),
-                      ),
+                      Image.asset('assets/buku1.png', height: 240),
                       const SizedBox(height: 10),
                       Text(
                         'Jerome Polin Sijabat',

@@ -6,7 +6,6 @@ import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/localizations.dart';
 import '../../widgets/custom/bottom_text_button.dart';
 import '../../widgets/custom/full_button.dart';
 import '../../widgets/custom/heading_title.dart';
@@ -28,6 +27,7 @@ class Register extends StatelessWidget {
   Widget build(BuildContext context) {
     password.reference = reference;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: ScrollConfiguration(
           behavior: ScrollBehaviorWithoutGlow(),
@@ -39,46 +39,41 @@ class Register extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 15),
-                  HeadingTitle(
-                    title: AppLocalizations.of(context)!.registerText1,
-                    subTitle: AppLocalizations.of(context)!.registerText2,
+                  const HeadingTitle(
+                    title: 'Daftar',
+                    subTitle: 'Daftar untuk memiliki akun',
                   ),
                   const SizedBox(height: 15),
                   TextInput(
                     controller: nameController,
-                    textHint: AppLocalizations.of(context)!.namePlaceholderText,
-                    title: AppLocalizations.of(context)!.nameLabelText,
+                    textHint: 'Masukkan Nama Lengkap',
+                    title: 'Nama',
                   ),
                   TextInput(
                     controller: mailController,
-                    textHint:
-                        AppLocalizations.of(context)!.emailPlaceholderText,
-                    title: AppLocalizations.of(context)!.emailLabelText,
+                    textHint: 'Masukkan Alamat Email',
+                    title: 'Email',
                   ),
                   PasswordField(
                     controller: passController,
-                    title: AppLocalizations.of(context)!.passwordLabelText,
-                    textHint:
-                        AppLocalizations.of(context)!.passwordPlaceholderText,
+                    title: 'Kata Sandi',
                     passConfirmation: password,
                   ),
                   PasswordField(
                     controller: confirmPassController,
-                    title:
-                        AppLocalizations.of(context)!.confirmPasswordLabelText,
-                    textHint: AppLocalizations.of(context)!
-                        .confirmPasswordPlaceholderText,
+                    title: 'Konfirmasi Kata Sandi',
+                    textHint: 'Masukan Kembali Kata Sandi',
                     passConfirmation: SamePassword(reference: reference),
                   ),
                   FullButton(
                     onPressed: () async {
+
                       String email = mailController.text;
                       String name = nameController.text;
                       String pass = passController.text;
                       String confirmPass = confirmPassController.text;
 
-                      Map condition =
-                          columnCheck(email, name, pass, confirmPass);
+                      Map condition = columnCheck(email, name, pass, confirmPass);
 
                       print(condition);
 
@@ -125,11 +120,11 @@ class Register extends StatelessWidget {
                       //   );
                       // }
                     },
-                    text: AppLocalizations.of(context)!.registerText1,
+                    text: 'Daftar',
                   ),
                   BottomTextButton(
-                    text: AppLocalizations.of(context)!.haveAccountText,
-                    textButton: AppLocalizations.of(context)!.loginText1,
+                    text: 'Sudah memiliki akun? ',
+                    textButton: 'Masuk',
                     onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -149,28 +144,28 @@ class Register extends StatelessWidget {
   Map columnCheck(String email, String name, String pass, String confirmPass) {
     if (email.isEmpty || name.isEmpty || pass.isEmpty || confirmPass.isEmpty) {
       return {
-        'isAccept': false,
-        'message': 'Semua kolom harus diisi',
+        'isAccept' : false,
+    'message' : 'Semua kolom harus diisi',
       };
     }
 
     if (pass.length < 6) {
       return {
-        'isAccept': false,
-        'message': 'Password tidak boleh kurang dari 6',
+        'isAccept' : false,
+        'message' : 'Password tidak boleh kurang dari 6',
       };
     }
 
     if (reference.data != confirmPass) {
       return {
-        'isAccept': false,
-        'message': 'Kolom password dan kolom konfirmasi password harus sama',
+        'isAccept' : false,
+        'message' : 'Kolom password dan kolom konfirmasi password harus sama',
       };
     }
 
     return {
-      'isAccept': true,
-      'message': 'Success',
+      'isAccept' : true,
+      'message' : 'Success',
     };
   }
 
@@ -207,14 +202,16 @@ class Register extends StatelessWidget {
         snackbarError(
           context,
           duration: 4,
-          message: 'sukses',
+          message:
+          'sukses',
         );
       } else {
         Navigator.pop(context);
         snackbarError(
           context,
           duration: 4,
-          message: 'Ada yang salah',
+          message:
+          'Ada yang salah',
         );
       }
     } catch (e) {
@@ -223,7 +220,8 @@ class Register extends StatelessWidget {
       snackbarError(
         context,
         duration: 4,
-        message: e.toString(),
+        message:
+        e.toString(),
       );
     }
   }

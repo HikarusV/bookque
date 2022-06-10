@@ -2,8 +2,6 @@ import 'package:bookque/common/styles.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/localizations.dart';
-
 class AboutUs extends StatelessWidget {
   // static const routeName = '/about_page';
 
@@ -12,7 +10,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: AppLocalizations.of(context)!.aboutUsText,
+      title: 'Tentang Kami',
       child: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.all(15.0),
@@ -34,10 +32,12 @@ class AboutUs extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Text(AppLocalizations.of(context)!.aboutUsText1,
-                  style: subText, textAlign: TextAlign.justify),
+              Text(
+                  'BookQue adalah platform berbasis aplikasi mobile yang menyediakan serta memudahkan untuk mencari dan mengunggah referensi buku, jurnal atau karya tulis lainnya yang dapat diakses dengan mudah, gratis dengan tampilan yang menarik.',
+                  style: subText,
+                  textAlign: TextAlign.justify),
               const SizedBox(height: 20),
-              Text(AppLocalizations.of(context)!.developByText, style: subText),
+              Text('Dikembangkan oleh :', style: subText),
               Text('● Abdurrachman Farras', style: subText),
               Text('● Muhammad Wildhan Kusumawardana', style: subText),
               Text('● Nazwa Sapta Pradana', style: subText),

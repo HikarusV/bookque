@@ -1,5 +1,6 @@
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/styles.dart';
@@ -14,9 +15,11 @@ class UserProfile extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(right: 15),
           child: CircleAvatar(
-            backgroundImage: NetworkImage(
-                context.read<AccountProv>().userData!.photoURL ??
-                    'https://graph.facebook.com/111968404870160/picture'),
+            backgroundImage: AssetImage(context
+                    .read<AccountProv>()
+                    .userData!
+                    .photoURL ??
+                'assets/profile.png'),
             radius: 40,
             backgroundColor: Colors.transparent,
           ),
@@ -26,7 +29,8 @@ class UserProfile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                context.read<AccountProv>().userData!.displayName ?? 'User',
+                context.read<AccountProv>().userData!.displayName ??
+                    'Kosong broh',
                 style: titleMedium,
                 maxLines: 2,
               ),

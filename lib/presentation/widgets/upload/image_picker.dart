@@ -1,11 +1,9 @@
 import 'dart:io';
 
-import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../../common/localizations.dart';
 
 class ImagePick extends StatefulWidget {
   const ImagePick({Key? key}) : super(key: key);
@@ -24,10 +22,9 @@ class _ImagePickState extends State<ImagePick> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            AppLocalizations.of(context)!.imageUploadText,
-            style: subText,
-          ),
+          Text('Gambar',
+              style: GoogleFonts.poppins(
+                  fontSize: 16, fontWeight: FontWeight.w500)),
           const SizedBox(
             height: 5,
           ),
@@ -35,7 +32,7 @@ class _ImagePickState extends State<ImagePick> {
             onTap: () async {
               try {
                 final image =
-                    await ImagePicker().pickImage(source: ImageSource.gallery);
+                await ImagePicker().pickImage(source: ImageSource.gallery);
                 // print(image?.readAsBytes());
                 if (image == null) return;
 
@@ -62,20 +59,20 @@ class _ImagePickState extends State<ImagePick> {
               ),
               child: image != null
                   ? Container(
-                      margin: const EdgeInsets.only(top: 5, bottom: 5),
-                      child: Column(
-                        children: [
-                          Image.file(image!),
-                          ElevatedButton(
-                              onPressed: () {}, child: const Text('Ganti'))
-                        ],
-                      ),
-                    )
+                margin: const EdgeInsets.only(top: 5, bottom: 5),
+                child: Column(
+                  children: [
+                    Image.file(image!),
+                    ElevatedButton(
+                        onPressed: () {}, child: const Text('Ganti'))
+                  ],
+                ),
+              )
                   : Icon(
-                      Icons.cloud_upload_outlined,
-                      size: 100,
-                      color: Colors.blue.shade300,
-                    ),
+                Icons.cloud_upload_outlined,
+                size: 100,
+                color: Colors.blue.shade300,
+              ),
             ),
           )
         ],

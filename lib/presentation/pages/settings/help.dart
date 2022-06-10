@@ -2,8 +2,6 @@ import 'package:bookque/common/styles.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/localizations.dart';
-
 class Help extends StatelessWidget {
   // static const routeName = '/help_page';
 
@@ -12,7 +10,7 @@ class Help extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: AppLocalizations.of(context)!.helpText,
+      title: 'Bantuan',
       child: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.all(15.0),
@@ -24,8 +22,7 @@ class Help extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(AppLocalizations.of(context)!.contactUsText,
-                  style: titleSmall),
+              Text('Hubungi Kami', style: titleSmall),
               const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

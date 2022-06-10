@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import '../../common/localizations.dart';
-
 class Report {
   String name;
   bool isSelected;
@@ -12,27 +8,25 @@ class Report {
   });
 }
 
-List<Report> getListReport(BuildContext context) {
-  return [
-    Report(
-      name: AppLocalizations.of(context)!.reportItem1,
-      isSelected: false,
-    ),
-    Report(
-      name: AppLocalizations.of(context)!.reportItem2,
-      isSelected: false,
-    ),
-    Report(
-      name: AppLocalizations.of(context)!.reportItem3,
-      isSelected: false,
-    ),
-    Report(
-      name: AppLocalizations.of(context)!.reportItem4,
-      isSelected: false,
-    ),
-    Report(
-      name: AppLocalizations.of(context)!.reportItem5,
-      isSelected: false,
-    ),
-  ];
-}
+var listReport = [
+  Report(
+    name: 'Mengandung pornografi',
+    isSelected: false,
+  ),
+  Report(
+    name: 'Link/URL bermasalah',
+    isSelected: false,
+  ),
+  Report(
+    name: 'Kategori/deskripsi tidak sesuai',
+    isSelected: false,
+  ),
+  Report(
+    name: 'Plagiarisme',
+    isSelected: false,
+  ),
+  Report(
+    name: 'Melecehkan suatu kaum',
+    isSelected: false,
+  ),
+];

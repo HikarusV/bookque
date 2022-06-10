@@ -1,13 +1,15 @@
-import 'dart:convert';
-
+import 'package:bookque/data/category.dart';
+import 'package:http/http.dart' as http;
 import 'package:bookque/data/category.dart';
 import 'package:bookque/data/detail_items.dart';
+import 'package:bookque/data/items.dart';
 import 'package:bookque/data/list_items.dart';
 import 'package:bookque/data/profile.dart';
 import 'package:bookque/data/search.dart';
-import 'package:http/http.dart' as http;
-
+import 'package:bookque/data/user.dart';
 import 'api.dart';
+import 'dart:convert';
+import 'package:bookque/data/items.dart';
 
 class HandleApi {
   static final Api? api = Api();
@@ -55,26 +57,6 @@ class HandleApi {
     final items = Category.fromJson(jsonResponse);
 
     return items;
-  }
-
-  static Future getRecommendationRandomItem() async {
-    const url = 'http://103.214.185.190:5000/req/random';
-
-    final response = await api!.get(url);
-    var jsonResponse = jsonDecode(response);
-
-    // final items = ListItems.fromJson(jsonResponse);
-
-    return jsonResponse;
-  }
-
-  static Future getNewestItems(String userId) async {
-    final url = 'http://103.214.185.190:5000/' + userId + '/news';
-
-    final response = await api!.get(url);
-    var jsonResponse = jsonDecode(response);
-
-    return jsonResponse;
   }
 
   static Future<Searching> getSearch(String query) async {
@@ -145,7 +127,7 @@ class HandleApi {
     }
   }
 
-  static Future<dynamic> postItem(
+  static Future postItem(
       String idUser,
       String cover,
       String tipe,
@@ -259,9 +241,9 @@ class HandleApi {
     );
   }
 
-  static Future<http.Response> deleteAlbum(String userId, String id) async {
+  static Future<http.Response> deleteAlbum(String userId) async {
     final http.Response response = await http.delete(
-      Uri.parse('http://103.214.185.190:5000/' + userId + '/items/' + id),
+      Uri.parse('http://103.214.185.190:5000/' + userId + '/items/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
