@@ -1,10 +1,11 @@
-import 'package:bookque/common/styles.dart';
 import 'package:bookque/presentation/widgets/custom/full_button.dart';
 import 'package:bookque/presentation/widgets/custom/password_field.dart';
 import 'package:bookque/presentation/widgets/custom/text_input.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/settings/profile_picture.dart';
 import 'package:flutter/material.dart';
+
+import '../../../common/localizations.dart';
 
 class Account extends StatelessWidget {
   Account({Key? key}) : super(key: key);
@@ -17,34 +18,35 @@ class Account extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Akun',
+      title: AppLocalizations.of(context)!.accountText,
       child: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.all(15.0),
           child: Column(
             children: [
-              ProfilePicture(),
+              const ProfilePicturePicker(),
               TextInput(
                 controller: nameController,
-                textHint: 'Masukkan Nama Lengkap',
-                title: 'Nama',
+                textHint: AppLocalizations.of(context)!.namePlaceholderText,
+                title: AppLocalizations.of(context)!.nameLabelText,
               ),
               TextInput(
                 controller: emailController,
-                textHint: 'Masukkan Alamat Email',
-                title: 'Email',
+                textHint: AppLocalizations.of(context)!.emailPlaceholderText,
+                title: AppLocalizations.of(context)!.emailLabelText,
               ),
               PasswordField(
                 controller: passController,
-                title: 'Kata Sandi',
+                textHint: AppLocalizations.of(context)!.passwordPlaceholderText,
+                title: AppLocalizations.of(context)!.passwordLabelText,
               ),
               PasswordField(
                 controller: confirmPassController,
-                title: 'Konfirmasi Kata Sandi',
-                textHint: 'Masukan Kembali Kata Sandi',
+                textHint: AppLocalizations.of(context)!.passwordPlaceholderText,
+                title: AppLocalizations.of(context)!.confirmPasswordLabelText,
               ),
               FullButton(
-                text: 'Simpan',
+                text: AppLocalizations.of(context)!.saveText,
                 onPressed: () {},
               ),
             ],

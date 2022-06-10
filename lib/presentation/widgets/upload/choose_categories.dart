@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 
 class ChooseCategories extends StatelessWidget {
@@ -19,7 +19,7 @@ class ChooseCategories extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Kategori',
+              AppLocalizations.of(context)!.categoryText,
               style: subText,
             ),
             const SizedBox(
@@ -39,7 +39,8 @@ class ChooseCategories extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Pilih Kategori',
+                      AppLocalizations.of(context)!
+                          .categoryUploadPlaceholderText,
                       style: hintTitle,
                     ),
                     const Icon(

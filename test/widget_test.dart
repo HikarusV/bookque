@@ -6,10 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:bookque/main.dart';
 
 void main() {
   test('Get Items test', () async {
@@ -70,5 +67,24 @@ void main() {
     print(result.error);
 
     expect(result.error, false);
+  });
+
+  test('Get Random Recommendation test', () async {
+    final result = await HandleApi.getRecommendationRandomItem();
+    print(result);
+    // print(result.error);
+
+    expect(result['error'], false);
+    expect(result['items'].length, 12);
+  });
+
+  test('Get News Items test', () async {
+    final result =
+        await HandleApi.getNewestItems('JUpnMAqoxheLgaIRxQeFQ8hKlHi2');
+    // print(result);
+    // print(result.error);
+
+    expect(result['error'], false);
+    expect(result['items'].length, 8);
   });
 }

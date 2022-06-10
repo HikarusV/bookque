@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import '../../provider/account_provider.dart';
-import '../../widgets/custom2/search_box_decoration.dart';
 import '../../widgets/custom2/categories_item.dart';
-import '../../widgets/scroll_behavior_without_glow.dart';
+import '../../widgets/custom2/double_list_books.dart';
 import '../../widgets/custom2/heading_home.dart';
 import '../../widgets/custom2/row_books.dart';
-import '../../widgets/custom2/double_list_books.dart';
+import '../../widgets/custom2/search_box_decoration.dart';
+import '../../widgets/scroll_behavior_without_glow.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -55,7 +57,13 @@ class Home extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Halo, ${context.read<AccountProv>().userData!.displayName ?? 'Kosong broh'}',
+                                      AppLocalizations.of(context)!
+                                              .greetingsText +
+                                          (context
+                                                  .read<AccountProv>()
+                                                  .userData!
+                                                  .displayName ??
+                                              'Use'),
                                       style: titleLarge,
                                       maxLines: 2,
                                     ),
@@ -63,11 +71,11 @@ class Home extends StatelessWidget {
                                 ),
                               ),
                               CircleAvatar(
-                                backgroundImage: AssetImage(context
+                                backgroundImage: NetworkImage(context
                                         .read<AccountProv>()
                                         .userData!
                                         .photoURL ??
-                                    'assets/profile.png'),
+                                    'https://graph.facebook.com/111968404870160/picture'),
                                 radius: 40,
                                 backgroundColor: Colors.transparent,
                               ),
@@ -78,7 +86,7 @@ class Home extends StatelessWidget {
                           ),
                           const SearchBoxDecoration(),
                           HeadingHome(
-                            title: 'Kategori',
+                            title: AppLocalizations.of(context)!.categoryText,
                             moreButton: true,
                             onMoreTap: () {
                               // Navigator.push(
@@ -110,11 +118,14 @@ class Home extends StatelessWidget {
                             //   ),
                             // ),
                           }),
-                          const HeadingHome(
-                              title: 'Rekomendasi', moreButton: false),
+                          HeadingHome(
+                              title: AppLocalizations.of(context)!
+                                  .recommendationText,
+                              moreButton: false),
                           const RowBooks(),
-                          const HeadingHome(
-                              title: 'Terbaru', moreButton: false),
+                          HeadingHome(
+                              title: AppLocalizations.of(context)!.newestText,
+                              moreButton: false),
                           const DoubleListBooks(),
                         ],
                       ),

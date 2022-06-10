@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../common/styles.dart';
 import 'list_categories_selected.dart';
@@ -55,10 +54,7 @@ class _CategoriesItemsSelectedState extends State<CategoriesItemsSelected> {
                     Icons.check_circle,
                     color: primaryColor,
                   )
-                : const Icon(
-                    Icons.circle_outlined,
-                    color: primaryColor
-                  ),
+                : const Icon(Icons.circle_outlined, color: primaryColor),
           ],
         ),
       ),

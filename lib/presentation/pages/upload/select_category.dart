@@ -1,6 +1,7 @@
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 
+import '../../../common/localizations.dart';
 import '../../../data/models/categories.dart';
 import '../../widgets/custom/full_button.dart';
 import '../../widgets/custom_scaffold.dart';
@@ -14,7 +15,7 @@ class SelectCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Pilih Kategori',
+      title: AppLocalizations.of(context)!.categoryUploadPlaceholderText,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: ScrollConfiguration(
@@ -32,7 +33,7 @@ class SelectCategory extends StatelessWidget {
                 flex: 0,
                 child: FullButton(
                   onPressed: () => '',
-                  text: 'Simpan',
+                  text: AppLocalizations.of(context)!.saveText,
                   marginTop: 15,
                   marginBottom: 15,
                 ),

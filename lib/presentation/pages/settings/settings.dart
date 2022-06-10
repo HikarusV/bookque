@@ -9,6 +9,8 @@ import 'package:bookque/presentation/widgets/settings/setting_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/localizations.dart';
+
 class Settings extends StatelessWidget {
   // static const routeName = '/setting_page';
 
@@ -17,14 +19,14 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Pengaturan',
+      title: AppLocalizations.of(context)!.settingsText,
       child: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.all(15.0),
           child: Column(
             children: [
               SettingButton(
-                text: 'Akun',
+                text: AppLocalizations.of(context)!.accountText,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -35,7 +37,7 @@ class Settings extends StatelessWidget {
                 },
               ),
               SettingButton(
-                text: 'Tampilan',
+                text: AppLocalizations.of(context)!.appreanceText,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -46,7 +48,7 @@ class Settings extends StatelessWidget {
                 },
               ),
               SettingButton(
-                text: 'Izin Akses',
+                text: AppLocalizations.of(context)!.accessPermissionText,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -57,7 +59,7 @@ class Settings extends StatelessWidget {
                 },
               ),
               SettingButton(
-                text: 'Tentang Kami',
+                text: AppLocalizations.of(context)!.aboutUsText,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -68,7 +70,7 @@ class Settings extends StatelessWidget {
                 },
               ),
               SettingButton(
-                text: 'Bantuan',
+                text: AppLocalizations.of(context)!.helpText,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -79,14 +81,17 @@ class Settings extends StatelessWidget {
                 },
               ),
               SettingButton(
-                text: 'Beri Rating',
+                text: AppLocalizations.of(context)!.rateText,
                 version: true,
                 onPressed: () {},
               ),
               SettingButton(
-                text: 'Keluar Akun',
+                text: AppLocalizations.of(context)!.signOutText,
                 icon: Icons.logout,
-                onPressed: () {},
+                onPressed: () async {
+                  await context.read<AccountProv>().logOut();
+                  Navigator.pop(context);
+                },
               ),
             ],
           ),

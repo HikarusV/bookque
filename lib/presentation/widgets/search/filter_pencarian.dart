@@ -1,6 +1,7 @@
 import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../../../common/localizations.dart';
 
 class FilterPencarian extends StatefulWidget {
   const FilterPencarian({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _FilterPencarianState extends State<FilterPencarian> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Pencarian',
+          AppLocalizations.of(context)!.searchFilterText,
           style: titleSmall,
         ),
         const SizedBox(

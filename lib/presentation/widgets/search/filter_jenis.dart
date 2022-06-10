@@ -1,6 +1,7 @@
 import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../../../common/localizations.dart';
 
 class FilterJenis extends StatefulWidget {
   const FilterJenis({Key? key}) : super(key: key);
@@ -24,8 +25,8 @@ class _FilterJenisState extends State<FilterJenis> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Jenis',
-          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
+          AppLocalizations.of(context)!.typeFilterText,
+          style: titleSmall,
         ),
         const SizedBox(
           height: 10,

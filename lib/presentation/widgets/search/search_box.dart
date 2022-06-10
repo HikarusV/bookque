@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 
 class SearchBox extends StatelessWidget {
@@ -27,7 +28,7 @@ class SearchBox extends StatelessWidget {
           TextField(
             style: GoogleFonts.poppins(),
             decoration: InputDecoration(
-              hintText: 'Cari buku yang kamu inginkan..',
+              hintText: AppLocalizations.of(context)!.searchPlaceholderText,
               hintStyle: hintTitle,
               contentPadding: const EdgeInsets.only(
                   top: 11, bottom: 9, left: 35, right: 15),

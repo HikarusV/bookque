@@ -2,6 +2,8 @@ import 'package:bookque/common/styles.dart';
 import 'package:bookque/data/models/report.dart';
 import 'package:flutter/material.dart';
 
+import '../../../common/localizations.dart';
+
 class ReportDialog extends StatefulWidget {
   const ReportDialog({Key? key}) : super(key: key);
 
@@ -15,6 +17,7 @@ class _ReportDialogState extends State<ReportDialog> {
   List<Report> selectedReport = [];
 
   Widget reportDialog(BuildContext context) {
+    final data = getListReport(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -23,9 +26,11 @@ class _ReportDialogState extends State<ReportDialog> {
           padding: const EdgeInsets.all(15),
           child: Column(
             children: [
-              const Text('Apa yang membuatmu ingin melaporkan buku ini?'),
+              Text(
+                AppLocalizations.of(context)!.reportText,
+              ),
               const SizedBox(height: 10),
-              reportList(),
+              reportList(data),
               const SizedBox(height: 5),
               sentReportButton(context),
             ],
@@ -45,9 +50,11 @@ class _ReportDialogState extends State<ReportDialog> {
             topRight: Radius.circular(12), topLeft: Radius.circular(12)),
       ),
       child: Stack(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Center(child: Text('Laporkan', style: popUpTitle)),
+            Center(
+                child: Text(AppLocalizations.of(context)!.reportTitleText,
+                    style: popUpTitle)),
             Positioned(
               right: 0,
               child: IconButton(
@@ -64,16 +71,16 @@ class _ReportDialogState extends State<ReportDialog> {
     );
   }
 
-  Widget reportList() {
+  Widget reportList(List data) {
     return SizedBox(
       height: 300,
       width: 320,
       child: ListView.builder(
           shrinkWrap: true,
-          itemCount: listReport.length,
+          itemCount: 5,
           itemBuilder: (context, index) {
-            final Report reports = listReport[index];
-            return InkWell(
+            final Report reports = data[index];
+            return GestureDetector(
               onTap: () {
                 setState(() {
                   reports.isSelected = !reports.isSelected;
@@ -97,13 +104,13 @@ class _ReportDialogState extends State<ReportDialog> {
                     ),
                     reports.isSelected
                         ? const Icon(
-                      Icons.check_circle,
-                      color: primaryColor,
-                    )
+                            Icons.check_circle,
+                            color: primaryColor,
+                          )
                         : const Icon(
-                      Icons.circle_outlined,
-                      color: primaryColor,
-                    ),
+                            Icons.circle_outlined,
+                            color: primaryColor,
+                          ),
                   ],
                 ),
               ),
@@ -125,7 +132,7 @@ class _ReportDialogState extends State<ReportDialog> {
         ),
         onPressed: () {},
         child: Text(
-          'Kirim',
+          AppLocalizations.of(context)!.sendButtonText,
           style: buttonLarge,
         ),
       ),

@@ -1,10 +1,14 @@
+import 'package:bookque/presentation/widgets/detail/detail_categories_item.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
+import '../../../data/models/categories.dart';
+import '../../pages/category/categories_list_item.dart';
 
 class HeadingHome extends StatelessWidget {
-  const HeadingHome({Key? key, this.title = 'Title', this.moreButton = false, this.onMoreTap})
+  const HeadingHome(
+      {Key? key, this.title = 'Title', this.moreButton = false, this.onMoreTap})
       : super(key: key);
   final String title;
   final bool moreButton;
@@ -24,12 +28,28 @@ class HeadingHome extends StatelessWidget {
             ),
             moreButton
                 ? TextButton(
-              onPressed: () {},
-              child: Text(
-                'Lihat Semua',
-                style: titleButtonSmall,
-              ),
-            )
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CategoriesListItem(
+                            items: listCategory,
+                            onTapItems: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const DetailCategoriesItem(),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      AppLocalizations.of(context)!.seeAllText,
+                      style: titleButtonSmall,
+                    ),
+                  )
                 : Container(),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/localizations.dart';
 import '../../widgets/custom2/double_list_books.dart';
 import '../../widgets/custom_scaffold.dart';
 import '../../widgets/scroll_behavior_without_glow.dart';
@@ -47,7 +48,7 @@ class _SearchState extends State<Search> {
               height: 15,
             ),
             Text(
-              'Hasil Pencarian',
+              AppLocalizations.of(context)!.searchResultText,
               style: GoogleFonts.poppins(
                   fontSize: 20, fontWeight: FontWeight.w500),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../common/localizations.dart';
 import '../../../data/models/categories.dart';
 import '../../widgets/custom_scaffold.dart';
 
@@ -14,7 +15,7 @@ class CategoriesListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Kategori',
+      title: AppLocalizations.of(context)!.categoryText,
       child: Container(
         margin: const EdgeInsets.only(
           left: 15,

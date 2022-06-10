@@ -2,7 +2,8 @@ import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({Key? key, this.title = 'Title', this.child, this.actions})
+  const CustomScaffold(
+      {Key? key, this.title = 'Title', this.child, this.actions})
       : super(key: key);
   final String title;
   final Widget? child;
