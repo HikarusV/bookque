@@ -1,54 +1,59 @@
+import 'package:bookque/common/styles.dart';
+import 'package:bookque/presentation/pages/category/all_categories_list.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../common/localizations.dart';
 import '../../../data/models/categories.dart';
 import '../../widgets/custom_scaffold.dart';
+import '../../widgets/detail/detail_categories_item.dart';
 
 class CategoriesListItem extends StatelessWidget {
-  const CategoriesListItem(
-      {Key? key, required this.items, required this.onTapItems})
+  const CategoriesListItem({Key? key, required this.items, this.onTapItems})
       : super(key: key);
   final List<Categories> items;
-  final Function()? onTapItems;
+  final Function(String categories)? onTapItems;
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: AppLocalizations.of(context)!.categoryText,
-      child: Container(
-        margin: const EdgeInsets.only(
-          left: 15,
-          right: 15,
-        ),
-        child: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            final Categories item = items[index];
-            return InkWell(
-              onTap: onTapItems,
-              child: Container(
-                margin: const EdgeInsets.only(top: 15),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      item.imageAsset,
-                      width: 60,
-                      height: 60,
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      item.name,
-                      style: GoogleFonts.poppins(fontSize: 24),
-                    ),
-                  ],
+      child: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final Categories item = items[index];
+          return InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AllCategoriesItems(
+                  text: item.name,
                 ),
               ),
-            );
-          },
-        ),
+            ),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              margin: const EdgeInsets.symmetric(vertical: 7),
+              child: Row(
+                children: [
+                  Image.asset(
+                    item.imageAsset,
+                    width: 60,
+                    height: 60,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    item.name,
+                    style: titleSmall,
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -1,33 +1,17 @@
+import 'package:bookque/data/models/categories.dart';
+import 'package:bookque/presentation/pages/category/all_categories_list.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/styles.dart';
 
 class CategoriesItem extends StatelessWidget {
-  CategoriesItem({Key? key, this.onItemTap}) : super(key: key);
+  const CategoriesItem({Key? key, this.onItemTap, required this.items})
+      : super(key: key);
   final Function()? onItemTap;
-  List<Widget> items = [];
-  int i = 0;
+  final List<Categories> items;
 
   @override
   Widget build(BuildContext context) {
-    while (i++ < 9) {
-      items.add(
-        Column(
-          children: [
-            Image.asset(
-              'assets/list_category$i.png',
-              width: 60,
-              height: 60,
-            ),
-            Text(
-              'Investasi',
-              style: subTextSmall,
-            ),
-          ],
-        ),
-      );
-    }
-
     return Container(
       margin: const EdgeInsets.only(top: 5),
       height: 75,
@@ -35,7 +19,29 @@ class CategoriesItem extends StatelessWidget {
         itemCount: items.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          return items[index];
+          return InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AllCategoriesItems(
+                  text: items[index].name,
+                ),
+              ),
+            ),
+            child: Column(
+              children: [
+                Image.asset(
+                  items[index].imageAsset,
+                  width: 60,
+                  height: 60,
+                ),
+                Text(
+                  items[index].name,
+                  style: subTextSmall,
+                ),
+              ],
+            ),
+          );
         },
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:bookque/common/styles.dart';
+import 'package:bookque/data/models/full_items.dart';
 import 'package:bookque/data/models/poster.dart';
+import 'package:bookque/presentation/provider/detail_items_provider.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/detail/bookmark_button.dart';
 import 'package:bookque/presentation/widgets/detail/container_detail_categories_item.dart';
@@ -8,11 +10,28 @@ import 'package:bookque/presentation/widgets/detail/report_dialog.dart';
 import 'package:bookque/presentation/widgets/detail/small_button.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
+import '../../../common/state_enum.dart';
+import '../../widgets/detail/detail_data_prov_pages.dart';
 
-class Detail extends StatelessWidget {
-  const Detail({Key? key}) : super(key: key);
+class Detail extends StatefulWidget {
+  const Detail({Key? key, required this.id}) : super(key: key);
+  final String id;
+
+  @override
+  State<Detail> createState() => _DetailState();
+}
+
+class _DetailState extends State<Detail> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() =>
+        Provider.of<DetailItemsProvider>(context, listen: false)
+          ..fetchDetailItemById(widget.id));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,100 +57,18 @@ class Detail extends StatelessWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      Text(
-                        'Mantappu Jiwa *Buku Latihan',
-                        style: titleLarge,
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 10),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.network(
-                          'https://www.gutenberg.org/cache/epub/1342/pg1342.cover.small.jpg',
-                          height: 240,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Jerome Polin Sijabat',
-                        style: titleMedium,
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 10),
-                      const ContainerDetailCategoriesItem(
-                        items: [
-                          DetailCategoriesItem(),
-                          DetailCategoriesItem(),
-                          DetailCategoriesItem()
-                        ],
-                        type: DetailCategoriesItem(
-                          text: 'E-Book',
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.only(bottom: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        BookmarkButton(),
-                        SizedBox(width: 5),
-                        SmallButton(),
-                      ],
-                    ),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.descriptionText,
-                      style: titleMedium,
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Donec rutrum congue leo eget malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque.',
-                      style: subText,
-                      textAlign: TextAlign.justify,
-                    ),
-                    const SizedBox(height: 15),
-                    Text(
-                      AppLocalizations.of(context)!.otherRecommendationText,
-                      style: titleMedium,
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 15.0),
-                  height: 170,
-                  child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: listPoster.map((poster) {
-                        return GestureDetector(
-                          onTap: () {},
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.only(left: 5.0, right: 5.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Image.asset(poster.image),
-                            ),
-                          ),
-                        );
-                      }).toList()),
-                ),
-              ],
+            child: Consumer<DetailItemsProvider>(
+              builder: (context, value, _) {
+                if (value.stateDetailItems == ResultState.loading) {
+                  return const Text('Loading');
+                } else if (value.stateDetailItems == ResultState.hasData) {
+                  return DetailDataProvPages(
+                      item: value.dataDetailItems[widget.id] ?? FullItems());
+                } else if (value.stateDetailItems == ResultState.error) {
+                  return Text(value.detailItemsMessage);
+                }
+                return const Text('Loading');
+              },
             ),
           ),
         ),

@@ -2,7 +2,11 @@ import 'package:bookque/common/localizations.dart';
 import 'package:bookque/common/styles.dart';
 import 'package:bookque/presentation/pages/splashscreen.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
+import 'package:bookque/presentation/provider/categories_provider.dart';
+import 'package:bookque/presentation/provider/detail_items_provider.dart';
+import 'package:bookque/presentation/provider/home_provider.dart';
 import 'package:bookque/presentation/provider/localizations_provider.dart';
+import 'package:bookque/presentation/provider/search_provider.dart';
 import 'package:bookque/presentation/provider/settings_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +30,18 @@ void main() async {
         ),
         ChangeNotifierProvider<SettingsProvider>(
           create: (context) => SettingsProvider(),
+        ),
+        ChangeNotifierProvider<HomeProvider>(
+          create: (context) => HomeProvider(),
+        ),
+        ChangeNotifierProvider<SearchProvider>(
+          create: (context) => SearchProvider(),
+        ),
+        ChangeNotifierProvider<CategoriesProvider>(
+          create: (context) => CategoriesProvider(),
+        ),
+        ChangeNotifierProvider<DetailItemsProvider>(
+          create: (context) => DetailItemsProvider(),
         ),
       ],
       child: const MyApp(),

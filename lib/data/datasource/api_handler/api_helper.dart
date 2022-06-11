@@ -39,53 +39,51 @@ class HandleApi {
     final url = 'http://103.214.185.190:5000/detail/item/' + id;
 
     final response = await api!.get(url);
-    var jsonResponse = jsonDecode(response);
-
-    final items = DetailItems.fromJson(jsonResponse);
+    Map<String, dynamic> jsonResponse = jsonDecode(response);
+    // print(jsonResponse);
+    final items = DetailItems.fromMap(jsonResponse);
 
     return items;
   }
 
-  static Future<Category> getCategory(String type) async {
+  static Future<Map<String, dynamic>> getCategory(String type) async {
     final url = 'http://103.214.185.190:5000/items/category?cat=' + type;
 
     final response = await api!.get(url);
     var jsonResponse = jsonDecode(response);
 
-    final items = Category.fromJson(jsonResponse);
+    // final items = Category.fromJson(jsonResponse);
 
-    return items;
+    return jsonResponse;
   }
 
-  static Future getRecommendationRandomItem() async {
+  static Future<Map<String, dynamic>> getRecommendationRandomItem() async {
     const url = 'http://103.214.185.190:5000/req/random';
 
     final response = await api!.get(url);
-    var jsonResponse = jsonDecode(response);
-
-    // final items = ListItems.fromJson(jsonResponse);
+    Map<String, dynamic> jsonResponse = jsonDecode(response);
 
     return jsonResponse;
   }
 
-  static Future getNewestItems(String userId) async {
-    final url = 'http://103.214.185.190:5000/' + userId + '/news';
+  static Future<Map<String, dynamic>> getNewestItems(String userId) async {
+    final url = 'http://103.214.185.190:5000/' + userId + '/news?pages=3';
 
     final response = await api!.get(url);
-    var jsonResponse = jsonDecode(response);
+    Map<String, dynamic> jsonResponse = jsonDecode(response);
 
     return jsonResponse;
   }
 
-  static Future<Searching> getSearch(String query) async {
+  static Future<Map<String, dynamic>> getSearch(String query) async {
     final url = 'http://103.214.185.190:5000/search/query?query=' + query;
 
     final response = await api!.get(url);
-    var jsonResponse = jsonDecode(response);
+    Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    final items = Searching.fromJson(jsonResponse);
+    // final items = Searching.fromMap(jsonResponse);
 
-    return items;
+    return jsonResponse;
   }
 
   static Future postEmailVerification(String email) async {

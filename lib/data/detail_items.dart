@@ -1,11 +1,15 @@
 import 'dart:convert';
 
+import 'package:bookque/data/models/full_items.dart';
+
+import 'package:bookque/data/models/full_items.dart';
+
 import 'items.dart';
 
 class DetailItems {
   final bool error;
   final String message;
-  final Items items;
+  final FullItems items;
   DetailItems({
     required this.error,
     required this.message,
@@ -15,7 +19,7 @@ class DetailItems {
   DetailItems copyWith({
     bool? error,
     String? message,
-    Items? items,
+    FullItems? items,
   }) {
     return DetailItems(
       error: error ?? this.error,
@@ -35,10 +39,11 @@ class DetailItems {
   }
 
   factory DetailItems.fromMap(Map<String, dynamic> map) {
+    print('inHere');
     return DetailItems(
       error: map['error'] ?? false,
       message: map['message'] ?? '',
-      items: Items.fromMap(map['items']),
+      items: FullItems.fromMap(map['items']),
     );
   }
 

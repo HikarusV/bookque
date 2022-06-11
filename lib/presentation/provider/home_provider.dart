@@ -1,49 +1,60 @@
-// import 'package:bookque/common/state_enum.dart';
-// import 'package:flutter/material.dart';
+import 'package:bookque/common/state_enum.dart';
+import 'package:flutter/material.dart';
 
-// import '../../common/state_enum.dart';
-// import '../../data/datasource/api_handler/api_helper.dart';
+import '../../common/state_enum.dart';
+import '../../data/datasource/api_handler/api_helper.dart';
 
-// class HomeProvider with ChangeNotifier {
-//   String messageRecomendationData = '';
-//   String messageNewsData = '';
+class HomeProvider with ChangeNotifier {
+  String messageRecomendationData = '';
+  String messageNewsData = '';
 
-//   bool errorRecomendationData = false;
-//   bool errorNewsData = false;
+  ResultState _staterecommendationData = ResultState.noData;
+  ResultState _statenewsData = ResultState.noData;
 
-//   ResultState staterecommendationData = ResultState.noData;
-//   ResultState statenewsData = ResultState.noData;
+  ResultState get getstaterecommendationData => _staterecommendationData;
+  ResultState get getstatenewsData => _statenewsData;
 
-//   ResultState get getRecommendationData => getRecommendationData;
-//   ResultState get getNewsData => getNewsData;
+  List dataRandomRecomendationItems = [];
+  List dataNewsItems = [];
 
-//   List dataRandomRecomendationItems = [];
-//   List dataNewsItems = [];
+  Future<void> fetchRecomendationData() async {
+    _staterecommendationData = ResultState.loading;
+    notifyListeners();
 
-//   Future<void> fetchRecomendationData() async {
-//     try {
-//       staterecommendationData = ResultState.loading;
-//       final result = HandleApi.getRecommendationRandomItem();
-//       if (!result['error']) {
-//         messageRecomendationData = result['message'];
-//       }    
-//     } catch {
+    try {
+      final result = await HandleApi.getRecommendationRandomItem();
 
-//     }
-//   }
+      if (!result['error']) {
+        messageRecomendationData = result['message'];
+        dataRandomRecomendationItems = result['items'];
+        _staterecommendationData = ResultState.hasData;
+        notifyListeners();
+      }
+    } catch (e) {
+      messageRecomendationData = e.toString();
+      _staterecommendationData = ResultState.error;
+      notifyListeners();
+    }
+  }
 
-//   Future<void> fetchNewsData(String userid) async {
-//     try {
-//       statenewsData = ResultState.loading;
-//       final result = HandleApi.getNewestItems(userid);
+  Future<void> fetchNewsData(String userid) async {
+    _statenewsData = ResultState.loading;
+    notifyListeners();
 
-//       if (!result['error']) {
-        
-//       } 
+    try {
+      final result = await HandleApi.getNewestItems(userid);
 
-//       messageNewsData = result['message'];
-//     } catch {
-      
-//     }
-//   }
-// }
+      if (!result['error']) {
+        dataNewsItems = result['items'];
+        messageNewsData = result['message'];
+        _statenewsData = ResultState.hasData;
+        notifyListeners();
+      }
+      notifyListeners();
+    } catch (e) {
+      _statenewsData = ResultState.error;
+      messageNewsData = e.toString();
+      notifyListeners();
+    }
+  }
+}

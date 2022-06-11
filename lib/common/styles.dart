@@ -77,6 +77,8 @@ var titleButton = GoogleFonts.poppins(
     fontSize: 16, fontWeight: FontWeight.w500, color: primaryColor);
 var titleButtonSmall = GoogleFonts.poppins(
     fontSize: 14, fontWeight: FontWeight.w500, color: primaryColor);
+var titleButtonVerySmall = GoogleFonts.poppins(
+    fontSize: 12, fontWeight: FontWeight.w500, color: primaryColor);
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,

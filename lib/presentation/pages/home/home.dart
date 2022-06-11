@@ -1,8 +1,11 @@
+import 'package:bookque/common/state_enum.dart';
+import 'package:bookque/presentation/provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
+import '../../../data/models/categories.dart';
 import '../../provider/account_provider.dart';
 import '../../widgets/custom2/categories_item.dart';
 import '../../widgets/custom2/double_list_books.dart';
@@ -11,8 +14,21 @@ import '../../widgets/custom2/row_books.dart';
 import '../../widgets/custom2/search_box_decoration.dart';
 import '../../widgets/scroll_behavior_without_glow.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => Provider.of<HomeProvider>(context, listen: false)
+      ..fetchNewsData('xxa')
+      ..fetchRecomendationData());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,25 +124,60 @@ class Home extends StatelessWidget {
                               // );
                             },
                           ),
-                          CategoriesItem(onItemTap: () {
-                            //     Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => DetailCategoryPage(
-                            //       category: listCategory[0],
-                            //     ),
-                            //   ),
-                            // ),
-                          }),
+                          CategoriesItem(
+                            onItemTap: () {
+                              //     Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => DetailCategoryPage(
+                              //       category: listCategory[0],
+                              //     ),
+                              //   ),
+                              // ),
+                            },
+                            items: listCategory,
+                          ),
                           HeadingHome(
                               title: AppLocalizations.of(context)!
                                   .recommendationText,
                               moreButton: false),
-                          const RowBooks(),
+                          Consumer<HomeProvider>(
+                            builder: (context, value, _) {
+                              if (value.getstaterecommendationData ==
+                                  ResultState.loading) {
+                                return const Text('Loading');
+                              } else if (value.getstaterecommendationData ==
+                                  ResultState.hasData) {
+                                return RowBooks(
+                                  listData: value.dataRandomRecomendationItems,
+                                );
+                              } else if (value.getstaterecommendationData ==
+                                  ResultState.error) {
+                                return Text(value.messageNewsData);
+                              }
+                              return const Text('Loading');
+                            },
+                          ),
                           HeadingHome(
                               title: AppLocalizations.of(context)!.newestText,
                               moreButton: false),
-                          const DoubleListBooks(),
+                          Consumer<HomeProvider>(
+                            builder: (context, value, _) {
+                              if (value.getstatenewsData ==
+                                  ResultState.loading) {
+                                return const Text('Loading');
+                              } else if (value.getstatenewsData ==
+                                  ResultState.hasData) {
+                                return DoubleListBooks(
+                                  listData: value.dataNewsItems,
+                                );
+                              } else if (value.getstatenewsData ==
+                                  ResultState.error) {
+                                return Text(value.messageNewsData);
+                              }
+                              return const Text('Diluar if');
+                            },
+                          )
                         ],
                       ),
                     ),

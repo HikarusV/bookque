@@ -52,6 +52,7 @@ dependencies:
   flutter_switch: ^0.3.2
   url_launcher: ^6.1.2
   group_button: ^5.0.1
+  cached_network_image: ^3.2.1
   dropdown_search: ^5.0.1
 
 dev_dependencies:

@@ -5,7 +5,8 @@ import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 
 class SearchBox extends StatelessWidget {
-  const SearchBox({Key? key}) : super(key: key);
+  const SearchBox({Key? key, this.onEventSubmited}) : super(key: key);
+  final Function(String text)? onEventSubmited;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class SearchBox extends StatelessWidget {
           ),
           TextField(
             style: GoogleFonts.poppins(),
+            onSubmitted: onEventSubmited,
             decoration: InputDecoration(
               hintText: AppLocalizations.of(context)!.searchPlaceholderText,
               hintStyle: hintTitle,

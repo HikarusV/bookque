@@ -1,3 +1,4 @@
+import 'package:bookque/data/models/poster.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/styles.dart';
@@ -22,6 +23,8 @@ class Bookmark extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 15),
         child: DoubleListBooks(
           isScroolable: true,
+          isNetwork: false,
+          listData: listmapData,
         ),
       ),
     );

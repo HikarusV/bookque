@@ -34,20 +34,13 @@ class HeadingHome extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => CategoriesListItem(
                             items: listCategory,
-                            onTapItems: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const DetailCategoriesItem(),
-                              ),
-                            ),
                           ),
                         ),
                       );
                     },
                     child: Text(
                       AppLocalizations.of(context)!.seeAllText,
-                      style: titleButtonSmall,
+                      style: titleButtonVerySmall,
                     ),
                   )
                 : Container(),
