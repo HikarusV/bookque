@@ -1,7 +1,7 @@
 import 'package:bookque/data/models/filter.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import 'list_filter_selected.dart';
 
@@ -42,7 +42,7 @@ class ItemFilter extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  AppLocalizations.of(context)!.sortTitleText,
+                  'Urutkan Unggahan',
                   style: titleMedium,
                 ),
                 const SizedBox(
@@ -71,11 +71,11 @@ class ItemFilter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppLocalizations.of(context)!.sortButtonText,
+              'Urutkan :',
               style: filterTitle,
             ),
             Text(
-              AppLocalizations.of(context)!.sortUploadItem1,
+              'Unggahan Terbaru',
               style: filterTitle,
             ),
             const Icon(

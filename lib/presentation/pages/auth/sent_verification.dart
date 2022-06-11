@@ -5,8 +5,6 @@ import 'package:bookque/presentation/widgets/custom/text_input.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/localizations.dart';
-
 class SentVerification extends StatefulWidget {
   const SentVerification({Key? key}) : super(key: key);
 
@@ -18,15 +16,15 @@ class _SentVerificationState extends State<SentVerification> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: AppLocalizations.of(context)!.forgotPasswordText1,
+      title: 'Lupa Kata Sandi',
       child: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeadingVerification(
-                title: AppLocalizations.of(context)!.forgotPasswordText2,
-                subTitle: AppLocalizations.of(context)!.forgotPasswordText3,
+              const HeadingVerification(
+                title: 'Masukkan email untuk melanjutkan',
+                subTitle: 'Kami akan mengirim kode verifikasi ke email kamu',
               ),
               Flexible(
                 flex: 0,
@@ -37,11 +35,10 @@ class _SentVerificationState extends State<SentVerification> {
                     children: [
                       TextInput(
                         controller: TextEditingController(),
-                        textHint:
-                            AppLocalizations.of(context)!.emailPlaceholderText,
+                        textHint: 'Masukkan Alamat Email',
                       ),
                       FullButton(
-                        text: AppLocalizations.of(context)!.sendCodeButtonText,
+                        text: 'Kirim Kode Verifikasi',
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(

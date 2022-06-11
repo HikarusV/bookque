@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 
 class SmallButton extends StatelessWidget {
@@ -21,7 +20,7 @@ class SmallButton extends StatelessWidget {
         ),
         onPressed: () {},
         child: Text(
-          AppLocalizations.of(context)!.visitButtonText,
+          'Lihat',
           style: buttonMedium,
         ),
       ),

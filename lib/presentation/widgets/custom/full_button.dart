@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../common/styles.dart';
 
@@ -29,7 +30,8 @@ class FullButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
         ),
-        child: Text(text, style: buttonLarge),
+        child: Text(text,
+            style: buttonLarge),
       ),
     );
   }

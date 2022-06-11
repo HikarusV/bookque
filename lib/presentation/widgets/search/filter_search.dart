@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../../../common/styles.dart';
 import '../../widgets/search/filter_jenis.dart';
 import '../../widgets/search/filter_pencarian.dart';
@@ -22,7 +22,7 @@ class FilterSearch extends StatelessWidget {
           ),
           builder: (context) => Container(
             margin:
-                const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 20),
+            const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

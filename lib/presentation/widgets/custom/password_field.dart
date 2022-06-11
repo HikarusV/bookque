@@ -1,5 +1,6 @@
 import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({
@@ -49,7 +50,8 @@ class _PasswordFieldState extends State<PasswordField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.title, style: subText),
+          Text(widget.title,
+              style: subText),
           const SizedBox(
             height: 5,
           ),
@@ -112,8 +114,9 @@ class _PasswordFieldState extends State<PasswordField> {
                     onTap: () => setState(() {
                       showPassword = !showPassword;
                     }),
-                    child: Icon(
-                      !showPassword ? Icons.visibility : Icons.visibility_off,
+                    child: Icon(!showPassword
+                        ? Icons.visibility
+                        : Icons.visibility_off,
                       color: primaryColor,
                     ),
                   ),
@@ -161,7 +164,11 @@ class _PasswordFieldState extends State<PasswordField> {
                   ),
                 )
               : Container(),
-          onError ? Text(errorText) : Container(),
+          onError
+              ? Container(
+                  child: Text(errorText),
+                )
+              : Container(),
         ],
       ),
     );

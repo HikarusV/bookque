@@ -5,7 +5,6 @@ import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import '../../widgets/custom/bottom_text_button.dart';
 import '../../widgets/custom/full_button.dart';
@@ -23,6 +22,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: ScrollConfiguration(
           behavior: ScrollBehaviorWithoutGlow(),
@@ -35,13 +35,12 @@ class Login extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      HeadingTitle(
-                        title: AppLocalizations.of(context)!.loginText1,
-                        subTitle: AppLocalizations.of(context)!.loginText2,
+                      const HeadingTitle(
+                        title: 'Masuk',
+                        subTitle: 'Masuk untuk melanjutkan',
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              left: 15, right: 15, top: 20, bottom: 10),
+                          padding: const EdgeInsets.all(20),
                           child: Container(
                             height: 100,
                             decoration: const BoxDecoration(
@@ -62,24 +61,18 @@ class Login extends StatelessWidget {
                         children: [
                           TextInput(
                             controller: emailController,
-                            title: AppLocalizations.of(context)!.emailLabelText,
-                            textHint: AppLocalizations.of(context)!
-                                .emailPlaceholderText,
+                            title: 'Email',
+                            textHint: 'Masukkan Alamat Email',
                           ),
                           PasswordField(
                             controller: passController,
-                            title:
-                                AppLocalizations.of(context)!.passwordLabelText,
-                            textHint: AppLocalizations.of(context)!
-                                .passwordPlaceholderText,
                             passConfirmation: NoneConfirmation(),
                           ),
                           FullButton(
                             onPressed: () async {
                               await context
                                   .read<AccountProv>()
-                                  .signInMailPass(
-                                      emailController.text, passController.text)
+                                  .signInMailPass(emailController.text, passController.text)
                                   .onError((error, stackTrace) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -91,16 +84,15 @@ class Login extends StatelessWidget {
                                 );
                               });
                             },
-                            text: AppLocalizations.of(context)!.loginText1,
+                            text: 'Masuk',
                             marginBottom: 5,
                           ),
                           BottomTextButton(
-                            textButton: AppLocalizations.of(context)!
-                                .askForgotPasswordText,
+                            textButton: 'Lupa Kata Sandi?',
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const SentVerification(),
+                                builder: (context) => SentVerification(),
                               ),
                             ),
                           ),
@@ -114,7 +106,7 @@ class Login extends StatelessWidget {
                         height: 15,
                       ),
                       Text(
-                        AppLocalizations.of(context)!.loginOptionText,
+                        'Atau masuk menggunakan',
                         style: titleSmall,
                       ),
                       const SizedBox(
@@ -172,8 +164,8 @@ class Login extends StatelessWidget {
                     ],
                   ),
                   BottomTextButton(
-                    text: AppLocalizations.of(context)!.dontHaveAccountText,
-                    textButton: AppLocalizations.of(context)!.registerText1,
+                    text: 'Belum memiliki akun? ',
+                    textButton: 'Daftar',
                     onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

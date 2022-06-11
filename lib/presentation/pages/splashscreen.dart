@@ -1,9 +1,9 @@
 import 'package:bookque/presentation/pages/auth/auth_account.dart';
+import 'package:bookque/presentation/pages/auth/login.dart';
+import 'package:bookque/presentation/pages/auth/register.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../common/localizations.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -56,8 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 15,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.onboardingText1,
-                    textAlign: TextAlign.center,
+                    'Cari kategori favoritmu dengan mudah',
                     style: GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.w400,
@@ -89,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 15,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.onboardingText2,
+                    'Nikmati lebih banyak waktu untuk membaca buku favoritmu',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       fontSize: 20,
@@ -122,7 +121,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 15,
                   ),
                   Text(
-                    AppLocalizations.of(context)!.onboardingText3,
+                    'Berbagai macam fitur yang mudah untuk kamu gunakan',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       fontSize: 20,
@@ -150,10 +149,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 );
               },
-              child: isLastPage
-                  ? const Text('')
-                  : Text(AppLocalizations.of(context)!.onboardingSkipText,
-                      style: GoogleFonts.poppins()),
+              child: isLastPage ? const Text('') : Text('LEWATI', style: GoogleFonts.poppins()),
             ),
             Center(
               child: SmoothPageIndicator(
@@ -180,18 +176,14 @@ class _SplashScreenState extends State<SplashScreen> {
                         ),
                       );
                     },
-                    child: Text(
-                        AppLocalizations.of(context)!.onboardingStartText,
-                        style: GoogleFonts.poppins()),
+                    child: Text('MULAI', style: GoogleFonts.poppins()),
                   )
                 : TextButton(
                     onPressed: () => controller.nextPage(
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,
                     ),
-                    child: Text(
-                        AppLocalizations.of(context)!.onboardingNextText,
-                        style: GoogleFonts.poppins()),
+                    child: Text('LANJUT', style: GoogleFonts.poppins()),
                   ),
           ],
         ),

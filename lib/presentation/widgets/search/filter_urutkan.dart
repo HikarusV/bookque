@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 
 class FilterUrutkan extends StatefulWidget {
@@ -25,7 +25,7 @@ class _FilterUrutkanState extends State<FilterUrutkan> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          AppLocalizations.of(context)!.sortFilterText,
+          'Urutkan',
           style: titleSmall,
         ),
         const SizedBox(

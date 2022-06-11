@@ -1,7 +1,7 @@
 import 'package:bookque/presentation/pages/search/search.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 
 class SearchBoxDecoration extends StatelessWidget {
@@ -38,7 +38,7 @@ class SearchBoxDecoration extends StatelessWidget {
               padding: const EdgeInsets.only(
                   top: 11, bottom: 9, left: 35, right: 15),
               child: Text(
-                AppLocalizations.of(context)!.searchPlaceholderText,
+                'Cari buku yang kamu inginkan..',
                 style: subTextGrey,
               ),
             ),

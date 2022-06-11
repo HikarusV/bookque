@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../common/styles.dart';
 
@@ -21,10 +22,12 @@ class BottomTextButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(text, style: titleSmall),
+          Text(text,
+              style: titleSmall),
           GestureDetector(
             onTap: onTap,
-            child: Text(textButton, style: titleButton),
+            child: Text(textButton,
+                style: titleButton),
           )
         ],
       ),

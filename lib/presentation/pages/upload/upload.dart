@@ -1,8 +1,8 @@
 import 'package:bookque/presentation/pages/upload/select_category.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
+import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/localizations.dart';
 import '../../widgets/custom/full_button.dart';
 import '../../widgets/custom/text_input.dart';
 import '../../widgets/custom_scaffold.dart';
@@ -15,7 +15,7 @@ class Upload extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: AppLocalizations.of(context)!.appBarUploadText,
+      title: 'Unggah',
       child: ScrollConfiguration(
         behavior: ScrollBehaviorWithoutGlow(),
         child: SingleChildScrollView(
@@ -26,27 +26,23 @@ class Upload extends StatelessWidget {
                 const ImagePick(),
                 TextInput(
                   controller: TextEditingController(),
-                  title: AppLocalizations.of(context)!.linkUploadText,
-                  textHint:
-                      AppLocalizations.of(context)!.linkUploadPlaceholderText,
+                  title: 'Tautan',
+                  textHint: 'Masukkan Referensi Tautan',
                 ),
                 TextInput(
                   controller: TextEditingController(),
-                  title: AppLocalizations.of(context)!.titleUploadText,
-                  textHint:
-                      AppLocalizations.of(context)!.titleUploadPlaceholderText,
+                  title: 'Judul',
+                  textHint: 'Masukkan Judul',
                 ),
                 TextInput(
                   controller: TextEditingController(),
-                  title: AppLocalizations.of(context)!.authorUploadText,
-                  textHint:
-                      AppLocalizations.of(context)!.authorUploadPlaceholderText,
+                  title: 'Nama Penulis',
+                  textHint: 'Masukkan Nama Penulis',
                 ),
                 TextInput(
                   controller: TextEditingController(),
-                  title: AppLocalizations.of(context)!.descriptionText,
-                  textHint: AppLocalizations.of(context)!
-                      .descriptionploadPlaceholderText,
+                  title: 'Deskripsi',
+                  textHint: 'Masukkan Deskripsi',
                   minLines: 6,
                   maxLines: 6,
                 ),
@@ -60,7 +56,7 @@ class Upload extends StatelessWidget {
                 ),
                 FullButton(
                   onPressed: () => '',
-                  text: AppLocalizations.of(context)!.appBarUploadText,
+                  text: 'Unggah',
                   marginBottom: 15,
                 ),
               ],

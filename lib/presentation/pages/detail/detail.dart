@@ -9,8 +9,6 @@ import 'package:bookque/presentation/widgets/detail/small_button.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/localizations.dart';
-
 class Detail extends StatelessWidget {
   const Detail({Key? key}) : super(key: key);
 
@@ -51,14 +49,7 @@ class Detail extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 10),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.network(
-                          'https://www.gutenberg.org/cache/epub/1342/pg1342.cover.small.jpg',
-                          height: 240,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
+                      Image.asset('assets/buku1.png', height: 240),
                       const SizedBox(height: 10),
                       Text(
                         'Jerome Polin Sijabat',
@@ -96,7 +87,7 @@ class Detail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      AppLocalizations.of(context)!.descriptionText,
+                      'Deskripsi',
                       style: titleMedium,
                     ),
                     const SizedBox(height: 5),
@@ -107,7 +98,7 @@ class Detail extends StatelessWidget {
                     ),
                     const SizedBox(height: 15),
                     Text(
-                      AppLocalizations.of(context)!.otherRecommendationText,
+                      'Rekomendasi Lainnya',
                       style: titleMedium,
                     ),
                   ],
