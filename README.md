@@ -20,3 +20,6 @@ This project uses a backend system, but because the data is private, we cannot s
 - [Sapta] (https://github.com/HikarusV)
 - [Wildhan] (https://github.com/wildan090801)
 - [Yudhis] (https://github.com/yudhistirahry33)
+
+## Credits data in API dummy data
+- [gutenberg](www.gutenberg.org)
