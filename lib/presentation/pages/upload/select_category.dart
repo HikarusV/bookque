@@ -1,5 +1,7 @@
+import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../data/models/categories.dart';
@@ -8,9 +10,11 @@ import '../../widgets/custom_scaffold.dart';
 import '../../widgets/upload/list_categories_selected.dart';
 
 class SelectCategory extends StatelessWidget {
-  SelectCategory({Key? key}) : super(key: key);
+  const SelectCategory({Key? key, this.onFinish, required this.count})
+      : super(key: key);
+  final Function()? onFinish;
 
-  final CategoriesSelectCount count = CategoriesSelectCount();
+  final CategoriesSelectCount count;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,7 @@ class SelectCategory extends StatelessWidget {
               Flexible(
                 flex: 0,
                 child: FullButton(
-                  onPressed: () => '',
+                  onPressed: onFinish,
                   text: AppLocalizations.of(context)!.saveText,
                   marginTop: 15,
                   marginBottom: 15,

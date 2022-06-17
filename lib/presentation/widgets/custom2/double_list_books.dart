@@ -1,10 +1,13 @@
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../common/styles.dart';
 import '../../../data/models/poster.dart';
 import '../../pages/detail/detail.dart';
+import '../images/cache_images.dart';
 
 class DoubleListBooks extends StatelessWidget {
   const DoubleListBooks(
@@ -53,8 +56,8 @@ class DoubleListBooks extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                     child: isNetwork
                         ? CachedNetworkImage(
-                            placeholder: (context, url) => const Center(
-                              child: CircularProgressIndicator(),
+                            placeholder: (context, url) => Container(
+                              color: Colors.grey.shade300,
                             ),
                             imageUrl: listData[index]['imageid'],
                             fit: BoxFit.cover,

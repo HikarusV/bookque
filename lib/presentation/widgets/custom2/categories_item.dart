@@ -25,6 +25,7 @@ class CategoriesItem extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => AllCategoriesItems(
                   text: items[index].name,
+                  id: items[index].id,
                 ),
               ),
             ),

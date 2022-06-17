@@ -5,11 +5,17 @@ import 'list_categories_selected.dart';
 
 class CategoriesItemsSelected extends StatefulWidget {
   const CategoriesItemsSelected(
-      {Key? key, required this.title, required this.count})
+      {Key? key,
+      required this.title,
+      required this.id,
+      required this.count,
+      this.cacheSelected = false})
       : super(key: key);
 
   final String title;
+  final String id;
   final CategoriesSelectCount count;
+  final bool cacheSelected;
 
   @override
   State<CategoriesItemsSelected> createState() =>
@@ -17,6 +23,12 @@ class CategoriesItemsSelected extends StatefulWidget {
 }
 
 class _CategoriesItemsSelectedState extends State<CategoriesItemsSelected> {
+  @override
+  void initState() {
+    super.initState();
+    isSelected = widget.cacheSelected;
+  }
+
   bool isSelected = false;
 
   @override
@@ -25,11 +37,11 @@ class _CategoriesItemsSelectedState extends State<CategoriesItemsSelected> {
       onTap: () => setState(() {
         if (!isSelected) {
           if (widget.count.canAdd()) {
-            widget.count.addSelectedItem();
+            widget.count.addSelectedItem(widget.id);
             isSelected = !isSelected;
           }
         } else {
-          widget.count.lessSelectedItem();
+          widget.count.lessSelectedItem(widget.id);
           isSelected = !isSelected;
         }
       }),

@@ -1,64 +1,112 @@
 class Categories {
   String name;
   String imageAsset;
+  String id;
   bool isSelected;
 
   Categories({
     required this.name,
+    required this.id,
     required this.imageAsset,
     required this.isSelected,
   });
 }
 
+final uploadType = ['Makalah', 'E-Book', 'Jurnal', 'Skripsi', 'Makalah'];
+
+final listCategoriesId = [
+  'arts',
+  'animals',
+  'fiction',
+  'science_&_mathematics',
+  'business_&_finance',
+  "children's",
+  'history',
+  'health_&_wellness',
+  'biography',
+  'social_sciences',
+  'places',
+  'textbooks',
+  'books_by_language'
+];
+
 var listCategory = [
   Categories(
-    name: 'Bahasa',
-    imageAsset: 'assets/list_category9.png',
+    name: 'arts',
+    id: 'arts',
+    imageAsset: 'assets/cat1.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Cinta',
-    imageAsset: 'assets/list_category4.png',
+    name: 'animals',
+    id: 'animals',
+    imageAsset: 'assets/cat2.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Hiburan',
-    imageAsset: 'assets/list_category1.png',
+    name: 'fiction',
+    id: 'fiction',
+    imageAsset: 'assets/cat3.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Hitungan',
-    imageAsset: 'assets/list_category2.png',
+    name: 'science',
+    id: 'science_&_mathematics',
+    imageAsset: 'assets/cat4.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Investasi',
-    imageAsset: 'assets/list_category10.png',
+    name: 'business',
+    id: 'business_&_finance',
+    imageAsset: 'assets/cat5.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Keluarga',
-    imageAsset: 'assets/list_category5.png',
+    name: 'children',
+    id: 'children\'s',
+    imageAsset: 'assets/cat6.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Kesehatan',
-    imageAsset: 'assets/list_category8.png',
+    name: 'history',
+    id: 'history',
+    imageAsset: 'assets/cat7.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Masak',
-    imageAsset: 'assets/list_category6.png',
+    name: 'health',
+    id: 'health_&_wellness',
+    imageAsset: 'assets/cat8.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Perjalanan',
-    imageAsset: 'assets/list_category3.png',
+    name: 'biography',
+    id: 'biography',
+    imageAsset: 'assets/cat9.png',
     isSelected: false,
   ),
   Categories(
-    name: 'Teknologi',
-    imageAsset: 'assets/list_category7.png',
+    name: 'social',
+    id: 'social_sciences',
+    imageAsset: 'assets/cat10.png',
+    isSelected: false,
+  ),
+  Categories(
+    name: 'places',
+    id: 'places',
+    imageAsset: 'assets/cat11.png',
+    isSelected: false,
+  ),
+  Categories(
+    name: 'textbooks',
+    id: 'textbooks',
+    imageAsset: 'assets/cat12.png',
+    isSelected: false,
+  ),
+  Categories(
+    name: 'language',
+    id: 'books_by_language',
+    imageAsset: 'assets/cat13.png',
     isSelected: false,
   ),
 ];

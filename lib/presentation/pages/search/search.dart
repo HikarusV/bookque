@@ -73,7 +73,7 @@ class Search extends StatelessWidget {
                   builder: (context, value, _) {
                     print('state : ${value.stateSearch}');
                     if (value.stateSearch == ResultState.loading) {
-                      return const Text('Loading');
+                      return const Center(child: CircularProgressIndicator());
                     } else if (value.stateSearch == ResultState.hasData) {
                       return DoubleListBooks(
                         isScroolable: true,

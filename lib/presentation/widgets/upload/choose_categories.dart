@@ -1,4 +1,7 @@
+import 'package:bookque/presentation/provider/upload_provider.dart';
+import 'package:bookque/presentation/widgets/upload/list_categories_selected.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
@@ -38,15 +41,38 @@ class ChooseCategories extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      AppLocalizations.of(context)!
-                          .categoryUploadPlaceholderText,
-                      style: hintTitle,
+                    Consumer<UploadUpdateItemProvider>(
+                      builder: (context, value, _) => Expanded(
+                        child: Container(
+                          child: (value.itemCat.items.isNotEmpty)
+                              ? Text(
+                                  value.itemCat.items
+                                      .toString()
+                                      .substring(
+                                          1,
+                                          (value.itemCat.items
+                                                  .toString()
+                                                  .length -
+                                              1))
+                                      .replaceAll(RegExp(r'\s+'), ''),
+                                  overflow: TextOverflow.ellipsis,
+                                  style: subText,
+                                )
+                              : Text(
+                                  AppLocalizations.of(context)!
+                                      .categoryUploadPlaceholderText,
+                                  style: subText,
+                                ),
+                        ),
+                      ),
                     ),
-                    const Icon(
-                      Icons.arrow_forward_ios,
-                      color: primaryColor,
-                      size: 18,
+                    const Flexible(
+                      flex: 0,
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: primaryColor,
+                        size: 18,
+                      ),
                     ),
                   ],
                 ),

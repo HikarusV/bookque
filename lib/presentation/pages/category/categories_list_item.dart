@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../common/localizations.dart';
 import '../../../data/models/categories.dart';
 import '../../widgets/custom_scaffold.dart';
-import '../../widgets/detail/detail_categories_item.dart';
 
 class CategoriesListItem extends StatelessWidget {
   const CategoriesListItem({Key? key, required this.items, this.onTapItems})
@@ -27,6 +26,7 @@ class CategoriesListItem extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => AllCategoriesItems(
                   text: item.name,
+                  id: item.id,
                 ),
               ),
             ),

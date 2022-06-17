@@ -12,14 +12,13 @@ import 'api.dart';
 class HandleApi {
   static final Api? api = Api();
 
-  static Future<ListItems> getItems(String userId) async {
+  static Future<UserItems> getItems(String userId) async {
     final url = 'http://103.214.185.190:5000/' + userId + '/items';
-
     final response = await api!.get(url);
-    var jsonResponse = jsonDecode(response);
 
-    final items = ListItems.fromJson(jsonResponse);
+    Map<String, dynamic> jsonResponse = jsonDecode(response);
 
+    final items = UserItems.fromMap(jsonResponse);
     return items;
   }
 
@@ -28,7 +27,6 @@ class HandleApi {
 
     final response = await api!.get(url);
     var jsonResponse = jsonDecode(response);
-    print('test result : $jsonResponse');
 
     final items = Profile.fromJson(jsonResponse);
 
@@ -48,6 +46,7 @@ class HandleApi {
 
   static Future<Map<String, dynamic>> getCategory(String type) async {
     final url = 'http://103.214.185.190:5000/items/category?cat=' + type;
+    print(url);
 
     final response = await api!.get(url);
     var jsonResponse = jsonDecode(response);
@@ -66,8 +65,9 @@ class HandleApi {
     return jsonResponse;
   }
 
-  static Future<Map<String, dynamic>> getNewestItems(String userId) async {
-    final url = 'http://103.214.185.190:5000/' + userId + '/news?pages=3';
+  static Future<Map<String, dynamic>> getNewestItems(String userId,
+      {int pages = 1}) async {
+    final url = 'http://103.214.185.190:5000/' + userId + '/news?pages=$pages';
 
     final response = await api!.get(url);
     Map<String, dynamic> jsonResponse = jsonDecode(response);
@@ -115,8 +115,6 @@ class HandleApi {
       );
 
       final response = jsonDecode(codeResponse.body);
-
-      print('response $response');
 
       return !response['error'];
     } catch (e) {
@@ -170,7 +168,8 @@ class HandleApi {
           "categories": categories,
         }),
       );
-      return jsonDecode(response.body);
+      Map<String, dynamic> result = jsonDecode(response.body);
+      return result;
     } catch (e) {
       print(e);
       return 'Error';
@@ -194,20 +193,16 @@ class HandleApi {
       "title",
       "author",
       "shortDescription",
-      "longDesc"
+      "longdesc"
     ];
-    print('start');
+
     Map<String, dynamic> result = <String, dynamic>{};
-    int firstComa = 1;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < atributName.length; i++) {
       if (!(atribut[i] == "none")) {
-        print('loop-$i');
-        // result =
-        //     '$result${firstComa-- == 1 ? "" : ","}"${atributName[i]}":"${atribut[i]}"';
         result[atributName[i]] = atribut[i];
       }
     }
-    // print(result);
+
     final response = await http.put(
       Uri.parse('http://103.214.185.190:5000/' + idUser + '/items?id=' + id),
       headers: <String, String>{
@@ -257,14 +252,15 @@ class HandleApi {
     );
   }
 
-  static Future<http.Response> deleteAlbum(String userId, String id) async {
+  static Future<bool> deleteAlbum(String userId, String id) async {
     final http.Response response = await http.delete(
-      Uri.parse('http://103.214.185.190:5000/' + userId + '/items/' + id),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+      Uri.parse('http://103.214.185.190:5000/' + userId + '/items?id=' + id),
+      // headers: <String, String>{
+      //   'Content-Type': 'application/json; charset=UTF-8',
+      // },
     );
-
-    return response;
+    print(response.body);
+    Map<String, dynamic> result = jsonDecode(response.body);
+    return result['error'];
   }
 }

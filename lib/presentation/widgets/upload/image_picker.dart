@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:bookque/common/styles.dart';
+import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 
@@ -41,14 +44,10 @@ class _ImagePickState extends State<ImagePick> {
 
                 final imageTemporary = File(image.path);
                 setState(() => this.image = imageTemporary);
-                // print(image.path);
-
-                // final bytes = File(image.path).readAsBytesSync();
-
-                // String img64 = base64Encode(bytes);
-                // print(img64);
+                context.read<UploadUpdateItemProvider>().images =
+                    imageTemporary;
               } on PlatformException catch (e) {
-                ('$e');
+                print('$e');
               }
             },
             child: Container(
@@ -65,7 +64,12 @@ class _ImagePickState extends State<ImagePick> {
                       margin: const EdgeInsets.only(top: 5, bottom: 5),
                       child: Column(
                         children: [
-                          Image.file(image!),
+                          Container(
+                            height: 140,
+                            child: Image.file(
+                              image!,
+                            ),
+                          ),
                           ElevatedButton(
                               onPressed: () {}, child: const Text('Ganti'))
                         ],

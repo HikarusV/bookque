@@ -7,9 +7,10 @@ import 'package:provider/provider.dart';
 import '../../../common/state_enum.dart';
 
 class AllCategoriesItems extends StatefulWidget {
-  const AllCategoriesItems({Key? key, this.text = 'Categories'})
+  const AllCategoriesItems({Key? key, this.text = 'Categories', this.id = 'id'})
       : super(key: key);
   final String text;
+  final String id;
 
   @override
   State<AllCategoriesItems> createState() => _AllCategoriesItemsState();
@@ -21,7 +22,7 @@ class _AllCategoriesItemsState extends State<AllCategoriesItems> {
     super.initState();
     Future.microtask(() =>
         Provider.of<CategoriesProvider>(context, listen: false)
-          ..fetchCategoriesItem(widget.text));
+          ..fetchCategoriesItem(widget.id));
   }
 
   @override
@@ -36,7 +37,7 @@ class _AllCategoriesItemsState extends State<AllCategoriesItems> {
             } else if (value.stateCategories == ResultState.hasData) {
               return DoubleListBooks(
                 isScroolable: true,
-                listData: value.dataCategories[widget.text] ?? [],
+                listData: value.dataCategories[widget.id] ?? [],
                 isNetwork: true,
               );
             } else if (value.stateCategories == ResultState.error) {

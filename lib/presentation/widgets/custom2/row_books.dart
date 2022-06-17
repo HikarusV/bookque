@@ -1,7 +1,9 @@
 import 'package:bookque/presentation/pages/detail/detail.dart';
+import 'package:bookque/presentation/widgets/images/cache_images.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../data/models/poster.dart';
 
 class RowBooks extends StatelessWidget {
@@ -34,13 +36,13 @@ class RowBooks extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: CachedNetworkImage(
-                      placeholder: (context, url) => const Center(
-                        child: CircularProgressIndicator(),
+                      placeholder: (context, url) => Container(
+                        color: Colors.grey.shade300,
                       ),
                       imageUrl: listData[index]['imageid'],
                       width: 124,
                       height: 170,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   ),
                   Text(

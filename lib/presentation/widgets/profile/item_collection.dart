@@ -1,13 +1,16 @@
+import 'package:bookque/presentation/widgets/loading_widget/book_item_loading.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../pages/detail/user_detail.dart';
 import '../scroll_behavior_without_glow.dart';
 
 class ItemCollection extends StatelessWidget {
   const ItemCollection(
-      {Key? key, required this.items, required this.onItemTap})
+      {Key? key, required this.items, this.onLoadingItems = false})
       : super(key: key);
   final List items;
-  final Function()? onItemTap;
+  final bool onLoadingItems;
 
   @override
   Widget build(BuildContext context) {
@@ -16,29 +19,38 @@ class ItemCollection extends StatelessWidget {
       child: Expanded(
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 0.65,
-            crossAxisSpacing: 15,
-          ),
+              crossAxisCount: 3,
+              childAspectRatio: 0.65,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 15),
           itemCount: items.length,
           itemBuilder: (context, index) {
-            final book = items[index];
+            if (onLoadingItems) {
+              return items[index];
+            } else {
+              final book = items[index];
 
-            return Column(
-              children: [
-                GestureDetector(
-                  onTap: onItemTap,
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        book.imageAsset,
-                        fit: BoxFit.cover,
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => UserDetail(
+                          id: book.itemid,
+                          index: index,
+                        ),
                       ),
-                    ],
+                    );
+                  },
+                  child: CachedNetworkImage(
+                    imageUrl: book.imageid,
+                    fit: BoxFit.cover,
+                    placeholder: (context, error) => CustomShimmer.skeleton(),
                   ),
                 ),
-              ],
-            );
+              );
+            }
           },
         ),
       ),

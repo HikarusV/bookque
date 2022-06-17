@@ -6,8 +6,11 @@ import 'package:bookque/presentation/provider/categories_provider.dart';
 import 'package:bookque/presentation/provider/detail_items_provider.dart';
 import 'package:bookque/presentation/provider/home_provider.dart';
 import 'package:bookque/presentation/provider/localizations_provider.dart';
+import 'package:bookque/presentation/provider/profile_items_provider.dart';
 import 'package:bookque/presentation/provider/search_provider.dart';
 import 'package:bookque/presentation/provider/settings_provider.dart';
+import 'package:bookque/presentation/provider/upload_provider.dart';
+import 'package:bookque/presentation/provider/user_item_detail.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -42,6 +45,15 @@ void main() async {
         ),
         ChangeNotifierProvider<DetailItemsProvider>(
           create: (context) => DetailItemsProvider(),
+        ),
+        ChangeNotifierProvider<UploadUpdateItemProvider>(
+          create: (context) => UploadUpdateItemProvider(),
+        ),
+        ChangeNotifierProvider<ProfileItemsProvider>(
+          create: (context) => ProfileItemsProvider(),
+        ),
+        ChangeNotifierProvider<UserDetailItemsProvider>(
+          create: (context) => UserDetailItemsProvider(),
         ),
       ],
       child: const MyApp(),

@@ -61,7 +61,8 @@ class _DetailState extends State<Detail> {
               builder: (context, value, _) {
                 if (value.stateDetailItems == ResultState.loading) {
                   return const Text('Loading');
-                } else if (value.stateDetailItems == ResultState.hasData) {
+                } else if (value.stateDetailItems == ResultState.hasData &&
+                    value.dataDetailItems.containsKey(widget.id)) {
                   return DetailDataProvPages(
                       item: value.dataDetailItems[widget.id] ?? FullItems());
                 } else if (value.stateDetailItems == ResultState.error) {

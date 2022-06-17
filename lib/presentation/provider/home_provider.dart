@@ -5,8 +5,16 @@ import '../../common/state_enum.dart';
 import '../../data/datasource/api_handler/api_helper.dart';
 
 class HomeProvider with ChangeNotifier {
+  int _pages = 1;
+
+  Widget nextButton = Container(
+    child: Text('Selanjutnya'),
+  );
+
   String messageRecomendationData = '';
   String messageNewsData = '';
+
+  int get pages => _pages;
 
   ResultState _staterecommendationData = ResultState.noData;
   ResultState _statenewsData = ResultState.noData;
@@ -37,17 +45,43 @@ class HomeProvider with ChangeNotifier {
     }
   }
 
+  void incrementPages() {
+    _pages++;
+  }
+
+  void changeNextButton() {
+    if (_pages < 5) {
+      nextButton = Center(
+        child: TextButton(
+          onPressed: () {
+            incrementPages();
+            fetchNewsData('xax');
+          },
+          child: const Text('Selanjutnya'),
+        ),
+      );
+    } else {
+      nextButton = Container();
+    }
+  }
+
   Future<void> fetchNewsData(String userid) async {
-    _statenewsData = ResultState.loading;
-    notifyListeners();
+    if (_pages == 1) {
+      _statenewsData = ResultState.loading;
+      notifyListeners();
+    }
+    nextButton = const Center(
+      child: CircularProgressIndicator(),
+    );
 
     try {
-      final result = await HandleApi.getNewestItems(userid);
+      final result = await HandleApi.getNewestItems(userid, pages: _pages);
 
       if (!result['error']) {
-        dataNewsItems = result['items'];
+        dataNewsItems.insertAll(0, result['items']);
         messageNewsData = result['message'];
         _statenewsData = ResultState.hasData;
+        changeNextButton();
         notifyListeners();
       }
       notifyListeners();

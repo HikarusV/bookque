@@ -9,14 +9,17 @@ import '../../../data/models/poster.dart';
 import 'bookmark_button.dart';
 import 'container_detail_categories_item.dart';
 import 'detail_categories_item.dart';
+import 'list_categories.dart';
 
 class DetailDataProvPages extends StatelessWidget {
-  const DetailDataProvPages({Key? key, required this.item}) : super(key: key);
+  const DetailDataProvPages(
+      {Key? key, required this.item, this.withRecommendation = true})
+      : super(key: key);
   final FullItems item;
+  final bool withRecommendation;
 
   @override
   Widget build(BuildContext context) {
-    print(item.imageid);
     return Column(
       children: [
         Container(
@@ -34,8 +37,9 @@ class DetailDataProvPages extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 child: CachedNetworkImage(
                   imageUrl: item.imageid,
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
+                  placeholder: (context, url) => Container(
+                    color: Colors.grey.shade300,
+                  ),
                   height: 240,
                   fit: BoxFit.fill,
                 ),
@@ -48,11 +52,7 @@ class DetailDataProvPages extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               ContainerDetailCategoriesItem(
-                items: const [
-                  DetailCategoriesItem(),
-                  DetailCategoriesItem(),
-                  DetailCategoriesItem()
-                ],
+                items: ListCategories.generateListCategories(item.categories),
                 type: DetailCategoriesItem(
                   text: item.categories[0],
                 ),
@@ -81,36 +81,43 @@ class DetailDataProvPages extends StatelessWidget {
               style: titleMedium,
             ),
             const SizedBox(height: 5),
-            Text(
-              item.longdesc,
-              style: subText,
-              textAlign: TextAlign.justify,
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                item.longdesc,
+                style: subText,
+                textAlign: TextAlign.justify,
+              ),
             ),
             const SizedBox(height: 15),
-            Text(
-              AppLocalizations.of(context)!.otherRecommendationText,
-              style: titleMedium,
-            ),
+            withRecommendation
+                ? Text(
+                    AppLocalizations.of(context)!.otherRecommendationText,
+                    style: titleMedium,
+                  )
+                : Container(),
           ],
         ),
-        Container(
-          margin: const EdgeInsets.only(bottom: 15.0),
-          height: 170,
-          child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: listPoster.map((poster) {
-                return GestureDetector(
-                  onTap: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(poster.image),
-                    ),
-                  ),
-                );
-              }).toList()),
-        ),
+        withRecommendation
+            ? Container(
+                margin: const EdgeInsets.only(bottom: 15.0),
+                height: 170,
+                child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: listPoster.map((poster) {
+                      return GestureDetector(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(poster.image),
+                          ),
+                        ),
+                      );
+                    }).toList()),
+              )
+            : Container(),
       ],
     );
   }

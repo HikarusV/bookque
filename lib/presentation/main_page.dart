@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../common/styles.dart';
@@ -24,13 +25,18 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentIndex],
+      body: LazyLoadIndexedStack(
+        index: currentIndex,
+        children: screens,
+      ),
       backgroundColor: const Color(0xffFCFCFF),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
         child: SalomonBottomBar(
             currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
+            onTap: (index) {
+              setState(() => currentIndex = index);
+            },
             items: [
               SalomonBottomBarItem(
                 icon: const Icon(Icons.home),

@@ -44,7 +44,7 @@ class TextInput extends StatelessWidget {
                 controller: controller,
                 maxLines: maxLines,
                 minLines: minLines,
-                style: titleSmall,
+                style: subText,
                 decoration: InputDecoration(
                   hintText: textHint,
                   hintStyle: hintTitle,

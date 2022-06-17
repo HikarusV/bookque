@@ -177,7 +177,8 @@ class _HomeState extends State<Home> {
                               }
                               return const Text('Diluar if');
                             },
-                          )
+                          ),
+                          context.watch<HomeProvider>().nextButton,
                         ],
                       ),
                     ),

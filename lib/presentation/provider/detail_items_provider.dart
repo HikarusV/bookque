@@ -15,6 +15,7 @@ class DetailItemsProvider with ChangeNotifier {
   void fetchDetailItemById(String id) async {
     _stateDetailItems = ResultState.loading;
     notifyListeners();
+    // await Future.delayed(const Duration(seconds: 2));
 
     try {
       final result = await HandleApi.getDetailItems(id);

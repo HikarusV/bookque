@@ -18,7 +18,6 @@ var titleMedium = GoogleFonts.poppins(
 );
 var titleSmall = GoogleFonts.poppins(
   fontSize: 16,
-  fontWeight: FontWeight.w500,
 );
 var descText = GoogleFonts.poppins(
   fontSize: 14,
@@ -30,8 +29,7 @@ var hintTitleLarge = GoogleFonts.poppins(
   color: Colors.grey,
 );
 var hintTitle = GoogleFonts.poppins(
-  fontSize: 16,
-  fontWeight: FontWeight.w500,
+  fontSize: 14,
   color: Colors.grey,
 );
 var subText = GoogleFonts.poppins(

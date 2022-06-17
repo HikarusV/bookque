@@ -39,7 +39,7 @@ class DetailItems {
   }
 
   factory DetailItems.fromMap(Map<String, dynamic> map) {
-    print('inHere');
+    // print('inHere');
     return DetailItems(
       error: map['error'] ?? false,
       message: map['message'] ?? '',

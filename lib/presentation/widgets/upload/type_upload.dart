@@ -3,8 +3,8 @@ import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
 
-class SettingItemButton extends StatelessWidget {
-  const SettingItemButton({
+class TypeUpload extends StatelessWidget {
+  const TypeUpload({
     Key? key,
     required this.itemsName,
     required this.controller,
@@ -17,16 +17,15 @@ class SettingItemButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    for (int i = 0; i < itemsName.length; i++) {}
+    // for (int i = 0; i < itemsName.length; i++) {}
 
     return Container(
-      margin: const EdgeInsets.all(15.0),
+      margin: const EdgeInsets.only(top: 12, bottom: 5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(AppLocalizations.of(context)!.themeText,
-              style: buttonMediumBlack),
+          Text(AppLocalizations.of(context)!.themeText, style: subText),
           const SizedBox(height: 5),
           GroupButton(
             controller: controller,

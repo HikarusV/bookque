@@ -4,25 +4,25 @@ import 'package:flutter/foundation.dart';
 
 import 'items.dart';
 
-class ListItems {
+class UserItems {
   final bool error;
   final String message;
   final String userid;
   final List<Items> items;
-  ListItems({
+  UserItems({
     required this.error,
     required this.message,
     required this.userid,
     required this.items,
   });
 
-  ListItems copyWith({
+  UserItems copyWith({
     bool? error,
     String? message,
     String? userid,
     List<Items>? items,
   }) {
-    return ListItems(
+    return UserItems(
       error: error ?? this.error,
       message: message ?? this.message,
       userid: userid ?? this.userid,
@@ -41,8 +41,8 @@ class ListItems {
     return result;
   }
 
-  factory ListItems.fromMap(Map<String, dynamic> map) {
-    return ListItems(
+  factory UserItems.fromMap(Map<String, dynamic> map) {
+    return UserItems(
       error: map['error'] ?? false,
       message: map['message'] ?? '',
       userid: map['userid'] ?? '',
@@ -52,19 +52,19 @@ class ListItems {
 
   String toJson() => json.encode(toMap());
 
-  factory ListItems.fromJson(String source) =>
-      ListItems.fromMap(json.decode(source));
+  factory UserItems.fromJson(String source) =>
+      UserItems.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'ListItems(error: $error, message: $message, userid: $userid, items: $items)';
+    return 'UserItems(error: $error, message: $message, userid: $userid, items: $items)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is ListItems &&
+    return other is UserItems &&
         other.error == error &&
         other.message == message &&
         other.userid == userid &&
