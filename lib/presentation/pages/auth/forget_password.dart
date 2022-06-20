@@ -1,8 +1,9 @@
 import 'package:bookque/presentation/pages/auth/login.dart';
-import 'package:bookque/presentation/widgets/custom/full_button.dart';
-import 'package:bookque/presentation/widgets/custom/password_field.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/auth/full_button.dart';
+import '../../widgets/auth/password_field.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);

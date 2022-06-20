@@ -7,12 +7,12 @@ import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import '../../../data/models/categories.dart';
 import '../../provider/account_provider.dart';
-import '../../widgets/custom2/categories_item.dart';
-import '../../widgets/custom2/double_list_books.dart';
-import '../../widgets/custom2/heading_home.dart';
-import '../../widgets/custom2/row_books.dart';
-import '../../widgets/custom2/search_box_decoration.dart';
+import '../../widgets/home/categories_item.dart';
+import '../../widgets/home/double_list_books.dart';
+import '../../widgets/home/heading_home.dart';
+import '../../widgets/home/row_books.dart';
 import '../../widgets/scroll_behavior_without_glow.dart';
+import '../../widgets/search/search_box_decoration.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -104,48 +104,23 @@ class _HomeState extends State<Home> {
                           HeadingHome(
                             title: AppLocalizations.of(context)!.categoryText,
                             moreButton: true,
-                            onMoreTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => CategoriesListItem(
-                              //       items: listCategory,
-                              //       onTapItems: () => Navigator.push(
-                              //         context,
-                              //         MaterialPageRoute(
-                              //           builder: (context) =>
-                              //               DetailCategoryPage(
-                              //                 category: listCategory[0],
-                              //               ),
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // );
-                            },
                           ),
                           CategoriesItem(
-                            onItemTap: () {
-                              //     Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => DetailCategoryPage(
-                              //       category: listCategory[0],
-                              //     ),
-                              //   ),
-                              // ),
-                            },
                             items: listCategory,
                           ),
                           HeadingHome(
                               title: AppLocalizations.of(context)!
                                   .recommendationText,
                               moreButton: false),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           Consumer<HomeProvider>(
                             builder: (context, value, _) {
                               if (value.getstaterecommendationData ==
                                   ResultState.loading) {
-                                return const Text('Loading');
+                                return const Center(
+                                    child: CircularProgressIndicator());
                               } else if (value.getstaterecommendationData ==
                                   ResultState.hasData) {
                                 return RowBooks(
@@ -155,7 +130,7 @@ class _HomeState extends State<Home> {
                                   ResultState.error) {
                                 return Text(value.messageNewsData);
                               }
-                              return const Text('Loading');
+                              return const Text('');
                             },
                           ),
                           HeadingHome(
@@ -165,7 +140,7 @@ class _HomeState extends State<Home> {
                             builder: (context, value, _) {
                               if (value.getstatenewsData ==
                                   ResultState.loading) {
-                                return const Text('Loading');
+                                return const Text('');
                               } else if (value.getstatenewsData ==
                                   ResultState.hasData) {
                                 return DoubleListBooks(
@@ -175,7 +150,7 @@ class _HomeState extends State<Home> {
                                   ResultState.error) {
                                 return Text(value.messageNewsData);
                               }
-                              return const Text('Diluar if');
+                              return const Text('');
                             },
                           ),
                           context.watch<HomeProvider>().nextButton,

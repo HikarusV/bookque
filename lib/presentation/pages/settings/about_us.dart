@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../common/localizations.dart';
 
 class AboutUs extends StatelessWidget {
-  // static const routeName = '/about_page';
-
   const AboutUs({Key? key}) : super(key: key);
 
   @override

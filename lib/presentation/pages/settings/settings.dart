@@ -12,8 +12,6 @@ import 'package:provider/provider.dart';
 import '../../../common/localizations.dart';
 
 class Settings extends StatelessWidget {
-  // static const routeName = '/setting_page';
-
   const Settings({Key? key}) : super(key: key);
 
   @override

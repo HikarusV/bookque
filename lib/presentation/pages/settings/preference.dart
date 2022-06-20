@@ -18,19 +18,17 @@ class Preference extends StatelessWidget {
         child: Column(
           children: [
             SettingItemButton(
+              title: AppLocalizations.of(context)!.themeText,
               controller: context.read<SettingsProvider>().themes,
               itemsName: const ['Terang', 'Gelap'],
               onItemSelected: (name, i, isSelected) {
                 context.read<SettingsProvider>().changeTheme(i == 1);
                 context.read<SettingsProvider>().themes.selectIndex(i);
                 print('Ganti tema $name');
-                // context
-                //     .read<SettingsProvider>()
-                //     .changelanguage(name.toString());
-                // controller.selectIndex(i);
               },
             ),
             SettingItemButton(
+              title: AppLocalizations.of(context)!.languageText,
               controller: context.read<SettingsProvider>().language,
               itemsName: const ['Indonesia', 'English'],
               onItemSelected: (name, i, isSelected) {

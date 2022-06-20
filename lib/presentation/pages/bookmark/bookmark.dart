@@ -1,8 +1,11 @@
-import 'package:bookque/data/models/poster.dart';
+import 'package:bookque/presentation/provider/database_provider.dart';
+import 'package:bookque/presentation/widgets/bookmark/bookmark_data.dart';
+import 'package:bookque/presentation/widgets/bookmark/no_bookmark_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../common/state_enum.dart';
 import '../../../common/styles.dart';
-import '../../widgets/custom2/double_list_books.dart';
 
 class Bookmark extends StatelessWidget {
   const Bookmark({Key? key}) : super(key: key);
@@ -19,13 +22,38 @@ class Bookmark extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: DoubleListBooks(
-          isScroolable: true,
-          isNetwork: false,
-          listData: listmapData,
-        ),
+      body: Consumer<DatabaseProvider>(
+        builder: (context, provider, child) {
+          if (provider.state == ResultState.loading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (provider.state == ResultState.error) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    "Failed to Load Data ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            );
+          } else if (provider.state == ResultState.noData) {
+            return const Center(
+              child: NoBookmarkData(),
+            );
+          } else if (provider.state == ResultState.hasData) {
+            return ListView.builder(
+              itemCount: provider.bookmarks.length,
+              itemBuilder: (context, index) {
+                return BookmarkData(items: provider.bookmarks[index]);
+              },
+            );
+          } else {
+            return const Text("");
+          }
+        },
       ),
     );
   }

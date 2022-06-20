@@ -1,4 +1,5 @@
 import 'package:bookque/common/state_enum.dart';
+import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/state_enum.dart';
@@ -7,9 +8,7 @@ import '../../data/datasource/api_handler/api_helper.dart';
 class HomeProvider with ChangeNotifier {
   int _pages = 1;
 
-  Widget nextButton = Container(
-    child: Text('Selanjutnya'),
-  );
+  Widget nextButton = const Text('');
 
   String messageRecomendationData = '';
   String messageNewsData = '';
@@ -57,7 +56,10 @@ class HomeProvider with ChangeNotifier {
             incrementPages();
             fetchNewsData('xax');
           },
-          child: const Text('Selanjutnya'),
+          child: Text(
+            'Selanjutnya',
+            style: subText,
+          ),
         ),
       );
     } else {

@@ -1,9 +1,10 @@
 import 'package:bookque/presentation/pages/auth/forget_password.dart';
-import 'package:bookque/presentation/widgets/auth/heading_verification.dart';
-import 'package:bookque/presentation/widgets/custom/full_button.dart';
-import 'package:bookque/presentation/widgets/custom/text_input.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/auth/full_button.dart';
+import '../../widgets/auth/heading_verification.dart';
+import '../../widgets/auth/text_input.dart';
 
 class CodeVerification extends StatefulWidget {
   const CodeVerification({Key? key}) : super(key: key);

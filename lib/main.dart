@@ -1,8 +1,10 @@
 import 'package:bookque/common/localizations.dart';
 import 'package:bookque/common/styles.dart';
-import 'package:bookque/presentation/pages/splashscreen.dart';
+import 'package:bookque/data/db/database_helper.dart';
+import 'package:bookque/presentation/onboarding_page.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:bookque/presentation/provider/categories_provider.dart';
+import 'package:bookque/presentation/provider/database_provider.dart';
 import 'package:bookque/presentation/provider/detail_items_provider.dart';
 import 'package:bookque/presentation/provider/home_provider.dart';
 import 'package:bookque/presentation/provider/localizations_provider.dart';
@@ -55,6 +57,10 @@ void main() async {
         ChangeNotifierProvider<UserDetailItemsProvider>(
           create: (context) => UserDetailItemsProvider(),
         ),
+        ChangeNotifierProvider<DatabaseProvider>(
+          create: (context) =>
+              DatabaseProvider(databaseHelper: DatabaseHelper()),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -64,21 +70,12 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: context.watch<LocalizationProvider>().locale,
       title: 'BookQue',
-      // theme: ThemeData(
-      //   colorScheme: Theme.of(context).colorScheme.copyWith(
-      //         primary: primaryColor,
-      //         onPrimary: Colors.white,
-      //         secondary: secondaryColor,
-      //       ),
-      // ),
-      // themeMode: context.watch<SettingsProvider>().myAppsTheme,
       theme: ThemeData(
           colorScheme: context.watch<SettingsProvider>().darkTheme
               ? darkColorScheme
@@ -86,7 +83,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routes: {
-        '/': (context) => const SplashScreen(),
+        '/': (context) => const OnboardingPage(),
       },
     );
   }

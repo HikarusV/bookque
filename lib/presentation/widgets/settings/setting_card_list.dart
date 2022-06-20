@@ -90,69 +90,6 @@ class _SettingCardListState extends State<SettingCardList> {
             ],
           ),
         ),
-
-        // Container(
-        //   width: MediaQuery.of(context).size.width,
-        //   margin: const EdgeInsets.all(15.0),
-        //   padding: const EdgeInsets.all(10.0),
-        //   decoration: BoxDecoration(
-        //     border: Border.all(color: primaryColor),
-        //     borderRadius: BorderRadius.circular(12),
-        //   ),
-        //   child: Column(
-        //     children: [
-        //       Text(AppLocalizations.of(context)!.languageText,
-        //           style: buttonMediumBlack),
-        //       const SizedBox(height: 5),
-        //       SizedBox(
-        //         height: 35,
-        //         child: ListView.separated(
-        //           scrollDirection: Axis.horizontal,
-        //           itemCount: languageList.length,
-        //           shrinkWrap: true,
-        //           itemBuilder: (context, index) {
-        //             return Row(
-        //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //               children: [
-        //                 ClipRRect(
-        //                   borderRadius: BorderRadius.circular(12),
-        //                   child: Container(
-        //                     width: 95,
-        //                     height: 35,
-        //                     color: choiceLanguage == languageList[index]
-        //                         ? primaryColor
-        //                         : secondaryColor,
-        //                     child: TextButton(
-        //                       onPressed: () {
-        //                         // final localizationProvider =
-        //                         //     Provider.of<LocalizationProvider>(context,
-        //                         //         listen: false);
-        //                         // localizationProvider.setLocale(locale);
-        //                         choiceLanguage = languageList[index];
-        //                         Locale value = context
-        //                             .read<SettingsProvider>()
-        //                             .changelanguage(languageList[index]);
-        //                       },
-        //                       child: Text(
-        //                         languageList[index],
-        //                         style: choiceLanguage == languageList[index]
-        //                             ? subTextWhite
-        //                             : subTextGrey,
-        //                       ),
-        //                     ),
-        //                   ),
-        //                 ),
-        //               ],
-        //             );
-        //           },
-        //           separatorBuilder: (context, index) => const SizedBox(
-        //             width: 55,
-        //           ),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }

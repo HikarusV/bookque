@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bookque/data/models/categories.dart';
 import 'package:bookque/presentation/pages/upload/select_category.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
@@ -15,36 +13,43 @@ import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import '../../../data/items.dart';
 import '../../../data/models/full_items.dart';
-import '../../widgets/custom/full_button.dart';
-import '../../widgets/custom/text_input.dart';
+import '../../widgets/auth/full_button.dart';
+import '../../widgets/auth/text_input.dart';
 import '../../widgets/custom_scaffold.dart';
 import '../../widgets/upload/choose_categories.dart';
 import '../../widgets/upload/image_picker.dart';
-import '../../widgets/upload/list_categories_selected.dart';
 
-class Upload extends StatelessWidget {
-  Upload({Key? key, this.items, this.isUpdateModule = false}) : super(key: key);
+class Upload extends StatefulWidget {
+  const Upload({Key? key, this.items, this.isUpdateModule = false})
+      : super(key: key);
   final FullItems? items;
   final bool isUpdateModule;
 
+  @override
+  State<Upload> createState() => _UploadState();
+}
+
+class _UploadState extends State<Upload> {
   TextEditingController url = TextEditingController();
+
   TextEditingController title = TextEditingController();
+
   TextEditingController nama = TextEditingController();
+
   TextEditingController desc = TextEditingController();
 
   GroupButtonController type = GroupButtonController()..selectIndex((1));
 
   // final CategoriesSelectCount count = CategoriesSelectCount(items: []);
-
   @override
   Widget build(BuildContext context) {
     List<String>? buffer;
-    if (items != null) {
-      buffer = items!.categories;
-      url.text = items!.url;
-      title.text = items!.title;
-      nama.text = items!.author;
-      desc.text = items!.longdesc;
+    if (widget.items != null) {
+      buffer = widget.items!.categories;
+      url.text = widget.items!.url;
+      title.text = widget.items!.title;
+      nama.text = widget.items!.author;
+      desc.text = widget.items!.longdesc;
 
       /// if type and categories want to change
       buffer.removeAt(0);
@@ -60,7 +65,7 @@ class Upload extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
-                isUpdateModule
+                widget.isUpdateModule
                     ? Container(
                         margin: const EdgeInsets.only(top: 15),
                         child: Column(
@@ -82,15 +87,14 @@ class Upload extends StatelessWidget {
                                 ),
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child:
-                                  CachedNetworkImage(imageUrl: items!.imageid),
+                              child: CachedNetworkImage(
+                                  imageUrl: widget.items!.imageid),
                             ),
                           ],
                         ),
                       )
                     : const ImagePick(),
                 Container(
-                  // color: Colors.amber,
                   alignment: Alignment.centerLeft,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -125,7 +129,7 @@ class Upload extends StatelessWidget {
                 ),
                 ChooseCategories(
                   onTap: () {
-                    if (!isUpdateModule) {
+                    if (!widget.isUpdateModule) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -154,7 +158,7 @@ class Upload extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       ),
                     );
-                    if (!isUpdateModule) {
+                    if (!widget.isUpdateModule) {
                       Map result = await context
                           .read<UploadUpdateItemProvider>()
                           .upload(context.read<AccountProv>().userData!.uid,
@@ -190,15 +194,17 @@ class Upload extends StatelessWidget {
                           .read<UploadUpdateItemProvider>()
                           .updateData(
                             idUser: context.read<AccountProv>().userData!.uid,
-                            id: items!.itemid,
-                            url: (url.text != items!.url) ? url.text : 'none',
-                            author: (nama.text != items!.author)
+                            id: widget.items!.itemid,
+                            url: (url.text != widget.items!.url)
+                                ? url.text
+                                : 'none',
+                            author: (nama.text != widget.items!.author)
                                 ? nama.text.replaceAll('"', '\'')
                                 : 'none',
-                            title: (title.text != items!.title)
+                            title: (title.text != widget.items!.title)
                                 ? title.text.replaceAll('"', '\'')
                                 : 'none',
-                            longDesc: (desc.text != items!.longdesc)
+                            longDesc: (desc.text != widget.items!.longdesc)
                                 ? desc.text.replaceAll('"', '\'')
                                 : 'none',
                           )
@@ -206,7 +212,7 @@ class Upload extends StatelessWidget {
                       Navigator.pop(context);
                     }
                   },
-                  text: (isUpdateModule)
+                  text: (widget.isUpdateModule)
                       ? 'Update'
                       : AppLocalizations.of(context)!.appBarUploadText,
                   marginBottom: 15,

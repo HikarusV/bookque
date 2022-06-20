@@ -1,5 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cpsg10.bookque">
+
+  <queries>
+  <!-- If your app open https URLs -->
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <data android:scheme="https" />
+  </intent>
+  </queries>
+
    <application
         android:label="bookque"
         android:name="${applicationName}"

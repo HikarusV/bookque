@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class CategoriesProvider with ChangeNotifier {
   ResultState _stateCategories = ResultState.noData;
-  Map<String, List<dynamic>> _dataCategories = {};
+  final Map<String, List<dynamic>> _dataCategories = {};
   String _categoriesMessage = 'Empty';
 
   ResultState get stateCategories => _stateCategories;

@@ -2,10 +2,6 @@ import 'dart:convert';
 
 import 'package:bookque/data/models/full_items.dart';
 
-import 'package:bookque/data/models/full_items.dart';
-
-import 'items.dart';
-
 class DetailItems {
   final bool error;
   final String message;

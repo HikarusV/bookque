@@ -49,25 +49,23 @@ class _ReportDialogState extends State<ReportDialog> {
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(12), topLeft: Radius.circular(12)),
       ),
-      child: Stack(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Center(
-                child: Text(AppLocalizations.of(context)!.reportTitleText,
-                    style: popUpTitle)),
-            Positioned(
-              right: 0,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.close,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+      child: Stack(children: [
+        Center(
+            child: Text(AppLocalizations.of(context)!.reportTitleText,
+                style: popUpTitle)),
+        Positioned(
+          right: 0,
+          child: IconButton(
+            icon: const Icon(
+              Icons.close,
+              color: Colors.white,
             ),
-          ]),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      ]),
     );
   }
 

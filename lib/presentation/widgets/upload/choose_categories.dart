@@ -1,5 +1,4 @@
 import 'package:bookque/presentation/provider/upload_provider.dart';
-import 'package:bookque/presentation/widgets/upload/list_categories_selected.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

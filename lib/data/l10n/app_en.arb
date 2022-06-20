@@ -23,6 +23,8 @@
   "nameLabelText": "Full Name",
   "namePlaceholderText": "Input Full Name",
   "confirmPasswordLabelText": "Confirm Password",
+  "minPasswordText": "Password must be at least 6 characters",
+  "sameConfirmPasswordText": "Password must be the same",
   "confirmPasswordPlaceholderText": "Re-enter Password",
   "haveAccountText": "Already have an account? ",
   "greetingsText": "Hello, ",
@@ -95,5 +97,8 @@
   "reportItem3": "Category/Description doesn't match",
   "reportItem4": "Plagiarism",
   "reportItem5": "Harassing the Organization/Person",
-  "sendButtonText": "Send"
+  "sendButtonText": "Send",
+  "searchContentText": "Let's Find The Reading\nReference You Want",
+  "bookmarkTitleText": "You Don't Have a Bookmark",
+  "bookmarkText": "Let's Find Your Favorite Reading"
 }

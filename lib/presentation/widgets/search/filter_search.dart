@@ -1,67 +1,83 @@
+import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/styles.dart';
-import '../../widgets/search/filter_jenis.dart';
-import '../../widgets/search/filter_pencarian.dart';
-import '../../widgets/search/filter_urutkan.dart';
+import '../../../common/localizations.dart';
 
-class FilterSearch extends StatelessWidget {
+class FilterSearch extends StatefulWidget {
   const FilterSearch({Key? key}) : super(key: key);
 
   @override
+  State<FilterSearch> createState() => _FilterSearchState();
+}
+
+class _FilterSearchState extends State<FilterSearch> {
+  final listPencarian = [
+    'Judul',
+    'Penulis',
+    'User',
+  ];
+
+  var choiceType = '';
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(24),
-            ),
-          ),
-          builder: (context) => Container(
-            margin:
-                const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black54,
-                        borderRadius: BorderRadius.circular(12),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.searchFilterText,
+          style: titleSmall,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 20),
+          alignment: Alignment.topLeft,
+          height: 35,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: listPencarian.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      width: 95,
+                      height: 35,
+                      color: choiceType == listPencarian[index]
+                          ? primaryColor
+                          : secondaryColor,
+                      child: TextButton(
+                        onPressed: () {
+                          setState(() {
+                            choiceType = listPencarian[index];
+                          });
+                        },
+                        child: Text(
+                          listPencarian[index],
+                          style: choiceType == listPencarian[index]
+                              ? subTextWhite
+                              : subTextGrey,
+                        ),
                       ),
-                      width: 150,
-                      height: 3,
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  'Filter',
-                  style: titleMedium,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const FilterPencarian(),
-                const FilterUrutkan(),
-                const FilterJenis(),
-              ],
-            ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 15,
+                  ),
+                ],
+              );
+            },
           ),
-        );
-      },
-      child: Image.asset(
-        'assets/filter_search.png',
-        width: 30,
-        height: 30,
-      ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+      ],
     );
   }
 }

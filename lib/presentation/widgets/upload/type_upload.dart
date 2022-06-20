@@ -17,8 +17,6 @@ class TypeUpload extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // for (int i = 0; i < itemsName.length; i++) {}
-
     return Container(
       margin: const EdgeInsets.only(top: 12, bottom: 5),
       child: Column(

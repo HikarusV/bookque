@@ -1,3 +1,4 @@
+import 'package:bookque/data/items.dart';
 import 'package:bookque/data/models/full_items.dart';
 import 'package:bookque/presentation/widgets/detail/small_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -65,10 +66,18 @@ class DetailDataProvPages extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                BookmarkButton(),
-                SizedBox(width: 5),
-                SmallButton(),
+              children: [
+                BookmarkButton(
+                  items: Items(
+                    itemid: 'itemid',
+                    title: 'title',
+                    imageid: 'imageid',
+                    author: 'author',
+                    shortdesc: 'shortdesc',
+                  ),
+                ),
+                const SizedBox(width: 5),
+                const SmallButton(),
               ],
             ),
           ),

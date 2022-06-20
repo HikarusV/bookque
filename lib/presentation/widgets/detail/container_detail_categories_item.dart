@@ -41,15 +41,5 @@ class ContainerDetailCategoriesItem extends StatelessWidget {
         ],
       ),
     );
-    //   GridView.count(
-    //   shrinkWrap: true,
-    //   physics: const NeverScrollableScrollPhysics(),
-    //   // padding: const EdgeInsets.only(top: 15, bottom: 15),
-    //   crossAxisCount: 3,
-    //   childAspectRatio: 6,
-    //   // crossAxisSpacing: 15,
-    //   mainAxisSpacing: 6,
-    //   children: items,
-    // );
   }
 }

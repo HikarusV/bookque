@@ -1,12 +1,11 @@
 import 'package:bookque/common/styles.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/link.dart';
 
 import '../../../common/localizations.dart';
 
 class Help extends StatelessWidget {
-  // static const routeName = '/help_page';
-
   const Help({Key? key}) : super(key: key);
 
   @override
@@ -16,7 +15,7 @@ class Help extends StatelessWidget {
       child: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.all(15.0),
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
             border: Border.all(color: primaryColor),
             borderRadius: BorderRadius.circular(12),
@@ -24,30 +23,58 @@ class Help extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(AppLocalizations.of(context)!.contactUsText,
-                  style: titleSmall),
-              const SizedBox(height: 15),
+              Center(
+                child: Text(AppLocalizations.of(context)!.contactUsText,
+                    style: titleSemiMedium),
+              ),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
                     children: [
-                      CircleAvatar(
-                          radius: 45,
-                          backgroundColor: Colors.transparent,
-                          child: Image.asset('assets/profile.png')),
-                      Text('Faras', style: subText),
-                      Text('faras@gmail.com', style: subText),
+                      const CircleAvatar(
+                        radius: 50,
+                        backgroundImage:
+                            AssetImage('assets/wildan_profile.jpeg'),
+                      ),
+                      Text('Muhammad Wildhan K', style: subText),
+                      Link(
+                        target: LinkTarget.blank,
+                        uri:
+                            Uri.parse('https://www.linkedin.com/in/mwildhank/'),
+                        builder: (context, followLink) => InkWell(
+                          onTap: followLink,
+                          child: Image.asset(
+                            'assets/linkedin_logo.png',
+                            width: 80,
+                            height: 25,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   Column(
                     children: [
-                      CircleAvatar(
-                          radius: 45,
-                          backgroundColor: Colors.transparent,
-                          child: Image.asset('assets/profile.png')),
-                      Text('Faras', style: subText),
-                      Text('faras@gmail.com', style: subText),
+                      const CircleAvatar(
+                        radius: 50,
+                        backgroundImage:
+                            AssetImage('assets/farras_profile.jpeg'),
+                      ),
+                      Text('Abdurrachman Farras', style: subText),
+                      Link(
+                        target: LinkTarget.blank,
+                        uri: Uri.parse(
+                            'https://www.linkedin.com/in/abdurrachman-farras-8a8a08222/'),
+                        builder: (context, followLink) => InkWell(
+                          onTap: followLink,
+                          child: Image.asset(
+                            'assets/linkedin_logo.png',
+                            width: 80,
+                            height: 25,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -58,22 +85,48 @@ class Help extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      CircleAvatar(
-                          radius: 45,
-                          backgroundColor: Colors.transparent,
-                          child: Image.asset('assets/profile.png')),
-                      Text('Faras', style: subText),
-                      Text('faras@gmail.com', style: subText),
+                      const CircleAvatar(
+                        radius: 50,
+                        backgroundImage:
+                            AssetImage('assets/sapta_profile.jpeg'),
+                      ),
+                      Text('Nazwa Sapta Pradana', style: subText),
+                      Link(
+                        target: LinkTarget.blank,
+                        uri: Uri.parse(
+                            'https://www.linkedin.com/in/saptapradana/'),
+                        builder: (context, followLink) => InkWell(
+                          onTap: followLink,
+                          child: Image.asset(
+                            'assets/linkedin_logo.png',
+                            width: 80,
+                            height: 25,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   Column(
                     children: [
-                      CircleAvatar(
-                          radius: 45,
-                          backgroundColor: Colors.transparent,
-                          child: Image.asset('assets/profile.png')),
-                      Text('Faras', style: subText),
-                      Text('faras@gmail.com', style: subText),
+                      const CircleAvatar(
+                        radius: 50,
+                        backgroundImage:
+                            AssetImage('assets/yudhis_profile.jpeg'),
+                      ),
+                      Text('Yudhistira Hary P', style: subText),
+                      Link(
+                        target: LinkTarget.blank,
+                        uri: Uri.parse(
+                            'https://www.linkedin.com/in/yudhistira-hary-pratama/'),
+                        builder: (context, followLink) => InkWell(
+                          onTap: followLink,
+                          child: Image.asset(
+                            'assets/linkedin_logo.png',
+                            width: 80,
+                            height: 25,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],

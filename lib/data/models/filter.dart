@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import '../../common/localizations.dart';
+
 class Filters {
   String name;
   bool isSelected;
@@ -8,17 +12,19 @@ class Filters {
   });
 }
 
-var listFilter = [
-  Filters(
-    name: 'Terbaru',
-    isSelected: false,
-  ),
-  Filters(
-    name: 'Terlama',
-    isSelected: false,
-  ),
-  Filters(
-    name: 'Terpopuler',
-    isSelected: false,
-  ),
-];
+List<Filters> getListFilter(BuildContext context) {
+  return [
+    Filters(
+      name: AppLocalizations.of(context)!.sortUploadItem1,
+      isSelected: false,
+    ),
+    Filters(
+      name: AppLocalizations.of(context)!.sortUploadItem2,
+      isSelected: false,
+    ),
+    Filters(
+      name: AppLocalizations.of(context)!.sortUploadItem3,
+      isSelected: false,
+    ),
+  ];
+}

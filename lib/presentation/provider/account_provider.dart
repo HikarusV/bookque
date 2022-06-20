@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -40,6 +40,8 @@ class AccountProv extends ChangeNotifier {
   Future signInGoogle() async {
     final googleUser = await GoogleSignIn().signIn().onError(
       (error, stackTrace) {
+        return null;
+
         // print('Error Mas broh $error');
       },
     );

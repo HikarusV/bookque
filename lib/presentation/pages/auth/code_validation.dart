@@ -1,14 +1,13 @@
 import 'package:bookque/data/cache/cache_auth.dart';
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
-import 'package:bookque/presentation/widgets/custom/send_email_verification_again.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/styles.dart';
 import '../../provider/account_provider.dart';
+import '../../widgets/auth/send_email_verification_again.dart';
 
 class CodeValidation extends StatelessWidget {
   const CodeValidation(
@@ -111,7 +110,7 @@ class CodeValidation extends StatelessWidget {
                             fontSize: 22,
                           ),
                           decoration: InputDecoration(
-                            hintStyle: GoogleFonts.poppins(color: Colors.grey),
+                            hintStyle: hintTitle,
                             hintText: '------',
                             contentPadding: const EdgeInsets.all(12),
                             // isDense: true,

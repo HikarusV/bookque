@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:bookque/common/styles.dart';
@@ -64,14 +63,12 @@ class _ImagePickState extends State<ImagePick> {
                       margin: const EdgeInsets.only(top: 5, bottom: 5),
                       child: Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 140,
                             child: Image.file(
                               image!,
                             ),
                           ),
-                          ElevatedButton(
-                              onPressed: () {}, child: const Text('Ganti'))
                         ],
                       ),
                     )

@@ -1,16 +1,15 @@
+import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/state_enum.dart';
-import '../../../data/models/poster.dart';
 import '../../provider/search_provider.dart';
-import '../../widgets/custom2/double_list_books.dart';
 import '../../widgets/custom_scaffold.dart';
+import '../../widgets/home/double_list_books.dart';
 import '../../widgets/scroll_behavior_without_glow.dart';
-import '../../widgets/search/filter_search.dart';
 import '../../widgets/search/search_box.dart';
+import '../../widgets/search/search_filter.dart';
 
 class Search extends StatelessWidget {
   const Search({Key? key}) : super(key: key);
@@ -51,17 +50,12 @@ class Search extends StatelessWidget {
                       ),
                       const Expanded(
                         flex: 1,
-                        child: FilterSearch(),
+                        child: SearchFilter(),
                       ),
                     ],
                   ),
                   const SizedBox(
                     height: 15,
-                  ),
-                  Text(
-                    AppLocalizations.of(context)!.searchResultText,
-                    style: GoogleFonts.poppins(
-                        fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -83,7 +77,31 @@ class Search extends StatelessWidget {
                       print('diluar if');
                       return Text(value.searchMessage);
                     }
-                    return const Text('No Data');
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 150),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Image.asset(
+                                'assets/search_image1.png',
+                                width: 150,
+                                height: 150,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                AppLocalizations.of(context)!.searchContentText,
+                                textAlign: TextAlign.center,
+                                style: titleSemiMedium,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class DetailItemsProvider with ChangeNotifier {
   ResultState _stateDetailItems = ResultState.noData;
-  Map<String, FullItems> _dataDetailItems = {};
+  final Map<String, FullItems> _dataDetailItems = {};
   String _detailItemsMessage = 'Empty';
 
   ResultState get stateDetailItems => _stateDetailItems;

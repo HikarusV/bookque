@@ -7,12 +7,12 @@ import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
-import '../../widgets/custom/bottom_text_button.dart';
-import '../../widgets/custom/full_button.dart';
-import '../../widgets/custom/heading_title.dart';
-import '../../widgets/custom/image_button.dart';
-import '../../widgets/custom/password_field.dart';
-import '../../widgets/custom/text_input.dart';
+import '../../widgets/auth/bottom_text_button.dart';
+import '../../widgets/auth/full_button.dart';
+import '../../widgets/auth/heading_title.dart';
+import '../../widgets/auth/image_button.dart';
+import '../../widgets/auth/password_field.dart';
+import '../../widgets/auth/text_input.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -40,24 +40,17 @@ class Login extends StatelessWidget {
                         subTitle: AppLocalizations.of(context)!.loginText2,
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              left: 15, right: 15, top: 20, bottom: 10),
-                          child: Container(
-                            height: 100,
-                            decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/bookque_icon.png'))),
-                          )
-                          // SizedBox(
-                          //   height: 140,
-                          //   width: 257,
-                          //   child: FittedBox(
-                          //     child: Image.asset('assets/bookque_icon.png'),
-                          //     fit: BoxFit.contain,
-                          //   ),
-                          // ),
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, top: 20, bottom: 10),
+                        child: Container(
+                          height: 100,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/logo.png'),
+                            ),
                           ),
+                        ),
+                      ),
                       Column(
                         children: [
                           TextInput(

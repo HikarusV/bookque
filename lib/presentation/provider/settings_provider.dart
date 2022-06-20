@@ -17,7 +17,6 @@ class SettingsProvider with ChangeNotifier {
 
   void changeTheme(bool value) {
     darkTheme = value;
-    print('ganti tema ke ${value ? Brightness.dark : Brightness.light}');
     notifyListeners();
   }
 

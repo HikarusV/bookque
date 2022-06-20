@@ -7,11 +7,11 @@ import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/localizations.dart';
-import '../../widgets/custom/bottom_text_button.dart';
-import '../../widgets/custom/full_button.dart';
-import '../../widgets/custom/heading_title.dart';
-import '../../widgets/custom/password_field.dart';
-import '../../widgets/custom/text_input.dart';
+import '../../widgets/auth/bottom_text_button.dart';
+import '../../widgets/auth/full_button.dart';
+import '../../widgets/auth/heading_title.dart';
+import '../../widgets/auth/password_field.dart';
+import '../../widgets/auth/text_input.dart';
 import 'login.dart';
 
 class Register extends StatelessWidget {

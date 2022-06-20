@@ -1,4 +1,3 @@
-import 'package:bookque/common/localizations.dart';
 import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
@@ -6,11 +5,13 @@ import 'package:group_button/group_button.dart';
 class SettingItemButton extends StatelessWidget {
   const SettingItemButton({
     Key? key,
+    this.title = '',
     required this.itemsName,
     required this.controller,
     this.onItemSelected,
   }) : super(key: key);
 
+  final String title;
   final List itemsName;
   final GroupButtonController controller;
   final Function(dynamic, int, bool)? onItemSelected;
@@ -25,9 +26,8 @@ class SettingItemButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(AppLocalizations.of(context)!.themeText,
-              style: buttonMediumBlack),
-          const SizedBox(height: 5),
+          Text(title, style: buttonMediumBlack),
+          const SizedBox(height: 10),
           GroupButton(
             controller: controller,
             buttons: itemsName,

@@ -1,8 +1,6 @@
 import 'package:bookque/common/state_enum.dart';
 import 'package:bookque/common/styles.dart';
 import 'package:bookque/data/items.dart';
-import 'package:bookque/data/models/books.dart';
-import 'package:bookque/presentation/pages/detail/user_detail.dart';
 import 'package:bookque/presentation/pages/settings/settings.dart';
 import 'package:bookque/presentation/pages/upload/upload.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
@@ -56,7 +54,6 @@ class _ProfileState extends State<Profile> {
                         );
                       },
                       child: const Icon(
-                        // Icons.settings_outlined,
                         Icons.settings,
                         size: 28,
                         color: primaryColor,
@@ -95,7 +92,7 @@ class _ProfileState extends State<Profile> {
           onPressed: () async {
             var result = await Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Upload(),
+                builder: (context) => const Upload(),
               ),
             );
             if (result.runtimeType == Items) {

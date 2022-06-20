@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
@@ -27,7 +26,7 @@ class SearchBox extends StatelessWidget {
             child: Icon(Icons.search, color: primaryColor),
           ),
           TextField(
-            style: GoogleFonts.poppins(),
+            style: subText,
             onSubmitted: onEventSubmited,
             decoration: InputDecoration(
               hintText: AppLocalizations.of(context)!.searchPlaceholderText,

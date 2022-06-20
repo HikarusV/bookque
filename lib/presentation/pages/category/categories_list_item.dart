@@ -47,7 +47,7 @@ class CategoriesListItem extends StatelessWidget {
                   ),
                   Text(
                     item.name,
-                    style: titleSmall,
+                    style: buttonMedium,
                   ),
                 ],
               ),

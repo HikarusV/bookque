@@ -1,11 +1,9 @@
-import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../data/models/categories.dart';
-import '../../widgets/custom/full_button.dart';
+import '../../widgets/auth/full_button.dart';
 import '../../widgets/custom_scaffold.dart';
 import '../../widgets/upload/list_categories_selected.dart';
 

@@ -4,6 +4,22 @@ import 'package:google_fonts/google_fonts.dart';
 const Color primaryColor = Color(0xFF63B1F2);
 const Color secondaryColor = Color(0xFFE7F2FF);
 
+var onboardingTitle = GoogleFonts.poppins(
+  fontSize: 30,
+  color: const Color(0xff004A76),
+);
+
+var onboardingText = GoogleFonts.poppins(
+  fontSize: 20,
+  color: const Color(0xff9EADBE),
+);
+
+var authorTextSmall = GoogleFonts.poppins(
+  fontSize: 11,
+  fontWeight: FontWeight.w500,
+  color: const Color(0xff8C9198),
+);
+
 var appBarTitle = GoogleFonts.poppins(
   fontSize: 26,
   fontWeight: FontWeight.w600,
@@ -16,12 +32,16 @@ var titleMedium = GoogleFonts.poppins(
   fontSize: 20,
   fontWeight: FontWeight.w600,
 );
+
+var titleSemiMedium = GoogleFonts.poppins(
+  fontSize: 20,
+);
+
 var titleSmall = GoogleFonts.poppins(
   fontSize: 16,
 );
 var descText = GoogleFonts.poppins(
   fontSize: 14,
-  // fontWeight: FontWeight.w500,
 );
 var hintTitleLarge = GoogleFonts.poppins(
   fontSize: 24,

@@ -1,11 +1,11 @@
 import 'package:bookque/presentation/pages/auth/code_verification.dart';
-import 'package:bookque/presentation/widgets/auth/heading_verification.dart';
-import 'package:bookque/presentation/widgets/custom/full_button.dart';
-import 'package:bookque/presentation/widgets/custom/text_input.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/localizations.dart';
+import '../../widgets/auth/full_button.dart';
+import '../../widgets/auth/heading_verification.dart';
+import '../../widgets/auth/text_input.dart';
 
 class SentVerification extends StatefulWidget {
   const SentVerification({Key? key}) : super(key: key);

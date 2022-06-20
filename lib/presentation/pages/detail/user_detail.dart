@@ -5,14 +5,11 @@ import 'package:bookque/presentation/provider/profile_items_provider.dart';
 import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:bookque/presentation/provider/user_item_detail.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
-import 'package:bookque/presentation/widgets/detail/bookmark_button.dart';
-import 'package:bookque/presentation/widgets/detail/container_detail_categories_item.dart';
-import 'package:bookque/presentation/widgets/detail/detail_categories_item.dart';
-import 'package:bookque/presentation/widgets/detail/small_button.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/localizations.dart';
 import '../../../common/state_enum.dart';
 import '../../../data/models/full_items.dart';
 import '../../widgets/detail/detail_data_prov_pages.dart';
@@ -90,7 +87,8 @@ class _UserDetailState extends State<UserDetail> {
                     color: Colors.black,
                   ),
                   const SizedBox(width: 5),
-                  Text('Ubah', style: titleSmall),
+                  Text(AppLocalizations.of(context)!.editBookText,
+                      style: titleSmall),
                 ],
               ),
             ),
@@ -103,7 +101,8 @@ class _UserDetailState extends State<UserDetail> {
                     color: Colors.black,
                   ),
                   const SizedBox(width: 5),
-                  Text('Hapus', style: titleSmall),
+                  Text(AppLocalizations.of(context)!.deleteBookText,
+                      style: titleSmall),
                 ],
               ),
             ),
@@ -118,7 +117,9 @@ class _UserDetailState extends State<UserDetail> {
             child: Consumer<UserDetailItemsProvider>(
               builder: (context, value, _) {
                 if (value.stateUserDetailItems == ResultState.loading) {
-                  return const Text('Loading');
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 } else if (value.stateUserDetailItems == ResultState.hasData &&
                     value.dataUserDetailItems.containsKey(widget.id)) {
                   return DetailDataProvPages(
@@ -128,78 +129,9 @@ class _UserDetailState extends State<UserDetail> {
                 } else if (value.stateUserDetailItems == ResultState.error) {
                   return Text(value.userDetailItemsMessage);
                 }
-                return const Text('Loading');
+                return const Text('');
               },
             ),
-
-            // Column(
-            //   children: [
-            //     Container(
-            //       alignment: Alignment.center,
-            //       child: Column(
-            //         children: [
-            //           const SizedBox(height: 10),
-            //           Text(
-            //             'Mantappu Jiwa *Buku Latihan',
-            //             style: titleLarge,
-            //             textAlign: TextAlign.center,
-            //           ),
-            //           const SizedBox(height: 10),
-            //           ClipRRect(
-            //             borderRadius: BorderRadius.circular(12),
-            //             child: Image.asset('assets/buku1.png', height: 240),
-            //           ),
-            //           const SizedBox(height: 10),
-            //           Text(
-            //             'Jerome Polin Sijabat',
-            //             style: titleMedium,
-            //             textAlign: TextAlign.center,
-            //           ),
-            //           const SizedBox(height: 10),
-            //           const ContainerDetailCategoriesItem(
-            //             items: [
-            //               DetailCategoriesItem(),
-            //               DetailCategoriesItem(),
-            //               DetailCategoriesItem(),
-            //               DetailCategoriesItem(),
-            //               DetailCategoriesItem(),
-            //             ],
-            //             type: DetailCategoriesItem(
-            //               text: 'E-Book',
-            //             ),
-            //           )
-            //         ],
-            //       ),
-            //     ),
-            //     Center(
-            //       child: Container(
-            //         margin: const EdgeInsets.only(bottom: 15),
-            //         child: Row(
-            //           mainAxisAlignment: MainAxisAlignment.center,
-            //           children: const [
-            //             SizedBox(width: 5),
-            //             SmallButton(),
-            //           ],
-            //         ),
-            //       ),
-            //     ),
-            //     Column(
-            //       crossAxisAlignment: CrossAxisAlignment.start,
-            //       children: [
-            //         Text(
-            //           'Deskripsi',
-            //           style: titleMedium,
-            //         ),
-            //         const SizedBox(height: 5),
-            //         Text(
-            //           'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Donec rutrum congue leo eget malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque.',
-            //           style: subText,
-            //           textAlign: TextAlign.justify,
-            //         ),
-            //       ],
-            //     ),
-            //   ],
-            // ),
           ),
         ),
       ),

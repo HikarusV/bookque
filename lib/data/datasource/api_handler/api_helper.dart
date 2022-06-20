@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-import 'package:bookque/data/category.dart';
 import 'package:bookque/data/detail_items.dart';
 import 'package:bookque/data/list_items.dart';
 import 'package:bookque/data/profile.dart';
-import 'package:bookque/data/search.dart';
 import 'package:http/http.dart' as http;
 
 import 'api.dart';

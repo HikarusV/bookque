@@ -18,7 +18,7 @@ class SearchProvider with ChangeNotifier {
     try {
       final result = await HandleApi.getSearch(keyword);
 
-      await Future.delayed(Duration(seconds: 4));
+      await Future.delayed(const Duration(seconds: 4));
 
       if (!result['error']) {
         _stateSearch = ResultState.hasData;

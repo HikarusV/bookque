@@ -12,7 +12,7 @@ class Categories {
   });
 }
 
-final uploadType = ['Makalah', 'E-Book', 'Jurnal', 'Skripsi', 'Makalah'];
+final uploadType = ['Makalah', 'E-Book', 'Jurnal', 'Skripsi', 'Artikel'];
 
 final listCategoriesId = [
   'arts',
@@ -32,79 +32,79 @@ final listCategoriesId = [
 
 var listCategory = [
   Categories(
-    name: 'arts',
+    name: 'Arts',
     id: 'arts',
     imageAsset: 'assets/cat1.png',
     isSelected: false,
   ),
   Categories(
-    name: 'animals',
+    name: 'Animals',
     id: 'animals',
     imageAsset: 'assets/cat2.png',
     isSelected: false,
   ),
   Categories(
-    name: 'fiction',
+    name: 'Fiction',
     id: 'fiction',
     imageAsset: 'assets/cat3.png',
     isSelected: false,
   ),
   Categories(
-    name: 'science',
+    name: 'Science',
     id: 'science_&_mathematics',
     imageAsset: 'assets/cat4.png',
     isSelected: false,
   ),
   Categories(
-    name: 'business',
+    name: 'Business',
     id: 'business_&_finance',
     imageAsset: 'assets/cat5.png',
     isSelected: false,
   ),
   Categories(
-    name: 'children',
+    name: 'Children',
     id: 'children\'s',
     imageAsset: 'assets/cat6.png',
     isSelected: false,
   ),
   Categories(
-    name: 'history',
+    name: 'History',
     id: 'history',
     imageAsset: 'assets/cat7.png',
     isSelected: false,
   ),
   Categories(
-    name: 'health',
+    name: 'Health',
     id: 'health_&_wellness',
     imageAsset: 'assets/cat8.png',
     isSelected: false,
   ),
   Categories(
-    name: 'biography',
+    name: 'Biography',
     id: 'biography',
     imageAsset: 'assets/cat9.png',
     isSelected: false,
   ),
   Categories(
-    name: 'social',
+    name: 'Social',
     id: 'social_sciences',
     imageAsset: 'assets/cat10.png',
     isSelected: false,
   ),
   Categories(
-    name: 'places',
+    name: 'Places',
     id: 'places',
     imageAsset: 'assets/cat11.png',
     isSelected: false,
   ),
   Categories(
-    name: 'textbooks',
+    name: 'Textbooks',
     id: 'textbooks',
     imageAsset: 'assets/cat12.png',
     isSelected: false,
   ),
   Categories(
-    name: 'language',
+    name: 'Language',
     id: 'books_by_language',
     imageAsset: 'assets/cat13.png',
     isSelected: false,

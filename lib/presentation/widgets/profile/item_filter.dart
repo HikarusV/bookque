@@ -11,6 +11,9 @@ class ItemFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = getListFilter(context);
+    bool isSelected = false;
+
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
@@ -49,7 +52,7 @@ class ItemFilter extends StatelessWidget {
                   height: 15,
                 ),
                 ListFilterSelected(
-                  items: listFilter,
+                  items: data,
                   count: count,
                 )
               ],
