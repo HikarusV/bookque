@@ -2,6 +2,9 @@ import 'package:bookque/common/localizations.dart';
 import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/settings_provider.dart';
 
 class TypeUpload extends StatelessWidget {
   const TypeUpload({
@@ -36,7 +39,11 @@ class TypeUpload extends StatelessWidget {
                   width: 95,
                   height: 35,
                   alignment: Alignment.center,
-                  color: selected ? primaryColor : secondaryColor,
+                  color: selected
+                      ? primaryColor
+                      : (context.read<SettingsProvider>().darkTheme)
+                          ? Theme.of(context).colorScheme.surfaceVariant
+                          : secondaryColor,
                   child: Text(
                     name.toString(),
                     style: selected ? subTextWhite : subTextGrey,

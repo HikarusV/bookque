@@ -22,9 +22,8 @@ class Preference extends StatelessWidget {
               controller: context.read<SettingsProvider>().themes,
               itemsName: const ['Terang', 'Gelap'],
               onItemSelected: (name, i, isSelected) {
-                context.read<SettingsProvider>().changeTheme(i == 1);
                 context.read<SettingsProvider>().themes.selectIndex(i);
-                print('Ganti tema $name');
+                context.read<SettingsProvider>().changeTheme(i == 1);
               },
             ),
             SettingItemButton(

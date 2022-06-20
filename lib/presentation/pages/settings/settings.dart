@@ -1,3 +1,4 @@
+import 'package:bookque/common/utils/system_notification.dart';
 import 'package:bookque/presentation/pages/settings/about_us.dart';
 import 'package:bookque/presentation/pages/settings/account.dart';
 import 'package:bookque/presentation/pages/settings/help.dart';
@@ -23,6 +24,12 @@ class Settings extends StatelessWidget {
           margin: const EdgeInsets.all(15.0),
           child: Column(
             children: [
+              SettingButton(
+                text: 'Testing Notification',
+                onPressed: () {
+                  NotificationSystem.showNotif('Test', 'Body', 'Payload');
+                },
+              ),
               SettingButton(
                 text: AppLocalizations.of(context)!.accountText,
                 onPressed: () {

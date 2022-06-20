@@ -61,8 +61,6 @@ class AccountProv extends ChangeNotifier {
   Future signInFacebook() async {
     final LoginResult facebookAuth =
         await FacebookAuth.i.login(permissions: (['email', 'public_profile']));
-    // print('token facebook : ${facebookAuth.accessToken!.grantedPermissions}');
-    // final graphResponse = await
 
     if (facebookAuth.status == LoginStatus.success) {
       AccessToken? _accessToken = facebookAuth.accessToken;
@@ -80,8 +78,6 @@ class AccountProv extends ChangeNotifier {
       } on Exception catch (e) {
         print('===== Error : $e ==== END');
       }
-
-      print(data);
       notifyListeners();
     }
   }
@@ -103,7 +99,6 @@ class AccountProv extends ChangeNotifier {
 
   Future logOut() async {
     if (!isNormalLogin) {
-      print('in here Mas Broh');
       await googleSignIn.signOut();
     }
     await FirebaseAuth.instance.signOut();

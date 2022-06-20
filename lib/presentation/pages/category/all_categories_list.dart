@@ -38,6 +38,7 @@ class _AllCategoriesItemsState extends State<AllCategoriesItems> {
               );
             } else if (value.stateCategories == ResultState.hasData) {
               return DoubleListBooks(
+                tagPrefix: 'cat-',
                 isScroolable: true,
                 listData: value.dataCategories[widget.id] ?? [],
                 isNetwork: true,

@@ -2,6 +2,7 @@ import 'package:bookque/common/localizations.dart';
 import 'package:bookque/common/styles.dart';
 import 'package:bookque/data/db/database_helper.dart';
 import 'package:bookque/presentation/onboarding_page.dart';
+import 'package:bookque/presentation/pages/auth/auth_account.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:bookque/presentation/provider/categories_provider.dart';
 import 'package:bookque/presentation/provider/database_provider.dart';
@@ -14,16 +15,39 @@ import 'package:bookque/presentation/provider/settings_provider.dart';
 import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:bookque/presentation/provider/user_item_detail.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'common/utils/system_notification.dart';
 import 'firebase_options.dart';
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  print('Handling a background message ${message.messageId}');
+}
+
+late AndroidNotificationChannel channel;
+late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+late SharedPreferences globalLocalData;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  globalLocalData = await SharedPreferences.getInstance();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await firebaseSetup();
+  await NotificationSystem.init(
+    initNotifPlugin: flutterLocalNotificationsPlugin,
+    androidChannel: channel,
+  );
+
   runApp(
     MultiProvider(
       providers: [
@@ -58,8 +82,7 @@ void main() async {
           create: (context) => UserDetailItemsProvider(),
         ),
         ChangeNotifierProvider<DatabaseProvider>(
-          create: (context) =>
-              DatabaseProvider(databaseHelper: DatabaseHelper()),
+          create: (context) => DatabaseProvider(),
         ),
       ],
       child: const MyApp(),
@@ -83,8 +106,38 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routes: {
-        '/': (context) => const OnboardingPage(),
+        '/': (context) => (globalLocalData.getBool('first') == null ||
+                globalLocalData.getBool('first') == false)
+            ? const OnboardingPage()
+            : const AuthAccount(),
       },
+    );
+  }
+}
+
+Future firebaseSetup() async {
+  if (!kIsWeb) {
+    channel = const AndroidNotificationChannel(
+      'high_channel',
+      'High Importance Notification',
+      description: 'Description Notification',
+      importance: Importance.high,
+      playSound: true,
+      showBadge: true,
+    );
+
+    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(channel);
+
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
     );
   }
 }

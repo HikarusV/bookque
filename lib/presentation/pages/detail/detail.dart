@@ -12,8 +12,10 @@ import '../../../common/state_enum.dart';
 import '../../widgets/detail/detail_data_prov_pages.dart';
 
 class Detail extends StatefulWidget {
-  const Detail({Key? key, required this.id}) : super(key: key);
+  const Detail({Key? key, required this.id, this.tagPrefix = 'id-'})
+      : super(key: key);
   final String id;
+  final String tagPrefix;
 
   @override
   State<Detail> createState() => _DetailState();
@@ -30,49 +32,45 @@ class _DetailState extends State<Detail> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<DatabaseProvider>(
-            create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper())),
+    return CustomScaffold(
+      title: 'Detail',
+      actions: <Widget>[
+        IconButton(
+          icon: const Icon(
+            Icons.report,
+            size: 28,
+          ),
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const ReportDialog();
+                });
+          },
+        )
       ],
-      child: CustomScaffold(
-        title: 'Detail',
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.report,
-              size: 28,
-            ),
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return const ReportDialog();
-                  });
-            },
-          )
-        ],
-        child: ScrollConfiguration(
-          behavior: ScrollBehaviorWithoutGlow(),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Consumer<DetailItemsProvider>(
-                builder: (context, value, _) {
-                  if (value.stateDetailItems == ResultState.loading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (value.stateDetailItems == ResultState.hasData &&
-                      value.dataDetailItems.containsKey(widget.id)) {
-                    return DetailDataProvPages(
-                        item: value.dataDetailItems[widget.id] ?? FullItems());
-                  } else if (value.stateDetailItems == ResultState.error) {
-                    return Text(value.detailItemsMessage);
-                  }
-                  return const Text('');
-                },
-              ),
+      child: ScrollConfiguration(
+        behavior: ScrollBehaviorWithoutGlow(),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Consumer<DetailItemsProvider>(
+              builder: (context, value, _) {
+                if (value.stateDetailItems == ResultState.loading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (value.stateDetailItems == ResultState.hasData &&
+                    value.dataDetailItems.containsKey(widget.id)) {
+                  return DetailDataProvPages(
+                    tagPrefix: widget.tagPrefix,
+                    item: value.dataDetailItems[widget.id] ?? FullItems(),
+                  );
+                } else if (value.stateDetailItems == ResultState.error) {
+                  return Text(value.detailItemsMessage);
+                }
+                return const Text('');
+              },
             ),
           ),
         ),

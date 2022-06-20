@@ -1,5 +1,7 @@
 import 'package:bookque/data/models/filter.dart';
+import 'package:bookque/presentation/provider/profile_items_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'filter_item_selected.dart';
 
@@ -18,6 +20,8 @@ class ListFilterSelected extends StatelessWidget {
       itemBuilder: (context, index) => FilterItemsSelected(
         title: items[index].name,
         count: count,
+        isSelected: context.watch<ProfileItemsProvider>().filter[index],
+        id: index,
       ),
     );
   }

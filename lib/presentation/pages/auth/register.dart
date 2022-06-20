@@ -192,13 +192,13 @@ class Register extends StatelessWidget {
             builder: (context) => CodeValidation(
               controller: TextEditingController(),
               whenValid: () async {
-                // Navigator.pop(context);
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AuthAccount(),
-                  ),
-                );
+                Navigator.pop(context);
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const AuthAccount(),
+                //   ),
+                // );
               },
               whenError: () => print('Gagal broh'),
             ),

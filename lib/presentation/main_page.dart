@@ -29,34 +29,35 @@ class _MainPageState extends State<MainPage> {
         index: currentIndex,
         children: screens,
       ),
-      backgroundColor: const Color(0xffFCFCFF),
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
         child: SalomonBottomBar(
-            currentIndex: currentIndex,
-            onTap: (index) {
-              setState(() => currentIndex = index);
-            },
-            items: [
-              SalomonBottomBarItem(
-                icon: const Icon(Icons.home),
-                title: const Text("Home"),
-                selectedColor: primaryColor,
-                unselectedColor: Colors.grey,
-              ),
-              SalomonBottomBarItem(
-                icon: const Icon(Icons.bookmark),
-                title: const Text("Bookmark"),
-                selectedColor: primaryColor,
-                unselectedColor: Colors.grey,
-              ),
-              SalomonBottomBarItem(
-                icon: const Icon(Icons.person),
-                title: const Text("Profile"),
-                selectedColor: primaryColor,
-                unselectedColor: Colors.grey,
-              ),
-            ]),
+          currentIndex: currentIndex,
+          onTap: (index) {
+            setState(() => currentIndex = index);
+          },
+          items: [
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.home),
+              title: const Text("Home"),
+              selectedColor: Theme.of(context).colorScheme.primary,
+              unselectedColor: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.bookmark),
+              title: const Text("Bookmark"),
+              selectedColor: Theme.of(context).colorScheme.primary,
+              unselectedColor: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.person),
+              title: const Text("Profile"),
+              selectedColor: Theme.of(context).colorScheme.primary,
+              unselectedColor: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+          ],
+        ),
       ),
     );
   }

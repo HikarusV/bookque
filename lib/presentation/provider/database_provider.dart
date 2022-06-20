@@ -4,13 +4,13 @@ import 'package:bookque/data/items.dart';
 import 'package:flutter/material.dart';
 
 class DatabaseProvider extends ChangeNotifier {
-  final DatabaseHelper databaseHelper;
+  late DatabaseHelper databaseHelper;
 
-  DatabaseProvider({required this.databaseHelper}) {
-    getBookmarks();
+  DatabaseProvider() {
+    databaseHelper = DatabaseHelper();
   }
 
-  late ResultState _state;
+  ResultState _state = ResultState.noData;
   ResultState get state => _state;
 
   String _message = '';
@@ -19,12 +19,13 @@ class DatabaseProvider extends ChangeNotifier {
   List<Items> _bookmarks = [];
   List<Items> get bookmarks => _bookmarks;
 
-  void getBookmarks() async {
+  Future getBookmarks() async {
     try {
       _state = ResultState.loading;
       notifyListeners();
 
       _bookmarks = await databaseHelper.getBookmarks();
+
       if (_bookmarks.isNotEmpty) {
         _state = ResultState.hasData;
       } else {
@@ -49,10 +50,6 @@ class DatabaseProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-
-  // void selectData() async {
-  //   await databaseHelper.selectBookmark();
-  // }
 
   Future<bool> isBookmarked(String itemid) async {
     final bookmarkedItem = await databaseHelper.getBookmarkById(itemid);

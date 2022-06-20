@@ -14,10 +14,14 @@ import 'list_categories.dart';
 
 class DetailDataProvPages extends StatelessWidget {
   const DetailDataProvPages(
-      {Key? key, required this.item, this.withRecommendation = true})
+      {Key? key,
+      required this.item,
+      this.withRecommendation = true,
+      this.tagPrefix = 'id-'})
       : super(key: key);
   final FullItems item;
   final bool withRecommendation;
+  final String tagPrefix;
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +38,18 @@ class DetailDataProvPages extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: CachedNetworkImage(
-                  imageUrl: item.imageid,
-                  placeholder: (context, url) => Container(
-                    color: Colors.grey.shade300,
+              Hero(
+                tag: '$tagPrefix${item.itemid}',
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: CachedNetworkImage(
+                    imageUrl: item.imageid,
+                    placeholder: (context, url) => Container(
+                      color: Colors.grey.shade300,
+                    ),
+                    height: 240,
+                    fit: BoxFit.fill,
                   ),
-                  height: 240,
-                  fit: BoxFit.fill,
                 ),
               ),
               const SizedBox(height: 10),

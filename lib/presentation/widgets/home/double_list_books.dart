@@ -11,11 +11,13 @@ class DoubleListBooks extends StatelessWidget {
       {Key? key,
       this.isScroolable = false,
       this.isNetwork = true,
-      required this.listData})
+      required this.listData,
+      this.tagPrefix = 'id-'})
       : super(key: key);
   final bool isScroolable;
   final bool isNetwork;
   final List<Items> listData;
+  final String tagPrefix;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,10 @@ class DoubleListBooks extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Detail(id: listData[index].itemid),
+                  builder: (context) => Detail(
+                    id: listData[index].itemid,
+                    tagPrefix: tagPrefix,
+                  ),
                 ),
               );
             },
@@ -49,20 +54,23 @@ class DoubleListBooks extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12.0),
-                    child: isNetwork
-                        ? CachedNetworkImage(
-                            placeholder: (context, url) => Container(
-                              color: Colors.grey.shade300,
+                  child: Hero(
+                    tag: '$tagPrefix${listData[index].itemid}',
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12.0),
+                      child: isNetwork
+                          ? CachedNetworkImage(
+                              placeholder: (context, url) => Container(
+                                color: Colors.grey.shade300,
+                              ),
+                              imageUrl: listData[index].imageid,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              listData[index].imageid,
+                              fit: BoxFit.cover,
                             ),
-                            imageUrl: listData[index].imageid,
-                            fit: BoxFit.cover,
-                          )
-                        : Image.asset(
-                            listData[index].imageid,
-                            fit: BoxFit.cover,
-                          ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 5),

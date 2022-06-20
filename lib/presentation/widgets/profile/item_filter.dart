@@ -12,7 +12,6 @@ class ItemFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final data = getListFilter(context);
-    bool isSelected = false;
 
     return GestureDetector(
       onTap: () {

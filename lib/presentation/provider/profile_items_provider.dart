@@ -12,8 +12,25 @@ class ProfileItemsProvider with ChangeNotifier {
   List<Items> get dataProfileItems => _dataProfileItems;
   String get profiletemsMessage => _profiletemsMessage;
 
+  ///              isFirst, isLast, isPopular
+  List<bool> filter = [true, false, false];
+
+  void changeSort(int changeId) {
+    if (filter[changeId] == false && changeId != 2) {
+      _dataProfileItems = List.from(_dataProfileItems.reversed);
+    }
+    changeValue(changeId);
+    notifyListeners();
+  }
+
+  void changeValue(int index) {
+    for (int i = 0; i < filter.length; i++) {
+      filter[i] = i == index;
+    }
+  }
+
   void addNewData(Items newItem) {
-    _dataProfileItems.add(newItem);
+    _dataProfileItems.insert(0, newItem);
     notifyListeners();
   }
 

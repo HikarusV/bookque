@@ -42,7 +42,7 @@ class SettingItemButton extends StatelessWidget {
                   color: selected ? primaryColor : secondaryColor,
                   child: Text(
                     name.toString(),
-                    style: selected ? subTextWhite : subTextGrey,
+                    style: selected ? subTextWhite : subTextGreyOld,
                   ),
                 ),
               );

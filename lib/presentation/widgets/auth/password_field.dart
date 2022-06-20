@@ -1,5 +1,8 @@
 import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/settings_provider.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({
@@ -58,7 +61,9 @@ class _PasswordFieldState extends State<PasswordField> {
               Container(
                 height: 50,
                 decoration: BoxDecoration(
-                  color: const Color(0xffE7F2FF),
+                  color: (context.read<SettingsProvider>().darkTheme)
+                      ? Theme.of(context).colorScheme.surfaceVariant
+                      : const Color(0xffE7F2FF),
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),

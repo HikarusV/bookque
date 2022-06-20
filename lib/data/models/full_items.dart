@@ -2,7 +2,6 @@ import 'dart:convert';
 
 class FullItems {
   String itemid;
-  int orderid;
   String title;
   String imageid;
   String author;
@@ -13,7 +12,6 @@ class FullItems {
 
   FullItems(
       {this.itemid = 'dagrhj',
-      this.orderid = 21,
       this.title = 'title',
       this.imageid = '',
       this.author = 'author',
@@ -26,7 +24,6 @@ class FullItems {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
     result.addAll({'itemid': itemid});
-    result.addAll({'orderid': orderid});
     result.addAll({'title': title});
     result.addAll({'imageid': imageid});
     result.addAll({'author': author});
@@ -47,7 +44,6 @@ class FullItems {
 
     return FullItems(
       itemid: map['itemid'] ?? '',
-      orderid: map['orderid'] ?? '',
       url: map['url'] ?? '',
       title: map['title'] ?? '',
       imageid: map['imageid'] ?? '',
@@ -64,7 +60,6 @@ class FullItems {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['itemid'] = itemid;
-    data['orderid'] = orderid;
     data['title'] = title;
     data['imageid'] = imageid;
     data['author'] = author;

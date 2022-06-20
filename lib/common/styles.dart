@@ -23,6 +23,7 @@ var authorTextSmall = GoogleFonts.poppins(
 var appBarTitle = GoogleFonts.poppins(
   fontSize: 26,
   fontWeight: FontWeight.w600,
+  color: Colors.white,
 );
 var titleLarge = GoogleFonts.poppins(
   fontSize: 22,
@@ -59,6 +60,10 @@ var subTextGrey = GoogleFonts.poppins(
   fontSize: 14,
   color: Colors.grey,
 );
+var subTextGreyOld = GoogleFonts.poppins(
+  fontSize: 14,
+  color: Colors.grey.shade700,
+);
 var subTextWhite = GoogleFonts.poppins(
   fontSize: 14,
   color: Colors.white,
@@ -85,7 +90,7 @@ var buttonMedium = GoogleFonts.poppins(
 );
 var buttonMediumBlack = GoogleFonts.poppins(
   fontSize: 16,
-  color: Colors.black,
+  // color: Colors.black,
   fontWeight: FontWeight.w500,
 );
 var buttonSmall = GoogleFonts.poppins(
@@ -100,14 +105,14 @@ var titleButtonVerySmall = GoogleFonts.poppins(
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF00639A),
+  primary: Color(0xFF63B1F2),
   onPrimary: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFFCDE5FF),
   onPrimaryContainer: Color(0xFF001D32),
   secondary: Color(0xFF795900),
   onSecondary: Color(0xFFFFFFFF),
   secondaryContainer: Color(0xFFFFDFA0),
-  onSecondaryContainer: Color(0xFF261A00),
+  onSecondaryContainer: Color(0xFFCADAEE),
   tertiary: Color(0xFF863EA4),
   onTertiary: Color(0xFFFFFFFF),
   tertiaryContainer: Color(0xFFF8D8FF),
@@ -120,8 +125,8 @@ const lightColorScheme = ColorScheme(
   onBackground: Color(0xFF001F24),
   surface: Color(0xFFF6FEFF),
   onSurface: Color(0xFF001F24),
-  surfaceVariant: Color(0xFFDEE3EB),
-  onSurfaceVariant: Color(0xFF42474E),
+  surfaceVariant: Color(0xFF00639A),
+  onSurfaceVariant: Color(0xFF9E9E9E),
   outline: Color(0xFF72777F),
   onInverseSurface: Color(0xFFD0F8FF),
   inverseSurface: Color(0xFF00363D),
@@ -132,9 +137,9 @@ const lightColorScheme = ColorScheme(
 const darkColorScheme = ColorScheme(
   brightness: Brightness.dark,
   primary: Color(0xFF95CCFF),
-  onPrimary: Color(0xFF003352),
+  onPrimary: Color(0xFF42474E),
   primaryContainer: Color(0xFF004A75),
-  onPrimaryContainer: Color(0xFFCDE5FF),
+  onPrimaryContainer: Color(0xFFFFFFFF),
   secondary: Color(0xFFFBBC00),
   onSecondary: Color(0xFF402D00),
   secondaryContainer: Color(0xFF5C4300),

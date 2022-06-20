@@ -5,7 +5,6 @@ import 'package:bookque/presentation/pages/settings/settings.dart';
 import 'package:bookque/presentation/pages/upload/upload.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:bookque/presentation/provider/profile_items_provider.dart';
-import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:bookque/presentation/widgets/profile/item_collection.dart';
 import 'package:bookque/presentation/widgets/profile/item_filter.dart';
 import 'package:bookque/presentation/widgets/profile/user_profile.dart';
@@ -75,7 +74,7 @@ class _ProfileState extends State<Profile> {
                   hasData = true;
                   items = value.dataProfileItems;
                 } else if (value.stateProfileItems == ResultState.error) {
-                  print(value.profiletemsMessage);
+                  print('error broh');
                 } else {
                   print('in Else');
                 }
@@ -98,7 +97,6 @@ class _ProfileState extends State<Profile> {
             if (result.runtimeType == Items) {
               context.read<ProfileItemsProvider>().addNewData(result);
             }
-            context.read<UploadUpdateItemProvider>().clearCache();
           },
           child: const Icon(Icons.add),
         ),

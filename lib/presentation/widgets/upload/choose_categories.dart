@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
+import '../../provider/settings_provider.dart';
 
 class ChooseCategories extends StatelessWidget {
   const ChooseCategories({Key? key, this.text = 'Pilih Kategori', this.onTap})
@@ -33,7 +34,9 @@ class ChooseCategories extends StatelessWidget {
                 horizontal: 15,
               ),
               decoration: BoxDecoration(
-                color: const Color(0xffE7F2FF),
+                color: (context.read<SettingsProvider>().darkTheme)
+                    ? Theme.of(context).colorScheme.surfaceVariant
+                    : const Color(0xffE7F2FF),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Center(

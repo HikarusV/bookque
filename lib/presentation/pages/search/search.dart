@@ -70,11 +70,11 @@ class Search extends StatelessWidget {
                       return const Center(child: CircularProgressIndicator());
                     } else if (value.stateSearch == ResultState.hasData) {
                       return DoubleListBooks(
+                        tagPrefix: 'search-',
                         isScroolable: true,
                         listData: value.dataSearch,
                       );
                     } else if (value.stateSearch == ResultState.error) {
-                      print('diluar if');
                       return Text(value.searchMessage);
                     }
                     return Padding(

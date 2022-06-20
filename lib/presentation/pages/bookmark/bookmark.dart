@@ -7,13 +7,26 @@ import 'package:provider/provider.dart';
 import '../../../common/state_enum.dart';
 import '../../../common/styles.dart';
 
-class Bookmark extends StatelessWidget {
+class Bookmark extends StatefulWidget {
   const Bookmark({Key? key}) : super(key: key);
+
+  @override
+  State<Bookmark> createState() => _BookmarkState();
+}
+
+class _BookmarkState extends State<Bookmark> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() =>
+        Provider.of<DatabaseProvider>(context, listen: false)..getBookmarks());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
         elevation: 0,
         automaticallyImplyLeading: false,
         title: Text(
@@ -44,11 +57,8 @@ class Bookmark extends StatelessWidget {
               child: NoBookmarkData(),
             );
           } else if (provider.state == ResultState.hasData) {
-            return ListView.builder(
-              itemCount: provider.bookmarks.length,
-              itemBuilder: (context, index) {
-                return BookmarkData(items: provider.bookmarks[index]);
-              },
+            return SingleChildScrollView(
+              child: BookmarkData(listData: provider.bookmarks),
             );
           } else {
             return const Text("");

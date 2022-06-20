@@ -13,6 +13,7 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -20,6 +21,7 @@ class CustomScaffold extends StatelessWidget {
           icon: const Icon(
             Icons.chevron_left,
             size: 35,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,

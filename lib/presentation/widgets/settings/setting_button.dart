@@ -2,7 +2,8 @@ import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 
 class SettingButton extends StatelessWidget {
-  const SettingButton({Key? key,
+  const SettingButton({
+    Key? key,
     this.text = 'Button',
     this.version = false,
     this.icon = Icons.keyboard_arrow_right,
@@ -28,8 +29,10 @@ class SettingButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.0),
             ),
           ),
-          side: MaterialStateProperty.all(const BorderSide(
-              color: primaryColor, width: 1.0, style: BorderStyle.solid)),
+          side: MaterialStateProperty.all(BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+              width: 1.3,
+              style: BorderStyle.solid)),
         ),
         onPressed: onPressed,
         child: Row(
@@ -37,16 +40,15 @@ class SettingButton extends StatelessWidget {
           children: [
             Text(
               text,
-              style: buttonMediumBlack,
+              style: TextStyle(
+                  fontSize: buttonMediumBlack.fontSize,
+                  fontStyle: buttonMediumBlack.fontStyle,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                version
-                    ? Text(
-                  'v1.0.0',
-                  style: subTextGrey)
-                    : Container(),
+                version ? Text('v1.0.0', style: subTextGrey) : Container(),
                 Icon(
                   icon,
                 ),

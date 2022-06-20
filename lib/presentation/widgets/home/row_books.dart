@@ -5,8 +5,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class RowBooks extends StatelessWidget {
-  const RowBooks({Key? key, required this.listData}) : super(key: key);
+  const RowBooks({Key? key, required this.listData, this.tagPrefix = 'id-'})
+      : super(key: key);
   final List<Items> listData;
+  final String tagPrefix;
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +25,29 @@ class RowBooks extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Detail(id: listData[index].itemid),
+                    builder: (context) => Detail(
+                      id: listData[index].itemid,
+                      tagPrefix: tagPrefix,
+                    ),
                   ),
                 );
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: CachedNetworkImage(
-                      placeholder: (context, url) => Container(
-                        color: Colors.grey.shade300,
+                  Hero(
+                    tag: '$tagPrefix${listData[index].itemid}',
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: CachedNetworkImage(
+                        placeholder: (context, url) => Container(
+                          color: Colors.grey.shade300,
+                        ),
+                        imageUrl: listData[index].imageid,
+                        width: 124,
+                        height: 170,
+                        fit: BoxFit.fill,
                       ),
-                      imageUrl: listData[index].imageid,
-                      width: 124,
-                      height: 170,
-                      fit: BoxFit.fill,
                     ),
                   ),
                   const SizedBox(

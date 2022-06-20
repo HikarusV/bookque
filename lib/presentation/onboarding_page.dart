@@ -1,8 +1,7 @@
 import 'package:bookque/common/styles.dart';
+import 'package:bookque/main.dart';
 import 'package:bookque/presentation/pages/auth/auth_account.dart';
-import 'package:bookque/presentation/provider/database_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../common/localizations.dart';
@@ -23,6 +22,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
     controller.dispose();
 
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    globalLocalData.setBool('first', true);
   }
 
   @override

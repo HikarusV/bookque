@@ -14,7 +14,7 @@ class DetailCategoriesItem extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 3),
       padding: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
-        color: secondaryColor,
+        color: Theme.of(context).colorScheme.onSecondaryContainer,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
@@ -22,7 +22,7 @@ class DetailCategoriesItem extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: subText,
+            style: subTextGreyOld,
           ),
         ),
       ),

@@ -79,21 +79,29 @@ class _HomeState extends State<Home> {
                                                   .read<AccountProv>()
                                                   .userData!
                                                   .displayName ??
-                                              'Use'),
+                                              'User'),
                                       style: titleLarge,
                                       maxLines: 2,
                                     ),
                                   ],
                                 ),
                               ),
-                              CircleAvatar(
-                                backgroundImage: NetworkImage(context
-                                        .read<AccountProv>()
-                                        .userData!
-                                        .photoURL ??
-                                    'https://graph.facebook.com/111968404870160/picture'),
-                                radius: 40,
-                                backgroundColor: Colors.transparent,
+                              Container(
+                                padding: const EdgeInsets.all(3),
+                                margin:
+                                    const EdgeInsets.only(right: 3, left: 3),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(90)),
+                                child: CircleAvatar(
+                                  backgroundImage: NetworkImage(context
+                                          .read<AccountProv>()
+                                          .userData!
+                                          .photoURL ??
+                                      'https://graph.facebook.com/111968404870160/picture'),
+                                  radius: 40,
+                                  backgroundColor: Colors.transparent,
+                                ),
                               ),
                             ],
                           ),
@@ -124,6 +132,7 @@ class _HomeState extends State<Home> {
                               } else if (value.getstaterecommendationData ==
                                   ResultState.hasData) {
                                 return RowBooks(
+                                  tagPrefix: 'rec-',
                                   listData: value.dataRandomRecomendationItems,
                                 );
                               } else if (value.getstaterecommendationData ==
@@ -144,6 +153,7 @@ class _HomeState extends State<Home> {
                               } else if (value.getstatenewsData ==
                                   ResultState.hasData) {
                                 return DoubleListBooks(
+                                  tagPrefix: 'news-',
                                   listData: value.dataNewsItems,
                                 );
                               } else if (value.getstatenewsData ==

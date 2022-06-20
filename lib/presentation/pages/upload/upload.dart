@@ -42,7 +42,8 @@ class _UploadState extends State<Upload> {
 
   // final CategoriesSelectCount count = CategoriesSelectCount(items: []);
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     List<String>? buffer;
     if (widget.items != null) {
       buffer = widget.items!.categories;
@@ -53,9 +54,18 @@ class _UploadState extends State<Upload> {
 
       /// if type and categories want to change
       buffer.removeAt(0);
-      context.read<UploadUpdateItemProvider>().itemCat.items.addAll(buffer);
-    }
 
+      Future.microtask(() =>
+          Provider.of<UploadUpdateItemProvider>(context, listen: false)
+            ..itemCat.items.addAll(buffer!));
+    }
+    Future.microtask(() =>
+        Provider.of<UploadUpdateItemProvider>(context, listen: false)
+          ..clearCache());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return CustomScaffold(
       title: AppLocalizations.of(context)!.appBarUploadText,
       child: ScrollConfiguration(
@@ -94,6 +104,9 @@ class _UploadState extends State<Upload> {
                         ),
                       )
                     : const ImagePick(),
+                const SizedBox(
+                  height: 9,
+                ),
                 Container(
                   alignment: Alignment.centerLeft,
                   child: SingleChildScrollView(
@@ -101,31 +114,41 @@ class _UploadState extends State<Upload> {
                     child: TypeUpload(itemsName: uploadType, controller: type),
                   ),
                 ),
+                const SizedBox(
+                  height: 9,
+                ),
                 TextInput(
                   controller: url,
+                  maxLength: 130,
                   title: AppLocalizations.of(context)!.linkUploadText,
                   textHint:
                       AppLocalizations.of(context)!.linkUploadPlaceholderText,
                 ),
                 TextInput(
                   controller: title,
+                  maxLength: 150,
                   title: AppLocalizations.of(context)!.titleUploadText,
                   textHint:
                       AppLocalizations.of(context)!.titleUploadPlaceholderText,
                 ),
                 TextInput(
                   controller: nama,
+                  maxLength: 100,
                   title: AppLocalizations.of(context)!.authorUploadText,
                   textHint:
                       AppLocalizations.of(context)!.authorUploadPlaceholderText,
                 ),
                 TextInput(
+                  maxLength: 256,
                   controller: desc,
                   title: AppLocalizations.of(context)!.descriptionText,
                   textHint: AppLocalizations.of(context)!
                       .descriptionploadPlaceholderText,
                   minLines: 6,
                   maxLines: 6,
+                ),
+                const SizedBox(
+                  height: 9,
                 ),
                 ChooseCategories(
                   onTap: () {
@@ -196,7 +219,7 @@ class _UploadState extends State<Upload> {
                             idUser: context.read<AccountProv>().userData!.uid,
                             id: widget.items!.itemid,
                             url: (url.text != widget.items!.url)
-                                ? url.text
+                                ? url.text.trim()
                                 : 'none',
                             author: (nama.text != widget.items!.author)
                                 ? nama.text.replaceAll('"', '\'')

@@ -97,12 +97,12 @@ class _SettingCardListState extends State<SettingCardList> {
 
 class L10n {
   static final all = [
-    const Locale('en'),
     const Locale('id'),
+    const Locale('en'),
   ];
 
   static final List<String> languageName = [
-    'English',
     'Indonesia',
+    'English',
   ];
 }

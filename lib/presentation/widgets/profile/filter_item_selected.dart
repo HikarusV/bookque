@@ -1,33 +1,30 @@
+import 'package:bookque/presentation/provider/profile_items_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/styles.dart';
 import 'list_filter_selected.dart';
 
-class FilterItemsSelected extends StatefulWidget {
+class FilterItemsSelected extends StatelessWidget {
   const FilterItemsSelected(
-      {Key? key, required this.title, required this.count})
+      {Key? key,
+      required this.title,
+      required this.count,
+      this.isSelected = false,
+      required this.id})
       : super(key: key);
-
+  final bool isSelected;
   final String title;
   final FilterSelectCount count;
-
-  @override
-  State<FilterItemsSelected> createState() => _FilterItemsSelectedState();
-}
-
-class _FilterItemsSelectedState extends State<FilterItemsSelected> {
-  bool isSelected = false;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => setState(() {
+      onTap: () {
+        context.read<ProfileItemsProvider>().changeSort(id);
         Navigator.pop(context);
-        if (!isSelected) {
-          widget.count.addSelectedItem();
-          isSelected = !isSelected;
-        }
-      }),
+      },
       child: Container(
         margin: const EdgeInsets.fromLTRB(10, 15, 10, 15),
         padding: const EdgeInsets.only(bottom: 10),
@@ -38,7 +35,7 @@ class _FilterItemsSelectedState extends State<FilterItemsSelected> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              widget.title,
+              title,
               style: titleSmall,
             ),
             isSelected
@@ -54,11 +51,5 @@ class _FilterItemsSelectedState extends State<FilterItemsSelected> {
         ),
       ),
     );
-  }
-
-  void changeItems() {
-    setState(() {
-      isSelected = !isSelected;
-    });
   }
 }

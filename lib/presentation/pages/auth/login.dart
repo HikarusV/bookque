@@ -167,7 +167,7 @@ class Login extends StatelessWidget {
                   BottomTextButton(
                     text: AppLocalizations.of(context)!.dontHaveAccountText,
                     textButton: AppLocalizations.of(context)!.registerText1,
-                    onTap: () => Navigator.pushReplacement(
+                    onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => Register(),

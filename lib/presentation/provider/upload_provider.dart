@@ -39,17 +39,22 @@ class UploadUpdateItemProvider with ChangeNotifier {
       required String title,
       required String author,
       required String longDesc}) async {
-    String cat = itemCat.items
-        .toString()
-        .substring(1, (itemCat.items.toString().length - 1))
-        .replaceAll(RegExp(r'\s+'), '');
+    try {
+      String cat = itemCat.items
+          .toString()
+          .substring(1, (itemCat.items.toString().length - 1))
+          .replaceAll(RegExp(r'\s+'), '');
 
-    final bytes = File(images!.path).readAsBytesSync();
-    String img64 = base64Encode(bytes);
+      final bytes = File(images!.path).readAsBytesSync();
+      String img64 = base64Encode(bytes);
 
-    final response = await HandleApi.postItem(id, img64, uploadType[type], url,
-        title, author, 'ShortDesc', longDesc, cat);
-    return response;
+      final response = await HandleApi.postItem(id, img64, uploadType[type],
+          url, title, author, 'ShortDesc', longDesc, cat);
+
+      return response;
+    } catch (e) {
+      return {'error': true};
+    }
   }
 
   Future<void> updateData({

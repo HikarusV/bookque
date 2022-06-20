@@ -55,7 +55,7 @@ class HomeProvider with ChangeNotifier {
         child: TextButton(
           onPressed: () {
             incrementPages();
-            fetchNewsData('xax');
+            fetchNewsDataAfter('xax');
           },
           child: Text(
             'Selanjutnya',
@@ -69,6 +69,34 @@ class HomeProvider with ChangeNotifier {
   }
 
   Future<void> fetchNewsData(String userid) async {
+    _pages = 1;
+
+    _statenewsData = ResultState.loading;
+    notifyListeners();
+
+    nextButton = const Center(
+      child: CircularProgressIndicator(),
+    );
+
+    try {
+      final result = await HandleApi.getNewestItems(userid, pages: _pages);
+
+      if (!result['error']) {
+        dataNewsItems = result['items'];
+        messageNewsData = result['message'];
+        _statenewsData = ResultState.hasData;
+        changeNextButton();
+        notifyListeners();
+      }
+      notifyListeners();
+    } catch (e) {
+      _statenewsData = ResultState.error;
+      messageNewsData = e.toString();
+      notifyListeners();
+    }
+  }
+
+  Future<void> fetchNewsDataAfter(String userid) async {
     if (_pages == 1) {
       _statenewsData = ResultState.loading;
       notifyListeners();

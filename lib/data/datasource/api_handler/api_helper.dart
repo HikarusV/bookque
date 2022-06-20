@@ -168,7 +168,7 @@ class HandleApi {
     }
   }
 
-  static Future<dynamic> postItem(
+  static Future<Map<String, dynamic>> postItem(
       String idUser,
       String cover,
       String tipe,
@@ -199,7 +199,7 @@ class HandleApi {
       return result;
     } catch (e) {
       print(e);
-      return 'Error';
+      return {'error': true};
     }
   }
 

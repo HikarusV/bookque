@@ -48,7 +48,6 @@ class DatabaseHelper {
   Future<List<Items>> getBookmarks() async {
     final db = await database;
     List<Map<String, dynamic>> results = await db!.query(_tblBookmark);
-    print(results);
 
     return results.map((res) => Items.fromMap(res)).toList();
   }

@@ -123,6 +123,7 @@ class _UserDetailState extends State<UserDetail> {
                 } else if (value.stateUserDetailItems == ResultState.hasData &&
                     value.dataUserDetailItems.containsKey(widget.id)) {
                   return DetailDataProvPages(
+                    tagPrefix: 'user-',
                     item: value.dataUserDetailItems[widget.id] ?? FullItems(),
                     withRecommendation: false,
                   );
