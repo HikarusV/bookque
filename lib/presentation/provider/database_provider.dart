@@ -23,10 +23,10 @@ class DatabaseProvider extends ChangeNotifier {
     try {
       _state = ResultState.loading;
       notifyListeners();
+
       _bookmarks = await databaseHelper.getBookmarks();
       if (_bookmarks.isNotEmpty) {
         _state = ResultState.hasData;
-        print(_bookmarks);
       } else {
         _state = ResultState.noData;
         _message = 'Empty Data';
@@ -50,9 +50,9 @@ class DatabaseProvider extends ChangeNotifier {
     }
   }
 
-  void selectData() async {
-    await databaseHelper.selectBookmark();
-  }
+  // void selectData() async {
+  //   await databaseHelper.selectBookmark();
+  // }
 
   Future<bool> isBookmarked(String itemid) async {
     final bookmarkedItem = await databaseHelper.getBookmarkById(itemid);

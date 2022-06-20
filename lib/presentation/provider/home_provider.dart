@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/state_enum.dart';
 import '../../data/datasource/api_handler/api_helper.dart';
+import '../../data/items.dart';
 
 class HomeProvider with ChangeNotifier {
   int _pages = 1;
@@ -21,8 +22,8 @@ class HomeProvider with ChangeNotifier {
   ResultState get getstaterecommendationData => _staterecommendationData;
   ResultState get getstatenewsData => _statenewsData;
 
-  List dataRandomRecomendationItems = [];
-  List dataNewsItems = [];
+  List<Items> dataRandomRecomendationItems = [];
+  List<Items> dataNewsItems = [];
 
   Future<void> fetchRecomendationData() async {
     _staterecommendationData = ResultState.loading;
@@ -80,7 +81,7 @@ class HomeProvider with ChangeNotifier {
       final result = await HandleApi.getNewestItems(userid, pages: _pages);
 
       if (!result['error']) {
-        dataNewsItems.insertAll(0, result['items']);
+        dataNewsItems.insertAll(dataNewsItems.length, result['items']);
         messageNewsData = result['message'];
         _statenewsData = ResultState.hasData;
         changeNextButton();

@@ -45,15 +45,10 @@ class DatabaseHelper {
     await db!.insert(_tblBookmark, items.toMap());
   }
 
-  Future<void> selectBookmark() async {
-    final db = await database;
-
-    await db!.rawQuery('SELECT * FROM bookmark');
-  }
-
   Future<List<Items>> getBookmarks() async {
     final db = await database;
     List<Map<String, dynamic>> results = await db!.query(_tblBookmark);
+    print(results);
 
     return results.map((res) => Items.fromMap(res)).toList();
   }

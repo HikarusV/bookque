@@ -1,3 +1,4 @@
+import 'package:bookque/data/items.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class DoubleListBooks extends StatelessWidget {
       : super(key: key);
   final bool isScroolable;
   final bool isNetwork;
-  final List listData;
+  final List<Items> listData;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class DoubleListBooks extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Detail(id: listData[index]['itemid']),
+                  builder: (context) => Detail(id: listData[index].itemid),
                 ),
               );
             },
@@ -55,19 +56,19 @@ class DoubleListBooks extends StatelessWidget {
                             placeholder: (context, url) => Container(
                               color: Colors.grey.shade300,
                             ),
-                            imageUrl: listData[index]['imageid'],
+                            imageUrl: listData[index].imageid,
                             fit: BoxFit.cover,
                           )
                         : Image.asset(
-                            listData[index]['imageid'],
+                            listData[index].imageid,
                             fit: BoxFit.cover,
                           ),
                   ),
                 ),
                 const SizedBox(height: 5),
-                Text(listData[index]['title'],
+                Text(listData[index].title,
                     style: titleSmall, overflow: TextOverflow.ellipsis),
-                Text(listData[index]['author'],
+                Text(listData[index].author,
                     style: subTextGrey, overflow: TextOverflow.ellipsis),
               ],
             ),

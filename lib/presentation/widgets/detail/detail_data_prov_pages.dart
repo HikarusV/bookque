@@ -69,10 +69,10 @@ class DetailDataProvPages extends StatelessWidget {
               children: [
                 BookmarkButton(
                   items: Items(
-                    itemid: 'itemid',
-                    title: 'title',
-                    imageid: 'imageid',
-                    author: 'author',
+                    itemid: item.itemid,
+                    title: item.title,
+                    imageid: item.imageid,
+                    author: item.author,
                     shortdesc: 'shortdesc',
                   ),
                 ),

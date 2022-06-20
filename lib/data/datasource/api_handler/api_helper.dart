@@ -5,10 +5,22 @@ import 'package:bookque/data/list_items.dart';
 import 'package:bookque/data/profile.dart';
 import 'package:http/http.dart' as http;
 
+import '../../items.dart';
 import 'api.dart';
 
 class HandleApi {
   static final Api? api = Api();
+
+  static List<Items> _MapToList(Map<String, dynamic> jsonResponse) {
+    List source = jsonResponse['items'];
+    List<Items> result = [];
+
+    for (var i in source) {
+      result.add(Items.fromMap(i));
+    }
+
+    return result;
+  }
 
   static Future<UserItems> getItems(String userId) async {
     final url = 'http://103.214.185.190:5000/' + userId + '/items';
@@ -44,14 +56,15 @@ class HandleApi {
 
   static Future<Map<String, dynamic>> getCategory(String type) async {
     final url = 'http://103.214.185.190:5000/items/category?cat=' + type;
-    print(url);
 
     final response = await api!.get(url);
-    var jsonResponse = jsonDecode(response);
+    Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    // final items = Category.fromJson(jsonResponse);
-
-    return jsonResponse;
+    return {
+      'error': jsonResponse['error'],
+      'items': _MapToList(jsonResponse),
+      'message': jsonResponse['message'],
+    };
   }
 
   static Future<Map<String, dynamic>> getRecommendationRandomItem() async {
@@ -60,7 +73,13 @@ class HandleApi {
     final response = await api!.get(url);
     Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    return jsonResponse;
+    return {
+      'error': jsonResponse['error'],
+      'items': _MapToList(jsonResponse),
+      'message': jsonResponse['message'],
+    };
+
+    // return jsonResponse;
   }
 
   static Future<Map<String, dynamic>> getNewestItems(String userId,
@@ -70,7 +89,13 @@ class HandleApi {
     final response = await api!.get(url);
     Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    return jsonResponse;
+    return {
+      'error': jsonResponse['error'],
+      'items': _MapToList(jsonResponse),
+      'message': jsonResponse['message'],
+    };
+
+    // return jsonResponse;
   }
 
   static Future<Map<String, dynamic>> getSearch(String query) async {
@@ -79,9 +104,13 @@ class HandleApi {
     final response = await api!.get(url);
     Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    // final items = Searching.fromMap(jsonResponse);
+    return {
+      'error': jsonResponse['error'],
+      'items': _MapToList(jsonResponse),
+      'message': jsonResponse['message'],
+    };
 
-    return jsonResponse;
+    // return jsonResponse;
   }
 
   static Future postEmailVerification(String email) async {

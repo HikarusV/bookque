@@ -27,7 +27,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<DatabaseProvider>().selectData();
+    // context.read<DatabaseProvider>().selectData();
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(bottom: 80),

@@ -1,11 +1,12 @@
 import 'package:bookque/common/styles.dart';
+import 'package:bookque/data/items.dart';
 import 'package:bookque/presentation/pages/detail/detail.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class RowBooks extends StatelessWidget {
   const RowBooks({Key? key, required this.listData}) : super(key: key);
-  final List listData;
+  final List<Items> listData;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class RowBooks extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Detail(id: listData[index]['itemid']),
+                    builder: (context) => Detail(id: listData[index].itemid),
                   ),
                 );
               },
@@ -35,7 +36,7 @@ class RowBooks extends StatelessWidget {
                       placeholder: (context, url) => Container(
                         color: Colors.grey.shade300,
                       ),
-                      imageUrl: listData[index]['imageid'],
+                      imageUrl: listData[index].imageid,
                       width: 124,
                       height: 170,
                       fit: BoxFit.fill,
@@ -45,12 +46,12 @@ class RowBooks extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    listData[index]['title'],
+                    listData[index].title,
                     overflow: TextOverflow.ellipsis,
                     style: subText,
                   ),
                   Text(
-                    listData[index]['author'],
+                    listData[index].author,
                     overflow: TextOverflow.ellipsis,
                     style: authorTextSmall,
                   ),

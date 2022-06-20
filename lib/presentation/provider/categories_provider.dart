@@ -1,14 +1,15 @@
 import 'package:bookque/common/state_enum.dart';
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
+import 'package:bookque/data/items.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesProvider with ChangeNotifier {
   ResultState _stateCategories = ResultState.noData;
-  final Map<String, List<dynamic>> _dataCategories = {};
+  final Map<String, List<Items>> _dataCategories = {};
   String _categoriesMessage = 'Empty';
 
   ResultState get stateCategories => _stateCategories;
-  Map<String, List> get dataCategories => _dataCategories;
+  Map<String, List<Items>> get dataCategories => _dataCategories;
   String get categoriesMessage => _categoriesMessage;
 
   void fetchCategoriesItem(String keyword) async {

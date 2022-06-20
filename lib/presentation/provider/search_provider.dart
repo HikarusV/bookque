@@ -2,13 +2,15 @@ import 'package:bookque/common/state_enum.dart';
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/items.dart';
+
 class SearchProvider with ChangeNotifier {
   ResultState _stateSearch = ResultState.noData;
-  List _dataSearch = [];
+  List<Items> _dataSearch = [];
   String _searchMessage = 'Empty';
 
   ResultState get stateSearch => _stateSearch;
-  List get dataSearch => _dataSearch;
+  List<Items> get dataSearch => _dataSearch;
   String get searchMessage => _searchMessage;
 
   void searchKeyword(String keyword) async {
