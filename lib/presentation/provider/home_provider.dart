@@ -59,6 +59,7 @@ class HomeProvider with ChangeNotifier {
           },
           child: Text(
             'Selanjutnya',
+            // "nextItemHomeText": "Load Other Items"
             style: subText,
           ),
         ),

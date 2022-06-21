@@ -44,9 +44,9 @@ class _ReportDialogState extends State<ReportDialog> {
     return Container(
       height: 50,
       padding: const EdgeInsets.only(left: 15),
-      decoration: const BoxDecoration(
-        color: primaryColor,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary,
+        borderRadius: const BorderRadius.only(
             topRight: Radius.circular(12), topLeft: Radius.circular(12)),
       ),
       child: Stack(children: [

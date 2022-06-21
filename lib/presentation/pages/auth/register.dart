@@ -1,6 +1,5 @@
 import 'package:bookque/data/cache/cache_auth.dart';
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
-import 'package:bookque/presentation/pages/auth/auth_account.dart';
 import 'package:bookque/presentation/pages/auth/code_validation.dart';
 import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
@@ -78,7 +77,7 @@ class Register extends StatelessWidget {
                       String confirmPass = confirmPassController.text;
 
                       Map condition =
-                          columnCheck(email, name, pass, confirmPass);
+                          columnCheck(context, email, name, pass, confirmPass);
 
                       print(condition);
 
@@ -146,25 +145,26 @@ class Register extends StatelessWidget {
     );
   }
 
-  Map columnCheck(String email, String name, String pass, String confirmPass) {
+  Map columnCheck(BuildContext context, String email, String name, String pass,
+      String confirmPass) {
     if (email.isEmpty || name.isEmpty || pass.isEmpty || confirmPass.isEmpty) {
       return {
         'isAccept': false,
-        'message': 'Semua kolom harus diisi',
+        'message': AppLocalizations.of(context)!.requiredFieldText
       };
     }
 
     if (pass.length < 6) {
       return {
         'isAccept': false,
-        'message': 'Password tidak boleh kurang dari 6',
+        'message': AppLocalizations.of(context)!.minPasswordText,
       };
     }
 
     if (reference.data != confirmPass) {
       return {
         'isAccept': false,
-        'message': 'Kolom password dan kolom konfirmasi password harus sama',
+        'message': AppLocalizations.of(context)!.sameConfirmPasswordText,
       };
     }
 
@@ -187,6 +187,7 @@ class Register extends StatelessWidget {
       Map result =
           await HandleApi.postEmailVerification(AuthCache.data['mail']);
       if (!result['error']) {
+        Navigator.pop(context);
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => CodeValidation(

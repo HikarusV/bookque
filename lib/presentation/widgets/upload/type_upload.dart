@@ -40,7 +40,7 @@ class TypeUpload extends StatelessWidget {
                   height: 35,
                   alignment: Alignment.center,
                   color: selected
-                      ? primaryColor
+                      ? Theme.of(context).colorScheme.primary
                       : (context.read<SettingsProvider>().darkTheme)
                           ? Theme.of(context).colorScheme.surfaceVariant
                           : secondaryColor,

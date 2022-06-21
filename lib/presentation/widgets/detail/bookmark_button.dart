@@ -1,4 +1,3 @@
-import 'package:bookque/common/styles.dart';
 import 'package:bookque/data/items.dart';
 import 'package:bookque/presentation/provider/database_provider.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +19,10 @@ class BookmarkButton extends StatelessWidget {
             return isBookmarked
                 ? IconButton(
                     onPressed: () => provider.removeBookmark(items.itemid),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.bookmark,
                       size: 35,
-                      color: primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   )
                 : IconButton(
@@ -36,10 +35,10 @@ class BookmarkButton extends StatelessWidget {
                         shortdesc: items.shortdesc,
                       ),
                     ),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.bookmark_border,
                       size: 35,
-                      color: primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   );
           },

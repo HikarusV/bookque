@@ -25,6 +25,7 @@
   "confirmPasswordLabelText": "Confirm Password",
   "minPasswordText": "Password must be at least 6 characters",
   "sameConfirmPasswordText": "Password must be the same",
+  "requiredFieldText": "All fields are required",
   "confirmPasswordPlaceholderText": "Re-enter Password",
   "haveAccountText": "Already have an account? ",
   "greetingsText": "Hello, ",
@@ -100,5 +101,6 @@
   "sendButtonText": "Send",
   "searchContentText": "Let's Find The Reading\nReference You Want",
   "bookmarkTitleText": "You Don't Have a Bookmark",
-  "bookmarkText": "Let's Find Your Favorite Reading"
+  "bookmarkText": "Let's Find Your Favorite Reading",
+  "nextItemHomeText": "Load Other Items"
 }

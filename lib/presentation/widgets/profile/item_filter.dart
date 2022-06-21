@@ -63,7 +63,7 @@ class ItemFilter extends StatelessWidget {
         padding: const EdgeInsets.only(left: 15, right: 15),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: primaryColor,
+          color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(12),
         ),
         height: 30,

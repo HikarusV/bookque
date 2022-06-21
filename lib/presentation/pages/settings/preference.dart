@@ -20,7 +20,10 @@ class Preference extends StatelessWidget {
             SettingItemButton(
               title: AppLocalizations.of(context)!.themeText,
               controller: context.read<SettingsProvider>().themes,
-              itemsName: const ['Terang', 'Gelap'],
+              itemsName: [
+                AppLocalizations.of(context)!.themeItem1,
+                AppLocalizations.of(context)!.themeItem2,
+              ],
               onItemSelected: (name, i, isSelected) {
                 context.read<SettingsProvider>().themes.selectIndex(i);
                 context.read<SettingsProvider>().changeTheme(i == 1);
@@ -29,7 +32,10 @@ class Preference extends StatelessWidget {
             SettingItemButton(
               title: AppLocalizations.of(context)!.languageText,
               controller: context.read<SettingsProvider>().language,
-              itemsName: const ['Indonesia', 'English'],
+              itemsName: [
+                AppLocalizations.of(context)!.languageItem1,
+                AppLocalizations.of(context)!.languageItem2,
+              ],
               onItemSelected: (name, i, isSelected) {
                 context.read<SettingsProvider>().language.selectIndex(i);
                 Locale id = context

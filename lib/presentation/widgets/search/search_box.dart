@@ -15,7 +15,7 @@ class SearchBox extends StatelessWidget {
         horizontal: 15,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceVariant,
+        color: Theme.of(context).colorScheme.inverseSurface,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Stack(

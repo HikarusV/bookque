@@ -1,6 +1,4 @@
-import 'package:bookque/data/db/database_helper.dart';
 import 'package:bookque/data/models/full_items.dart';
-import 'package:bookque/presentation/provider/database_provider.dart';
 import 'package:bookque/presentation/provider/detail_items_provider.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/detail/report_dialog.dart';
@@ -39,6 +37,7 @@ class _DetailState extends State<Detail> {
           icon: const Icon(
             Icons.report,
             size: 28,
+            color: Colors.white,
           ),
           onPressed: () {
             showDialog(

@@ -24,7 +24,7 @@ class SearchBoxDecoration extends StatelessWidget {
         ),
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceVariant,
+          color: Theme.of(context).colorScheme.inverseSurface,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Stack(

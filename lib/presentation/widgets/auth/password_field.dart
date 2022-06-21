@@ -182,6 +182,7 @@ class StrengthPassword implements PassConfirmation {
   @override
   Map dataMessage = {
     0: 'Kata sandi minimal harus 6 karakter',
+    // "minPasswordText": "Kata sandi minimal harus 6 karakter",
     1: 'Sangat Lemah',
     2: 'Lemah',
     3: 'Bagus',
@@ -232,6 +233,7 @@ class SamePassword implements PassConfirmation {
   @override
   Map dataMessage = {
     0: 'Password must be the same',
+    // "sameConfirmPasswordText": "Kata sandi harus sama",
     1: 'Confirmation success',
   };
 

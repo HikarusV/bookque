@@ -82,9 +82,9 @@ class _UserDetailState extends State<UserDetail> {
               value: MenuItem.item1,
               child: Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.create,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
                   const SizedBox(width: 5),
                   Text(AppLocalizations.of(context)!.editBookText,
@@ -96,9 +96,9 @@ class _UserDetailState extends State<UserDetail> {
               value: MenuItem.item2,
               child: Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.delete,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
                   const SizedBox(width: 5),
                   Text(AppLocalizations.of(context)!.deleteBookText,

@@ -105,7 +105,7 @@ var titleButtonVerySmall = GoogleFonts.poppins(
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF63B1F2),
+  primary: Color(0xFF00639A),
   onPrimary: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFFCDE5FF),
   onPrimaryContainer: Color(0xFF001D32),
@@ -129,7 +129,7 @@ const lightColorScheme = ColorScheme(
   onSurfaceVariant: Color(0xFF9E9E9E),
   outline: Color(0xFF72777F),
   onInverseSurface: Color(0xFFD0F8FF),
-  inverseSurface: Color(0xFF00363D),
+  inverseSurface: Color(0xFFE7F2FF),
   inversePrimary: Color(0xFF95CCFF),
   shadow: Color(0xFF000000),
 );
@@ -160,7 +160,7 @@ const darkColorScheme = ColorScheme(
   onSurfaceVariant: Color(0xFFC2C7CF),
   outline: Color(0xFF8C9198),
   onInverseSurface: Color(0xFF001F24),
-  inverseSurface: Color(0xFF97F0FF),
+  inverseSurface: Color(0xFF42474E),
   inversePrimary: Color(0xFF00639A),
   shadow: Color(0xFF000000),
 );

@@ -54,7 +54,7 @@ class _ImagePickState extends State<ImagePick> {
               height: 200,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color(0xff63B1F2),
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -75,7 +75,7 @@ class _ImagePickState extends State<ImagePick> {
                   : Icon(
                       Icons.cloud_upload_outlined,
                       size: 100,
-                      color: Colors.blue.shade300,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
             ),
           )
