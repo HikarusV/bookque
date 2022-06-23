@@ -34,7 +34,8 @@ class Preference extends StatelessWidget {
               title: AppLocalizations.of(context)!.languageText,
               controller: context.read<SettingsProvider>().language,
               itemsName: [
-                AppLocalizations.of(context)!.languageItem1,
+                // AppLocalizations.of(context)!.languageItem1,
+                'Indonesia',
                 AppLocalizations.of(context)!.languageItem2,
               ],
               onItemSelected: (name, i, isSelected) {
@@ -51,8 +52,7 @@ class Preference extends StatelessWidget {
               controller: context.read<SettingsProvider>().fontScale,
               itemsName: const ['1x', '1.1x', '1.2x'],
               onItemSelected: (name, i, isSelected) {
-                // context.read<SettingsProvider>().themes.selectIndex(i);
-                // context.read<SettingsProvider>().changeTheme(i == 1);
+                context.read<SettingsProvider>().changeFontScalling(i);
               },
             ),
           ],
