@@ -82,8 +82,6 @@ class CodeValidation extends StatelessWidget {
                                   AuthCache.data['name'],
                                 );
 
-                                print("result = $result");
-
                                 if (!result) {
                                   await context
                                       .read<AccountProv>()
@@ -91,9 +89,10 @@ class CodeValidation extends StatelessWidget {
                                         AuthCache.data['mail'],
                                         AuthCache.data['pass'],
                                       );
-                                  Navigator.pop(context);
+
                                   whenValid();
                                 }
+                                Navigator.pop(context);
                               } else {
                                 Navigator.pop(context);
                                 whenError();

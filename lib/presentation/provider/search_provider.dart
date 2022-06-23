@@ -13,6 +13,11 @@ class SearchProvider with ChangeNotifier {
   List<Items> get dataSearch => _dataSearch;
   String get searchMessage => _searchMessage;
 
+  void resetSearchResult() {
+    _dataSearch.clear();
+    _stateSearch = ResultState.noData;
+  }
+
   void searchKeyword(String keyword) async {
     _stateSearch = ResultState.loading;
     notifyListeners();

@@ -22,6 +22,7 @@ class FilterItemsSelected extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        count.changeSelectedFilter(id);
         context.read<ProfileItemsProvider>().changeSort(id);
         Navigator.pop(context);
       },

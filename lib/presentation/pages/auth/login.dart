@@ -15,6 +15,8 @@ import '../../widgets/auth/password_field.dart';
 import '../../widgets/auth/text_input.dart';
 
 class Login extends StatelessWidget {
+  static const String routeName = 'loginPage';
+
   Login({Key? key}) : super(key: key);
 
   final TextEditingController emailController = TextEditingController();
@@ -167,12 +169,8 @@ class Login extends StatelessWidget {
                   BottomTextButton(
                     text: AppLocalizations.of(context)!.dontHaveAccountText,
                     textButton: AppLocalizations.of(context)!.registerText1,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Register(),
-                      ),
-                    ),
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(Register.routeName),
                   ),
                 ],
               ),

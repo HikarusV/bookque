@@ -13,6 +13,8 @@ import 'detail_categories_item.dart';
 import 'list_categories.dart';
 
 class DetailDataProvPages extends StatelessWidget {
+  static const String routeName = 'DetailPage';
+
   const DetailDataProvPages(
       {Key? key,
       required this.item,
@@ -45,6 +47,9 @@ class DetailDataProvPages extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl: item.imageid,
                     placeholder: (context, url) => Container(
+                      color: Colors.grey.shade300,
+                    ),
+                    errorWidget: (context, error, _) => Container(
                       color: Colors.grey.shade300,
                     ),
                     height: 240,

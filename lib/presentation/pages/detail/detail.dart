@@ -57,6 +57,7 @@ class _DetailState extends State<Detail> {
               builder: (context, value, _) {
                 if (value.stateDetailItems == ResultState.loading) {
                   return const Center(
+                    heightFactor: 10,
                     child: CircularProgressIndicator(),
                   );
                 } else if (value.stateDetailItems == ResultState.hasData &&

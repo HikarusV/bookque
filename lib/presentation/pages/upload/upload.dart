@@ -20,6 +20,8 @@ import '../../widgets/upload/choose_categories.dart';
 import '../../widgets/upload/image_picker.dart';
 
 class Upload extends StatefulWidget {
+  static const String routeName = 'UploadPage';
+
   const Upload({Key? key, this.items, this.isUpdateModule = false})
       : super(key: key);
   final FullItems? items;

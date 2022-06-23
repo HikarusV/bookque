@@ -15,6 +15,8 @@ import '../../../data/models/full_items.dart';
 import '../../widgets/detail/detail_data_prov_pages.dart';
 
 class UserDetail extends StatefulWidget {
+  static const String routeName = 'UserDetailPages';
+
   const UserDetail({Key? key, required this.id, required this.index})
       : super(key: key);
   final String id;

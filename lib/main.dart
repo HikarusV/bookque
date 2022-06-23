@@ -1,8 +1,15 @@
 import 'package:bookque/common/localizations.dart';
 import 'package:bookque/common/styles.dart';
-import 'package:bookque/data/db/database_helper.dart';
+import 'package:bookque/data/models/full_items.dart';
 import 'package:bookque/presentation/onboarding_page.dart';
 import 'package:bookque/presentation/pages/auth/auth_account.dart';
+import 'package:bookque/presentation/pages/auth/login.dart';
+import 'package:bookque/presentation/pages/auth/register.dart';
+import 'package:bookque/presentation/pages/category/all_categories_list.dart';
+import 'package:bookque/presentation/pages/detail/user_detail.dart';
+import 'package:bookque/presentation/pages/search/search.dart';
+import 'package:bookque/presentation/pages/settings/settings.dart';
+import 'package:bookque/presentation/pages/upload/upload.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:bookque/presentation/provider/categories_provider.dart';
 import 'package:bookque/presentation/provider/database_provider.dart';
@@ -14,6 +21,7 @@ import 'package:bookque/presentation/provider/search_provider.dart';
 import 'package:bookque/presentation/provider/settings_provider.dart';
 import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:bookque/presentation/provider/user_item_detail.dart';
+import 'package:bookque/presentation/widgets/detail/detail_data_prov_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -96,6 +104,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child) {
+        return MediaQuery(
+          child: child!,
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        );
+      },
       debugShowCheckedModeBanner: false,
       locale: context.watch<LocalizationProvider>().locale,
       title: 'BookQue',
@@ -110,6 +124,21 @@ class MyApp extends StatelessWidget {
                 globalLocalData.getBool('first') == false)
             ? const OnboardingPage()
             : const AuthAccount(),
+        Login.routeName: (context) => Login(),
+        Register.routeName: (context) => Register(),
+        DetailDataProvPages.routeName: (context) => DetailDataProvPages(
+              item: ModalRoute.of(context)?.settings.arguments as FullItems,
+              withRecommendation:
+                  ModalRoute.of(context)?.settings.arguments as bool,
+              tagPrefix: ModalRoute.of(context)?.settings.arguments as String,
+            ),
+        Settings.routeName: (context) => const Settings(),
+        Search.routeName: (context) => const Search(),
+        UserDetail.routeName: (context) => UserDetail(
+            id: ModalRoute.of(context)?.settings.arguments as String,
+            index: ModalRoute.of(context)?.settings.arguments as int),
+        Upload.routeName: (context) => const Upload(),
+        AllCategoriesItems.routeName: (context) => const AllCategoriesItems(),
       },
     );
   }

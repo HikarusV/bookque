@@ -32,6 +32,10 @@ class FilterSelectCount {
 
   int selectedFilter = 0;
 
+  void changeSelectedFilter(int value) {
+    selectedFilter = value;
+  }
+
   void addSelectedItem() {
     selectedFilter++;
   }

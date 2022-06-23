@@ -9,10 +9,12 @@ class SettingItemButton extends StatelessWidget {
     required this.itemsName,
     required this.controller,
     this.onItemSelected,
+    this.width = 95,
   }) : super(key: key);
 
   final String title;
   final List itemsName;
+  final double width;
   final GroupButtonController controller;
   final Function(dynamic, int, bool)? onItemSelected;
 
@@ -36,7 +38,7 @@ class SettingItemButton extends StatelessWidget {
               return ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Container(
-                  width: 95,
+                  width: width,
                   height: 35,
                   alignment: Alignment.center,
                   color: selected ? primaryColor : secondaryColor,

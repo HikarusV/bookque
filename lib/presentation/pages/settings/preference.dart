@@ -16,6 +16,7 @@ class Preference extends StatelessWidget {
       title: AppLocalizations.of(context)!.appreanceText,
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SettingItemButton(
               title: AppLocalizations.of(context)!.themeText,
@@ -42,6 +43,16 @@ class Preference extends StatelessWidget {
                     .read<SettingsProvider>()
                     .changelanguage(name.toString());
                 context.read<LocalizationProvider>().setLocale(id);
+              },
+            ),
+            SettingItemButton(
+              width: 60,
+              title: 'Font Scaling',
+              controller: context.read<SettingsProvider>().fontScale,
+              itemsName: const ['1x', '1.1x', '1.2x'],
+              onItemSelected: (name, i, isSelected) {
+                // context.read<SettingsProvider>().themes.selectIndex(i);
+                // context.read<SettingsProvider>().changeTheme(i == 1);
               },
             ),
           ],

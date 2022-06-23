@@ -5,8 +5,14 @@ import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import 'list_filter_selected.dart';
 
-class ItemFilter extends StatelessWidget {
-  ItemFilter({Key? key}) : super(key: key);
+class ItemFilter extends StatefulWidget {
+  const ItemFilter({Key? key}) : super(key: key);
+
+  @override
+  State<ItemFilter> createState() => _ItemFilterState();
+}
+
+class _ItemFilterState extends State<ItemFilter> {
   final FilterSelectCount count = FilterSelectCount();
 
   @override
@@ -57,6 +63,8 @@ class ItemFilter extends StatelessWidget {
               ],
             ),
           ),
+        ).whenComplete(
+          () => setState(() => ''),
         );
       },
       child: Container(
@@ -77,7 +85,7 @@ class ItemFilter extends StatelessWidget {
               style: filterTitle,
             ),
             Text(
-              AppLocalizations.of(context)!.sortUploadItem1,
+              data[count.selectedFilter].name,
               style: filterTitle,
             ),
             const Icon(

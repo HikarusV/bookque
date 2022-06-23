@@ -7,6 +7,7 @@ import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import '../../../data/models/categories.dart';
 import '../../provider/account_provider.dart';
+import '../../provider/settings_provider.dart';
 import '../../widgets/home/categories_item.dart';
 import '../../widgets/home/double_list_books.dart';
 import '../../widgets/home/heading_home.dart';
@@ -62,7 +63,7 @@ class _HomeState extends State<Home> {
                   SafeArea(
                     child: Container(
                       margin:
-                          const EdgeInsets.only(left: 15, right: 15, top: 15),
+                          const EdgeInsets.only(left: 15, right: 15, top: 28),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -73,8 +74,10 @@ class _HomeState extends State<Home> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      AppLocalizations.of(context)!
-                                              .greetingsText +
+                                      // AppLocalizations.of(context)!
+                                      //         .greetingsText +
+                                      getGreetingsText(context) +
+                                          "\n" +
                                           (context
                                                   .read<AccountProv>()
                                                   .userData!
@@ -89,7 +92,7 @@ class _HomeState extends State<Home> {
                               Container(
                                 padding: const EdgeInsets.all(3),
                                 margin:
-                                    const EdgeInsets.only(right: 3, left: 3),
+                                    const EdgeInsets.only(right: 6, left: 6),
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(90)),
@@ -99,7 +102,7 @@ class _HomeState extends State<Home> {
                                           .userData!
                                           .photoURL ??
                                       'https://graph.facebook.com/111968404870160/picture'),
-                                  radius: 40,
+                                  radius: 32,
                                   backgroundColor: Colors.transparent,
                                 ),
                               ),
@@ -175,5 +178,18 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  String getGreetingsText(BuildContext context) {
+    int time = context.read<SettingsProvider>().now;
+    if (time >= 11 && time <= 15) {
+      return 'Selamat Siang';
+    } else if (time > 15 && time <= 19) {
+      return 'Selamat Sore';
+    } else if ((time > 19 && time <= 24) || (time >= 0 && time <= 2)) {
+      return 'Selamat Malam';
+    } else {
+      return 'Selamat Pagi';
+    }
   }
 }

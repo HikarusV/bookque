@@ -168,6 +168,27 @@ class HandleApi {
     }
   }
 
+  static Future credentialUserRegist(
+      String userid, String email, String name) async {
+    try {
+      final codeResponse = await http.post(
+        Uri.parse('http://103.214.185.190:5000//credential/verify'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(
+            <String, dynamic>{"email": email, "userid": userid, "name": name}),
+      );
+
+      final response = jsonDecode(codeResponse.body);
+
+      return !response['error'];
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
   static Future<Map<String, dynamic>> postItem(
       String idUser,
       String cover,

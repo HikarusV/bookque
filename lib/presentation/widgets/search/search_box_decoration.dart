@@ -1,5 +1,7 @@
 import 'package:bookque/presentation/pages/search/search.dart';
+import 'package:bookque/presentation/provider/search_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
@@ -11,11 +13,8 @@ class SearchBoxDecoration extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const Search(),
-          ),
-        );
+        context.read<SearchProvider>().resetSearchResult();
+        Navigator.of(context).pushNamed(Search.routeName);
       },
       child: Container(
         height: 40,

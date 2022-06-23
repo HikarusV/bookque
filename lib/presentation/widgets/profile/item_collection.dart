@@ -1,4 +1,5 @@
 import 'package:bookque/presentation/widgets/loading_widget/book_item_loading.dart';
+import 'package:bookque/presentation/widgets/search/search_image_result.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -19,45 +20,51 @@ class ItemCollection extends StatelessWidget {
     return ScrollConfiguration(
       behavior: ScrollBehaviorWithoutGlow(),
       child: Expanded(
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 0.65,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8),
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            if (onLoadingItems) {
-              return items[index];
-            } else {
-              final book = items[index];
+        child: items.isEmpty
+            ? const ImageResult(text: 'Buku Kosong')
+            : GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    childAspectRatio: 0.65,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8),
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  if (onLoadingItems) {
+                    return items[index];
+                  } else {
+                    final book = items[index];
 
-              return Hero(
-                tag: 'user-${book.itemid}',
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => UserDetail(
-                            id: book.itemid,
-                            index: index,
+                    return Hero(
+                      tag: 'user-${book.itemid}',
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => UserDetail(
+                                  id: book.itemid,
+                                  index: index,
+                                ),
+                              ),
+                            );
+                          },
+                          child: CachedNetworkImage(
+                            imageUrl: book.imageid,
+                            fit: BoxFit.cover,
+                            placeholder: (context, error) =>
+                                CustomShimmer.skeleton(),
+                            errorWidget: (context, error, _) => Container(
+                              color: Colors.grey.shade300,
+                            ),
                           ),
                         ),
-                      );
-                    },
-                    child: CachedNetworkImage(
-                      imageUrl: book.imageid,
-                      fit: BoxFit.cover,
-                      placeholder: (context, error) => CustomShimmer.skeleton(),
-                    ),
-                  ),
-                ),
-              );
-            }
-          },
-        ),
+                      ),
+                    );
+                  }
+                },
+              ),
       ),
     );
   }

@@ -23,6 +23,9 @@ class CahceImages extends StatelessWidget {
           placeholder: (context, url) => Container(
             color: Colors.grey.shade300,
           ),
+          errorWidget: (context, error, _) => Container(
+            color: Colors.grey.shade300,
+          ),
           imageUrl: urlImages,
           fit: BoxFit.cover,
         ),

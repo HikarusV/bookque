@@ -44,12 +44,7 @@ class _ProfileState extends State<Profile> {
                     right: 0,
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Settings(),
-                          ),
-                        );
+                        Navigator.of(context).pushNamed(Settings.routeName);
                       },
                       child: Icon(
                         Icons.settings,
@@ -60,7 +55,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ],
               ),
-              ItemFilter(),
+              const ItemFilter(),
               const SizedBox(
                 height: 15,
               ),
@@ -88,16 +83,18 @@ class _ProfileState extends State<Profile> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Theme.of(context).colorScheme.primary,
           onPressed: () async {
-            var result = await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const Upload(),
-              ),
-            );
+            var result;
+            await Navigator.of(context)
+                .pushNamed(Upload.routeName)
+                .then((value) => result = value)
+                .whenComplete(() {
+              result = null;
+            });
             if (result.runtimeType == Items) {
               context.read<ProfileItemsProvider>().addNewData(result);
             }
           },
-          child: const Icon(Icons.add),
+          child: const Icon(Icons.add, size: 30),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),

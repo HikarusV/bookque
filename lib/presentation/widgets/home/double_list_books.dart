@@ -64,6 +64,9 @@ class DoubleListBooks extends StatelessWidget {
                                 color: Colors.grey.shade300,
                               ),
                               imageUrl: listData[index].imageid,
+                              errorWidget: (context, error, _) => Container(
+                                color: Colors.grey.shade300,
+                              ),
                               fit: BoxFit.cover,
                             )
                           : Image.asset(

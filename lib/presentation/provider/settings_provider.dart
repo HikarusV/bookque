@@ -2,6 +2,7 @@ import 'package:bookque/main.dart';
 import 'package:bookque/presentation/widgets/settings/setting_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
+import 'package:intl/intl.dart';
 
 class SettingsProvider with ChangeNotifier {
   SettingsProvider() {
@@ -9,16 +10,24 @@ class SettingsProvider with ChangeNotifier {
     language.selectIndex(globalLocalData.getInt('languageIndex') ?? 0);
     darkTheme = globalLocalData.getBool('darkTheme') ?? false;
     valueLanguage = globalLocalData.getString('valueLang') ?? 'Indonesia';
+
+    _now = int.parse(DateFormat('hh').format(DateTime.now()));
   }
+
+  late int _now;
 
   late bool darkTheme;
 
   late String valueLanguage;
 
+  int get now => _now;
+
   final themes = GroupButtonController()
     ..selectIndex(globalLocalData.getInt('themesIndex') ?? 0);
   final language = GroupButtonController()
     ..selectIndex(globalLocalData.getInt('languageIndex') ?? 0);
+  final fontScale = GroupButtonController()
+    ..selectIndex(globalLocalData.getInt('fontScaleIndex') ?? 0);
 
   void changeTheme(bool value) {
     darkTheme = value;

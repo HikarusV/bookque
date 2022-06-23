@@ -14,6 +14,8 @@ import '../../widgets/auth/text_input.dart';
 import 'login.dart';
 
 class Register extends StatelessWidget {
+  static const String routeName = 'RegisterPage';
+
   Register({Key? key}) : super(key: key);
 
   final TextEditingController nameController = TextEditingController();
@@ -79,8 +81,6 @@ class Register extends StatelessWidget {
                       Map condition =
                           columnCheck(context, email, name, pass, confirmPass);
 
-                      print(condition);
-
                       if (condition['isAccept']) {
                         AuthCache.data['pass'] = pass;
                         AuthCache.data['name'] = name;
@@ -129,12 +129,7 @@ class Register extends StatelessWidget {
                   BottomTextButton(
                     text: AppLocalizations.of(context)!.haveAccountText,
                     textButton: AppLocalizations.of(context)!.loginText1,
-                    onTap: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Login(),
-                      ),
-                    ),
+                    onTap: () => Navigator.of(context).pop(),
                   ),
                 ],
               ),
@@ -192,15 +187,7 @@ class Register extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => CodeValidation(
               controller: TextEditingController(),
-              whenValid: () async {
-                Navigator.pop(context);
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => const AuthAccount(),
-                //   ),
-                // );
-              },
+              whenValid: () => Navigator.pop(context),
               whenError: () => print('Gagal broh'),
             ),
           ),

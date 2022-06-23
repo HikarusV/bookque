@@ -9,6 +9,8 @@ import 'login.dart';
 class AuthAccount extends StatelessWidget {
   const AuthAccount({Key? key}) : super(key: key);
 
+  static const String routeName = '/';
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(

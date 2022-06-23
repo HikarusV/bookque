@@ -1,4 +1,5 @@
 import 'package:bookque/common/styles.dart';
+import 'package:bookque/presentation/widgets/search/search_image_result.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,7 @@ import '../../widgets/search/search_box.dart';
 import '../../widgets/search/search_filter.dart';
 
 class Search extends StatelessWidget {
+  static const String routeName = 'SearchPage';
   const Search({Key? key}) : super(key: key);
 
   @override
@@ -69,6 +71,12 @@ class Search extends StatelessWidget {
                     if (value.stateSearch == ResultState.loading) {
                       return const Center(child: CircularProgressIndicator());
                     } else if (value.stateSearch == ResultState.hasData) {
+                      if (value.dataSearch.isEmpty) {
+                        return const ImageResult(
+                          text: 'Tidak Menemukan apa apa',
+                        );
+                      }
+
                       return DoubleListBooks(
                         tagPrefix: 'search-',
                         isScroolable: true,
@@ -77,30 +85,8 @@ class Search extends StatelessWidget {
                     } else if (value.stateSearch == ResultState.error) {
                       return Text(value.searchMessage);
                     }
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 150),
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Image.asset(
-                                'assets/search_image1.png',
-                                width: 150,
-                                height: 150,
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Text(
-                                AppLocalizations.of(context)!.searchContentText,
-                                textAlign: TextAlign.center,
-                                style: titleSemiMedium,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                    return ImageResult(
+                      text: AppLocalizations.of(context)!.searchContentText,
                     );
                   },
                 ),

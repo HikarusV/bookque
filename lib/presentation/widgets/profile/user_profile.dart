@@ -12,12 +12,12 @@ class UserProfile extends StatelessWidget {
     return Row(
       children: [
         Container(
-          margin: const EdgeInsets.only(right: 15),
+          margin: const EdgeInsets.only(right: 15, top: 7, bottom: 6),
           child: CircleAvatar(
             backgroundImage: NetworkImage(
                 context.read<AccountProv>().userData!.photoURL ??
                     'https://graph.facebook.com/111968404870160/picture'),
-            radius: 40,
+            radius: 32,
             backgroundColor: Colors.transparent,
           ),
         ),

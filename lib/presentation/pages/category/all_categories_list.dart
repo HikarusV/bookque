@@ -7,6 +7,8 @@ import '../../../common/state_enum.dart';
 import '../../widgets/home/double_list_books.dart';
 
 class AllCategoriesItems extends StatefulWidget {
+  static const String routeName = 'CategoriesPage';
+
   const AllCategoriesItems({Key? key, this.text = 'Categories', this.id = 'id'})
       : super(key: key);
   final String text;
