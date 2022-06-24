@@ -33,10 +33,11 @@ class Preference extends StatelessWidget {
             SettingItemButton(
               title: AppLocalizations.of(context)!.languageText,
               controller: context.read<SettingsProvider>().language,
-              itemsName: [
+              itemsName: const [
                 // AppLocalizations.of(context)!.languageItem1,
                 'Indonesia',
-                AppLocalizations.of(context)!.languageItem2,
+                // AppLocalizations.of(context)!.languageItem2,
+                'English'
               ],
               onItemSelected: (name, i, isSelected) {
                 context.read<SettingsProvider>().language.selectIndex(i);

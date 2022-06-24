@@ -7,6 +7,7 @@ import 'package:bookque/presentation/pages/settings/preference.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/settings/setting_button.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +27,12 @@ class Settings extends StatelessWidget {
           margin: const EdgeInsets.all(15.0),
           child: Column(
             children: [
+              SettingButton(
+                text: 'Testing CrashLytics',
+                onPressed: () {
+                  FirebaseCrashlytics.instance.crash();
+                },
+              ),
               SettingButton(
                 text: 'Testing Notification',
                 onPressed: () {

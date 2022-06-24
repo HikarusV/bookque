@@ -12,7 +12,7 @@ class SettingsProvider with ChangeNotifier {
     valueLanguage = globalLocalData.getString('valueLang') ?? 'Indonesia';
     fontScaleValue = globalLocalData.getDouble('fontScale') ?? 1;
 
-    _now = int.parse(DateFormat('hh').format(DateTime.now()));
+    _now = int.parse(DateFormat('HH').format(DateTime.now()));
   }
 
   final List<double> scale = [1, 1.1, 1.2];

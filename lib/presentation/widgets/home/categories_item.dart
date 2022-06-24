@@ -1,8 +1,10 @@
 import 'package:bookque/data/models/categories.dart';
 import 'package:bookque/presentation/pages/category/all_categories_list.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/styles.dart';
+import '../../provider/settings_provider.dart';
 
 class CategoriesItem extends StatelessWidget {
   const CategoriesItem({Key? key, this.onItemTap, required this.items})
@@ -14,7 +16,7 @@ class CategoriesItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 5),
-      height: 75,
+      height: (75.0 * context.watch<SettingsProvider>().fontScaleValue),
       child: ListView.builder(
         itemCount: items.length,
         scrollDirection: Axis.horizontal,

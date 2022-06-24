@@ -10,9 +10,9 @@
   </queries>
 
    <application
-        android:label="bookque"
+        android:label="BookQue"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_logo_round">
         <activity
             android:name=".MainActivity"
             android:exported="true"

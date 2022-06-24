@@ -14,7 +14,7 @@ class NotificationSystem {
   static late AndroidNotificationChannel channel;
 
   static const initAndroidSetting =
-      AndroidInitializationSettings('@mipmap/ic_launcher');
+      AndroidInitializationSettings('@mipmap/ic_logo_trp_f');
 
   static const initSetting = InitializationSettings(
     android: initAndroidSetting,
@@ -75,7 +75,6 @@ class NotificationSystem {
           channelDescription: channel.description,
           priority: Priority.max,
           ticker: 'ticker',
-          color: Colors.blue,
         ),
       ),
       payload: payload,
