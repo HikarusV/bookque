@@ -89,10 +89,11 @@ class CodeValidation extends StatelessWidget {
                                         AuthCache.data['mail'],
                                         AuthCache.data['pass'],
                                       );
-
+                                  Navigator.pop(context);
                                   whenValid();
+                                } else {
+                                  Navigator.pop(context);
                                 }
-                                Navigator.pop(context);
                               } else {
                                 Navigator.pop(context);
                                 whenError();

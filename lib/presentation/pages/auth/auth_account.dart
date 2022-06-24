@@ -22,7 +22,8 @@ class AuthAccount extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (snapshot.hasData) {
-          final dataAccount = context.read<AccountProv>();
+          final dataAccount = context.watch<AccountProv>();
+          print('telah login');
           dataAccount.getCurentUser();
           if (dataAccount.userData!.displayName == null ||
               dataAccount.userData!.photoURL == null) {

@@ -13,7 +13,6 @@ import '../../widgets/auth/full_button.dart';
 import '../../widgets/auth/heading_title.dart';
 import '../../widgets/auth/password_field.dart';
 import '../../widgets/auth/text_input.dart';
-import 'login.dart';
 
 class Register extends StatelessWidget {
   static const String routeName = 'RegisterPage';
