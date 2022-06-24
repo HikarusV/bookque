@@ -31,51 +31,63 @@ class Help extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    children: [
-                      const CircleAvatar(
-                        radius: 50,
-                        backgroundImage:
-                            AssetImage('assets/wildan_profile.jpeg'),
-                      ),
-                      Text('Muhammad Wildhan K', style: subText),
-                      Link(
-                        target: LinkTarget.blank,
-                        uri:
-                            Uri.parse('https://www.linkedin.com/in/mwildhank/'),
-                        builder: (context, followLink) => InkWell(
-                          onTap: followLink,
-                          child: Image.asset(
-                            'assets/linkedin_logo.png',
-                            width: 80,
-                            height: 25,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const CircleAvatar(
+                          radius: 50,
+                          backgroundImage:
+                              AssetImage('assets/wildan_profile.jpeg'),
+                        ),
+                        Text(
+                          'Muhammad Wildhan Kusumawardana',
+                          textAlign: TextAlign.center,
+                          style: subText,
+                        ),
+                        Link(
+                          target: LinkTarget.blank,
+                          uri: Uri.parse(
+                              'https://www.linkedin.com/in/mwildhank/'),
+                          builder: (context, followLink) => InkWell(
+                            onTap: followLink,
+                            child: Image.asset(
+                              'assets/linkedin_logo.png',
+                              width: 80,
+                              height: 25,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  Column(
-                    children: [
-                      const CircleAvatar(
-                        radius: 50,
-                        backgroundImage:
-                            AssetImage('assets/farras_profile.jpeg'),
-                      ),
-                      Text('Abdurrachman Farras', style: subText),
-                      Link(
-                        target: LinkTarget.blank,
-                        uri: Uri.parse(
-                            'https://www.linkedin.com/in/abdurrachman-farras-8a8a08222/'),
-                        builder: (context, followLink) => InkWell(
-                          onTap: followLink,
-                          child: Image.asset(
-                            'assets/linkedin_logo.png',
-                            width: 80,
-                            height: 25,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const CircleAvatar(
+                          radius: 50,
+                          backgroundImage:
+                              AssetImage('assets/farras_profile.jpeg'),
+                        ),
+                        Text(
+                          'Abdurrachman Farras',
+                          style: subText,
+                          textAlign: TextAlign.center,
+                        ),
+                        Link(
+                          target: LinkTarget.blank,
+                          uri: Uri.parse(
+                              'https://www.linkedin.com/in/abdurrachman-farras-8a8a08222/'),
+                          builder: (context, followLink) => InkWell(
+                            onTap: followLink,
+                            child: Image.asset(
+                              'assets/linkedin_logo.png',
+                              width: 80,
+                              height: 25,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -83,51 +95,63 @@ class Help extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    children: [
-                      const CircleAvatar(
-                        radius: 50,
-                        backgroundImage:
-                            AssetImage('assets/sapta_profile.jpeg'),
-                      ),
-                      Text('Nazwa Sapta Pradana', style: subText),
-                      Link(
-                        target: LinkTarget.blank,
-                        uri: Uri.parse(
-                            'https://www.linkedin.com/in/saptapradana/'),
-                        builder: (context, followLink) => InkWell(
-                          onTap: followLink,
-                          child: Image.asset(
-                            'assets/linkedin_logo.png',
-                            width: 80,
-                            height: 25,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const CircleAvatar(
+                          radius: 50,
+                          backgroundImage:
+                              AssetImage('assets/sapta_profile.jpeg'),
+                        ),
+                        Text(
+                          'Nazwa Sapta Pradana',
+                          style: subText,
+                          textAlign: TextAlign.center,
+                        ),
+                        Link(
+                          target: LinkTarget.blank,
+                          uri: Uri.parse(
+                              'https://www.linkedin.com/in/saptapradana/'),
+                          builder: (context, followLink) => InkWell(
+                            onTap: followLink,
+                            child: Image.asset(
+                              'assets/linkedin_logo.png',
+                              width: 80,
+                              height: 25,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  Column(
-                    children: [
-                      const CircleAvatar(
-                        radius: 50,
-                        backgroundImage:
-                            AssetImage('assets/yudhis_profile.jpeg'),
-                      ),
-                      Text('Yudhistira Hary P', style: subText),
-                      Link(
-                        target: LinkTarget.blank,
-                        uri: Uri.parse(
-                            'https://www.linkedin.com/in/yudhistira-hary-pratama/'),
-                        builder: (context, followLink) => InkWell(
-                          onTap: followLink,
-                          child: Image.asset(
-                            'assets/linkedin_logo.png',
-                            width: 80,
-                            height: 25,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const CircleAvatar(
+                          radius: 50,
+                          backgroundImage:
+                              AssetImage('assets/yudhis_profile.jpeg'),
+                        ),
+                        Text(
+                          'Yudhistira Hary Pratama',
+                          style: subText,
+                          textAlign: TextAlign.center,
+                        ),
+                        Link(
+                          target: LinkTarget.blank,
+                          uri: Uri.parse(
+                              'https://www.linkedin.com/in/yudhistira-hary-pratama/'),
+                          builder: (context, followLink) => InkWell(
+                            onTap: followLink,
+                            child: Image.asset(
+                              'assets/linkedin_logo.png',
+                              width: 80,
+                              height: 25,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),

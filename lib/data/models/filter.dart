@@ -22,9 +22,9 @@ List<Filters> getListFilter(BuildContext context) {
       name: AppLocalizations.of(context)!.sortUploadItem2,
       isSelected: false,
     ),
-    Filters(
-      name: AppLocalizations.of(context)!.sortUploadItem3,
-      isSelected: false,
-    ),
+    // Filters(
+    //   name: AppLocalizations.of(context)!.sortUploadItem3,
+    //   isSelected: false,
+    // ),
   ];
 }

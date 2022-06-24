@@ -96,19 +96,24 @@ class _ReportDialogState extends State<ReportDialog> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      reports.name,
-                      style: buttonSmall,
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        reports.name,
+                        style: buttonSmall,
+                      ),
                     ),
-                    reports.isSelected
-                        ? const Icon(
-                            Icons.check_circle,
-                            color: primaryColor,
-                          )
-                        : const Icon(
-                            Icons.circle_outlined,
-                            color: primaryColor,
-                          ),
+                    Flexible(
+                        flex: 0,
+                        child: (reports.isSelected
+                            ? const Icon(
+                                Icons.check_circle,
+                                color: primaryColor,
+                              )
+                            : const Icon(
+                                Icons.circle_outlined,
+                                color: primaryColor,
+                              )))
                   ],
                 ),
               ),

@@ -24,9 +24,17 @@ class AccountProv extends ChangeNotifier {
     // print(userData ?? 'kosong');
   }
 
-  void getReloadCurentUser() async {
+  Future getReloadCurentUser() async {
     await FirebaseAuth.instance.currentUser!.reload();
     userData = FirebaseAuth.instance.currentUser!;
+  }
+
+  Future updateUsernamePicture(String newUsername, String newPhotoUrl) async {
+    await userData?.updateDisplayName(newUsername);
+    await userData?.updatePhotoURL(newPhotoUrl);
+
+    await getReloadCurentUser();
+    notifyListeners();
   }
 
   Future signInMailPass(String email, String pass) async {

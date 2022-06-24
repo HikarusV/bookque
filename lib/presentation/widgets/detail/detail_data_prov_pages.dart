@@ -3,6 +3,7 @@ import 'package:bookque/data/models/full_items.dart';
 import 'package:bookque/presentation/widgets/detail/small_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/link.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
@@ -89,7 +90,17 @@ class DetailDataProvPages extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 5),
-                const SmallButton(),
+                Link(
+                  target: LinkTarget.blank,
+                  uri: Uri.parse((item.url.contains("https://")
+                      ? item.url
+                      : ("https://" + item.url))),
+                  builder: (context, followLink) => SmallButton(
+                    onTap: () {
+                      followLink!();
+                    },
+                  ),
+                ),
               ],
             ),
           ),

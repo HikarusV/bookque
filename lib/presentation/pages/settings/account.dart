@@ -27,7 +27,10 @@ class Account extends StatelessWidget {
             margin: const EdgeInsets.all(15.0),
             child: Column(
               children: [
-                const ProfilePicturePicker(),
+                const ProfilePicturePicker(
+                  urlNetwork:
+                      'https://graph.facebook.com/111968404870160/picture',
+                ),
                 TextInput(
                   controller: nameController,
                   textHint: AppLocalizations.of(context)!.namePlaceholderText,
@@ -52,7 +55,21 @@ class Account extends StatelessWidget {
                 ),
                 FullButton(
                   text: AppLocalizations.of(context)!.saveText,
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text("Mohon maaf"),
+                        content: const Text(
+                            "Saat ini fitur update profile belum tersedia"),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text('ok')),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

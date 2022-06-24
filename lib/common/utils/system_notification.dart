@@ -69,13 +69,11 @@ class NotificationSystem {
       title,
       body,
       NotificationDetails(
-        android: AndroidNotificationDetails(
-          channel.id,
-          channel.name,
-          channelDescription: channel.description,
-          priority: Priority.max,
-          ticker: 'ticker',
-        ),
+        android: AndroidNotificationDetails(channel.id, channel.name,
+            channelDescription: channel.description,
+            priority: Priority.max,
+            ticker: 'ticker',
+            color: Colors.blue),
       ),
       payload: payload,
     );

@@ -4,7 +4,8 @@ import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 
 class SmallButton extends StatelessWidget {
-  const SmallButton({Key? key}) : super(key: key);
+  const SmallButton({Key? key, this.onTap}) : super(key: key);
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class SmallButton extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: onTap,
         child: Text(
           AppLocalizations.of(context)!.visitButtonText,
           style: buttonMedium,

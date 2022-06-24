@@ -6,7 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilePicturePicker extends StatefulWidget {
-  const ProfilePicturePicker({Key? key}) : super(key: key);
+  const ProfilePicturePicker({Key? key, required this.urlNetwork})
+      : super(key: key);
+  final String urlNetwork;
 
   @override
   State<ProfilePicturePicker> createState() => _ProfilePicturePickerState();
@@ -25,8 +27,8 @@ class _ProfilePicturePickerState extends State<ProfilePicturePicker> {
             child: image != null
                 ? Image.file(image!, fit: BoxFit.fill)
                 : Image.network(
-                    'https://graph.facebook.com/111968404870160/picture',
-                    fit: BoxFit.fill,
+                    widget.urlNetwork,
+                    fit: BoxFit.cover,
                   ),
           ),
         ),
@@ -34,25 +36,7 @@ class _ProfilePicturePickerState extends State<ProfilePicturePicker> {
           bottom: 10,
           right: 5,
           child: GestureDetector(
-            onTap: () async {
-              try {
-                final image =
-                    await ImagePicker().pickImage(source: ImageSource.gallery);
-                // print(image?.readAsBytes());
-                if (image == null) return;
-
-                final imageTemporary = File(image.path);
-                setState(() => this.image = imageTemporary);
-                // print(image.path);
-
-                // final bytes = File(image.path).readAsBytesSync();
-
-                // String img64 = base64Encode(bytes);
-                // print(img64);
-              } on PlatformException catch (e) {
-                ('$e');
-              }
-            },
+            onTap: () async {},
             child: const CircleAvatar(
               backgroundColor: primaryColor,
               child: Icon(

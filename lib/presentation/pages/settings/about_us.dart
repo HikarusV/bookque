@@ -43,6 +43,7 @@ class AboutUs extends StatelessWidget {
               const SizedBox(height: 20),
               Text('Resource Credit :', style: subText),
               Text('● Icons8', style: subText),
+              Text('● Unsplash', style: subText),
               Text('● Figma', style: subText),
             ],
           ),

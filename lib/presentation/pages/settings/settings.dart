@@ -1,13 +1,15 @@
 import 'package:bookque/common/utils/system_notification.dart';
+import 'package:bookque/presentation/pages/auth/setup_profile.dart';
+import 'package:bookque/presentation/pages/profilemaker/profile_maker.dart';
 import 'package:bookque/presentation/pages/settings/about_us.dart';
 import 'package:bookque/presentation/pages/settings/account.dart';
 import 'package:bookque/presentation/pages/settings/help.dart';
 import 'package:bookque/presentation/pages/settings/permission.dart';
 import 'package:bookque/presentation/pages/settings/preference.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
+import 'package:bookque/presentation/provider/profile_maker_provider.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/settings/setting_button.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,15 +30,10 @@ class Settings extends StatelessWidget {
           child: Column(
             children: [
               SettingButton(
-                text: 'Testing CrashLytics',
-                onPressed: () {
-                  FirebaseCrashlytics.instance.crash();
-                },
-              ),
-              SettingButton(
                 text: 'Testing Notification',
                 onPressed: () {
-                  NotificationSystem.showNotif('Test', 'Body', 'Payload');
+                  NotificationSystem.showNotif('ayo baca  buku sekarang',
+                      'Buku adalah jendela dunia loh', 'Payload');
                 },
               ),
               SettingButton(
@@ -45,8 +42,8 @@ class Settings extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Account(),
-                    ),
+                        // builder: (context) => Account(),
+                        builder: (context) => const SetupProfile()),
                   );
                 },
               ),

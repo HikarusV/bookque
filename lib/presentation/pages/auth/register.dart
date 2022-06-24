@@ -1,6 +1,8 @@
 import 'package:bookque/data/cache/cache_auth.dart';
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
+import 'package:bookque/main.dart';
 import 'package:bookque/presentation/pages/auth/code_validation.dart';
+import 'package:bookque/presentation/pages/auth/setup_profile.dart';
 import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +86,9 @@ class Register extends StatelessWidget {
                       if (condition['isAccept']) {
                         AuthCache.data['pass'] = pass;
                         AuthCache.data['name'] = name;
+                        globalLocalData.setString('name', name);
                         AuthCache.data['mail'] = email;
+                        globalLocalData.setString('email', email);
 
                         await registerFunction(context);
                       } else {
@@ -94,35 +98,6 @@ class Register extends StatelessWidget {
                           message: condition['message'],
                         );
                       }
-
-                      // if (email.isNotEmpty &&
-                      //     name.isNotEmpty &&
-                      //     pass.length > 6 &&
-                      //     confirmPass.isNotEmpty) {
-                      //   if (reference.data == confirmPass) {
-                      //     AuthCache.data['pass'] = pass;
-                      //     AuthCache.data['name'] = name;
-                      //     AuthCache.data['mail'] = email;
-                      //
-                      //     await registerFunction(context);
-                      //   } else {
-                      //     snackbarError(
-                      //       context,
-                      //       duration: 5,
-                      //       message:
-                      //           'Kolom password dan kolom konfirmasi password harus sama',
-                      //     );
-                      //   }
-                      // } else {
-                      //   mailController.text = AuthCache.data['mail'];
-                      //   nameController.text = AuthCache.data['name'];
-                      //   snackbarError(
-                      //     context,
-                      //     duration: 2,
-                      //     message:
-                      //     'Semua kolom harus diisi',
-                      //   );
-                      // }
                     },
                     text: AppLocalizations.of(context)!.registerText1,
                   ),
@@ -187,7 +162,12 @@ class Register extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => CodeValidation(
               controller: TextEditingController(),
-              whenValid: () => Navigator.pop(context),
+
+              /// whenValid: () => Navigator.pop(context), //old function
+              whenValid: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SetupProfile())),
               whenError: () => print('Gagal broh'),
             ),
           ),

@@ -15,7 +15,7 @@ class UserProfile extends StatelessWidget {
           margin: const EdgeInsets.only(right: 15, top: 7, bottom: 6),
           child: CircleAvatar(
             backgroundImage: NetworkImage(
-                context.read<AccountProv>().userData!.photoURL ??
+                context.watch<AccountProv>().userData!.photoURL ??
                     'https://graph.facebook.com/111968404870160/picture'),
             radius: 32,
             backgroundColor: Colors.transparent,
@@ -26,7 +26,7 @@ class UserProfile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                context.read<AccountProv>().userData!.displayName ?? 'User',
+                context.watch<AccountProv>().userData!.displayName ?? 'User',
                 style: titleMedium,
                 maxLines: 2,
               ),

@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
                                       getGreetingsText(context) +
                                           "\n" +
                                           (context
-                                                  .read<AccountProv>()
+                                                  .watch<AccountProv>()
                                                   .userData!
                                                   .displayName ??
                                               'User'),
@@ -98,7 +98,7 @@ class _HomeState extends State<Home> {
                                     borderRadius: BorderRadius.circular(90)),
                                 child: CircleAvatar(
                                   backgroundImage: NetworkImage(context
-                                          .read<AccountProv>()
+                                          .watch<AccountProv>()
                                           .userData!
                                           .photoURL ??
                                       'https://graph.facebook.com/111968404870160/picture'),
