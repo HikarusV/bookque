@@ -167,7 +167,9 @@ class Register extends StatelessWidget {
               whenValid: () => Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const SetupProfile())),
+                      builder: (context) => const SetupProfile(
+                            isRegist: true,
+                          ))),
               whenError: () => print('Gagal broh'),
             ),
           ),

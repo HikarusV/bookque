@@ -1,4 +1,5 @@
 import 'package:bookque/presentation/main_page.dart';
+import 'package:bookque/presentation/pages/auth/setup_profile.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,15 @@ class AuthAccount extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (snapshot.hasData) {
-          context.read<AccountProv>().getCurentUser();
+          final dataAccount = context.read<AccountProv>();
+          dataAccount.getCurentUser();
+          if (dataAccount.userData!.displayName == null ||
+              dataAccount.userData!.photoURL == null) {
+            return const SetupProfile(
+              isRegist: true,
+            );
+          }
+
           return const MainPage();
         } else if (snapshot.hasError) {
           return const Center(
