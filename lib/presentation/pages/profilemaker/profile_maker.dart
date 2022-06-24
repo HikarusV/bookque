@@ -5,6 +5,7 @@ import 'package:bookque/presentation/widgets/settings/profile_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import '../../provider/account_provider.dart';
 
@@ -103,7 +104,7 @@ class _ProfileMakerState extends State<ProfileMaker> {
                             widget.onFinish();
                           },
                           child: Text(
-                            'Simpan dan Lanjutkan',
+                            AppLocalizations.of(context)!.saveText,
                             style: TextStyle(
                                 fontStyle: subText.fontStyle,
                                 fontSize: subText.fontSize,

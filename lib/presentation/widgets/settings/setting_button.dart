@@ -1,5 +1,6 @@
 import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SettingButton extends StatelessWidget {
   const SettingButton({
@@ -40,10 +41,12 @@ class SettingButton extends StatelessWidget {
           children: [
             Text(
               text,
-              style: TextStyle(
-                  fontSize: buttonMediumBlack.fontSize,
-                  fontStyle: buttonMediumBlack.fontStyle,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer),
+              style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                    fontSize: buttonMediumBlack.fontSize,
+                    fontStyle: buttonMediumBlack.fontStyle,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

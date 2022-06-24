@@ -55,8 +55,8 @@ class TextInput extends StatelessWidget {
                 maxLengthEnforcement:
                     (maxLength == null) ? null : MaxLengthEnforcement.enforced,
                 style: TextStyle(
-                  fontStyle: subText.fontStyle,
-                  fontSize: subText.fontSize,
+                  fontStyle: titleSmall.fontStyle,
+                  fontSize: titleSmall.fontSize,
                   color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
                 decoration: InputDecoration(

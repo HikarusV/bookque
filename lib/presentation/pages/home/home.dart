@@ -183,13 +183,13 @@ class _HomeState extends State<Home> {
   String getGreetingsText(BuildContext context) {
     int time = context.read<SettingsProvider>().now;
     if (time >= 11 && time <= 15) {
-      return 'Selamat Siang';
+      return AppLocalizations.of(context)!.afternoon1Text;
     } else if (time > 15 && time <= 19) {
-      return 'Selamat Sore';
+      return AppLocalizations.of(context)!.afternoon2Text;
     } else if ((time > 19 && time <= 24) || (time >= 0 && time <= 2)) {
-      return 'Selamat Malam';
+      return AppLocalizations.of(context)!.nightText;
     } else {
-      return 'Selamat Pagi';
+      return AppLocalizations.of(context)!.morningText;
     }
   }
 }

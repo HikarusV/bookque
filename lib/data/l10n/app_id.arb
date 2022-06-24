@@ -102,5 +102,12 @@
   "searchContentText": "Ayo Cari Referensi Bacaan\nyang Kamu Inginkan",
   "bookmarkTitleText": "Kamu Tidak Memiliki Buku yang Ditandai",
   "bookmarkText": "Ayo Temukan Bacaan Favoritmu",
-  "nextItemHomeText": "Memuat Item Lainnya"
+  "nextItemHomeText": "Memuat Item Lainnya",
+  "noDataSearchText": "Tidak Dapat Menemukan Referensi Bacaan yang Kamu Inginkan",
+  "bookProfileText": "Tidak Ada Buku yang Di Unggah",
+  "changeImageText": "Ganti",
+  "morningText": "Selamat Pagi",
+  "afternoon1Text": "Selamat Siang",
+  "afternoon2Text": "Selamat Sore",
+  "nightText": "Selamat Malem"
 }

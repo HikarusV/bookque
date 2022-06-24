@@ -18,7 +18,7 @@ class ListCategoriesSelected extends StatelessWidget {
         title: items[index].name,
         id: items[index].id,
         count: count,
-        cacheSelected: count.items.contains(items[index].name),
+        cacheSelected: count.items.contains(items[index].name.toLowerCase()),
       ),
     );
   }

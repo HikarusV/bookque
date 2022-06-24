@@ -35,18 +35,20 @@ class _ImagePickState extends State<ImagePick> {
           ),
           GestureDetector(
             onTap: () async {
-              try {
-                final image =
-                    await ImagePicker().pickImage(source: ImageSource.gallery);
-                // print(image?.readAsBytes());
-                if (image == null) return;
+              if (image == null) {
+                try {
+                  final image = await ImagePicker()
+                      .pickImage(source: ImageSource.gallery);
+                  // print(image?.readAsBytes());
+                  if (image == null) return;
 
-                final imageTemporary = File(image.path);
-                setState(() => this.image = imageTemporary);
-                context.read<UploadUpdateItemProvider>().images =
-                    imageTemporary;
-              } on PlatformException catch (e) {
-                print('$e');
+                  final imageTemporary = File(image.path);
+                  setState(() => this.image = imageTemporary);
+                  context.read<UploadUpdateItemProvider>().images =
+                      imageTemporary;
+                } on PlatformException catch (e) {
+                  print('$e');
+                }
               }
             },
             child: Container(
@@ -67,6 +69,27 @@ class _ImagePickState extends State<ImagePick> {
                             height: 140,
                             child: Image.file(
                               image!,
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () async {
+                              try {
+                                final image = await ImagePicker()
+                                    .pickImage(source: ImageSource.gallery);
+                                // print(image?.readAsBytes());
+                                if (image == null) return;
+
+                                final imageTemporary = File(image.path);
+                                setState(() => this.image = imageTemporary);
+                                context
+                                    .read<UploadUpdateItemProvider>()
+                                    .images = imageTemporary;
+                              } on PlatformException catch (e) {
+                                print('$e');
+                              }
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.changeImageText,
                             ),
                           ),
                         ],

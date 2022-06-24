@@ -102,5 +102,12 @@
   "searchContentText": "Let's Find The Reading\nReference You Want",
   "bookmarkTitleText": "You Don't Have a Bookmark",
   "bookmarkText": "Let's Find Your Favorite Reading",
-  "nextItemHomeText": "Load Other Items"
+  "nextItemHomeText": "Load Other Items",
+  "noDataSearchText": "Can't Find The Reading\nReference You Want",
+  "bookProfileText": "No Books Uploaded",
+  "changeImageText": "Change",
+  "morningText": "Good Morning",
+  "afternoon1Text": "Good Afternoon",
+  "afternoon2Text": "Good Afternoon",
+  "nightText": "Good Night"
 }

@@ -3,6 +3,7 @@ import 'package:bookque/presentation/widgets/search/search_image_result.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../common/localizations.dart';
 import '../../pages/detail/user_detail.dart';
 import '../scroll_behavior_without_glow.dart';
 
@@ -21,7 +22,9 @@ class ItemCollection extends StatelessWidget {
       behavior: ScrollBehaviorWithoutGlow(),
       child: Expanded(
         child: items.isEmpty
-            ? const ImageResult(text: 'Buku Kosong')
+            ? ImageResult(
+                text: AppLocalizations.of(context)!.bookProfileText,
+              )
             : GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,

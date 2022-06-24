@@ -1,4 +1,4 @@
-import 'package:bookque/common/styles.dart';
+import 'package:bookque/presentation/widgets/search/search_image_nodata.dart';
 import 'package:bookque/presentation/widgets/search/search_image_result.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -72,8 +72,8 @@ class Search extends StatelessWidget {
                       return const Center(child: CircularProgressIndicator());
                     } else if (value.stateSearch == ResultState.hasData) {
                       if (value.dataSearch.isEmpty) {
-                        return const ImageResult(
-                          text: 'Tidak Menemukan apa apa',
+                        return ImageNoDataResult(
+                          text: AppLocalizations.of(context)!.noDataSearchText,
                         );
                       }
 
