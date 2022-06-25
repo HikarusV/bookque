@@ -137,9 +137,19 @@ class _UploadState extends State<Upload> {
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: TypeUpload(itemsName: uploadType, controller: type),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 12),
+                      Text(AppLocalizations.of(context)!.themeText,
+                          style: subText),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child:
+                            TypeUpload(itemsName: uploadType, controller: type),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(

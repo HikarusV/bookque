@@ -190,10 +190,10 @@ class HandleApi {
             <String, dynamic>{"pass": pass, "email": email, "name": name}),
       );
 
-      return jsonDecode(createResponse.body)['error'];
+      final result = jsonDecode(createResponse.body);
+      return result;
     } catch (e) {
-      print(e);
-      return false;
+      return {'error': true, 'status': 'fail', 'message': 'Something wrong'};
     }
   }
 

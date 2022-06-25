@@ -1,5 +1,6 @@
 import 'package:bookque/data/cache/cache_auth.dart';
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
+import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -76,13 +77,13 @@ class CodeValidation extends StatelessWidget {
                                 ),
                               );
                               if (await isValid(text)) {
-                                bool result = await HandleApi.postNewUser(
+                                final result = await HandleApi.postNewUser(
                                   AuthCache.data['pass'],
                                   AuthCache.data['mail'],
                                   AuthCache.data['name'],
                                 );
 
-                                if (!result) {
+                                if (!result['error']) {
                                   await context
                                       .read<AccountProv>()
                                       .signInMailPass(
@@ -92,7 +93,17 @@ class CodeValidation extends StatelessWidget {
                                   Navigator.pop(context);
                                   whenValid();
                                 } else {
-                                  Navigator.pop(context);
+                                  String message = result['message'];
+                                  if (message.contains('already in use')) {
+                                    Navigator.popUntil(
+                                        context, (route) => route.isFirst);
+                                    snackbarError(context,
+                                        duration: 5,
+                                        message:
+                                            'Akun telah digunakan silahkan Login');
+                                  } else {
+                                    Navigator.pop(context);
+                                  }
                                 }
                               } else {
                                 Navigator.pop(context);

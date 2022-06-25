@@ -1,6 +1,7 @@
 import 'package:bookque/presentation/pages/auth/register.dart';
 import 'package:bookque/presentation/pages/auth/sent_verification.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
+import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -77,7 +78,9 @@ class Login extends StatelessWidget {
                                       emailController.text, passController.text)
                                   .onError((error, stackTrace) {
                                 String message = error.toString();
-                                if (message
+                                if (message.contains('firebase_auth/unknown')) {
+                                  message = 'Harap isi semua kolom';
+                                } else if (message
                                     .contains('firebase_auth/invalid-email')) {
                                   message = 'Format Email Salah';
                                 } else if (message
@@ -91,29 +94,36 @@ class Login extends StatelessWidget {
                                 } else {
                                   print(message);
                                 }
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      message,
-                                    ),
-                                    duration: const Duration(seconds: 5),
-                                  ),
-                                );
+
+                                snackbarError(context,
+                                    duration: 5, message: message);
                               });
                             },
                             text: AppLocalizations.of(context)!.loginText1,
                             marginBottom: 5,
                           ),
                           BottomTextButton(
-                            textButton: AppLocalizations.of(context)!
-                                .askForgotPasswordText,
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SentVerification(),
-                              ),
-                            ),
-                          ),
+                              textButton: AppLocalizations.of(context)!
+                                  .askForgotPasswordText,
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text('Coming Soon!'),
+                                      content: const Text(
+                                          'This Feature Will Be Availavle Soon!'),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('OK'))
+                                      ],
+                                    );
+                                  },
+                                );
+                              }),
                         ],
                       ),
                     ],

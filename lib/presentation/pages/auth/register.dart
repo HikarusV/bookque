@@ -123,6 +123,13 @@ class Register extends StatelessWidget {
       };
     }
 
+    if (!email.contains('@')) {
+      return {
+        'isAccept': false,
+        'message': 'Format email salah',
+      };
+    }
+
     if (pass.length < 6) {
       return {
         'isAccept': false,

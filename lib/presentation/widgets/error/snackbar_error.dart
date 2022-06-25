@@ -9,6 +9,7 @@ void snackbarError(
     SnackBar(
       content: Text(message),
       duration: Duration(seconds: duration),
+      backgroundColor: Theme.of(context).colorScheme.errorContainer,
     ),
   );
 }

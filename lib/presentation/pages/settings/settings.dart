@@ -30,13 +30,6 @@ class Settings extends StatelessWidget {
           child: Column(
             children: [
               SettingButton(
-                text: 'Testing Notification',
-                onPressed: () {
-                  NotificationSystem.showNotif('ayo baca  buku sekarang',
-                      'Buku adalah jendela dunia loh', 'Payload');
-                },
-              ),
-              SettingButton(
                 text: AppLocalizations.of(context)!.accountText,
                 onPressed: () {
                   Navigator.push(
