@@ -232,7 +232,7 @@ class SamePassword implements PassConfirmation {
 
   @override
   Map dataMessage = {
-    0: 'Password must be the same',
+    0: 'Kata sandi harus sama',
     // "sameConfirmPasswordText": "Kata sandi harus sama",
     1: 'Confirmation success',
   };

@@ -109,5 +109,14 @@
   "morningText": "Selamat Pagi",
   "afternoon1Text": "Selamat Siang",
   "afternoon2Text": "Selamat Sore",
-  "nightText": "Selamat Malem"
+  "nightText": "Selamat Malam",
+  "fontScalingText": "Ukuran Huruf",
+  "wrongEmailText": "Format Email Salah",
+  "cantFindUserText": "User tidak ditemukan, periksa kembali alamat email atau User mungkin telah dihapus",
+  "wrongPasswordText": "Password salah, silahkan coba lagi",
+  "successText": "Sukses",
+  "sorryProblemText": "Maaf Terdapat Suatu Masalah",
+  "successDeleteDataText": "Berhasil hapus data",
+  "failDeleteDataText": "Gagal hapus data",
+  "noInternetDeleteText": "Delete data gagal, pastikan anda terhubung dengan internet"
 }

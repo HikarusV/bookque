@@ -1,5 +1,4 @@
 import 'package:bookque/presentation/pages/auth/register.dart';
-import 'package:bookque/presentation/pages/auth/sent_verification.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
@@ -79,18 +78,20 @@ class Login extends StatelessWidget {
                                   .onError((error, stackTrace) {
                                 String message = error.toString();
                                 if (message.contains('firebase_auth/unknown')) {
-                                  message = 'Harap isi semua kolom';
+                                  message = AppLocalizations.of(context)!
+                                      .requiredFieldText;
                                 } else if (message
                                     .contains('firebase_auth/invalid-email')) {
-                                  message = 'Format Email Salah';
+                                  message = AppLocalizations.of(context)!
+                                      .wrongEmailText;
                                 } else if (message
                                     .contains('firebase_auth/user-not-found')) {
-                                  message =
-                                      'User tidak ditemukan, periksa kembali alamat email atau User mungkin telah dihapus';
+                                  message = AppLocalizations.of(context)!
+                                      .cantFindUserText;
                                 } else if (message
                                     .contains('firebase_auth/wrong-password')) {
-                                  message =
-                                      'Password salah, silahkan coba lagi';
+                                  message = AppLocalizations.of(context)!
+                                      .wrongPasswordText;
                                 } else {
                                   print(message);
                                 }

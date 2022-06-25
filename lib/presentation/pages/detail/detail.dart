@@ -70,7 +70,7 @@ class _DetailState extends State<Detail> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     height: 400,
                     child: const ImageResult(
-                      text: 'Sepertinya ada yang tidak beres nih',
+                      text: 'Maaf Terdapat Suatu Masalah',
                     ),
                   );
                 }

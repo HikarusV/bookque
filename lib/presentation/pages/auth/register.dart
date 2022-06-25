@@ -146,7 +146,7 @@ class Register extends StatelessWidget {
 
     return {
       'isAccept': true,
-      'message': 'Success',
+      'message': AppLocalizations.of(context)!.successText
     };
   }
 

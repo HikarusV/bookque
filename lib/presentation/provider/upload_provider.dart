@@ -7,6 +7,7 @@ import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/upload/list_categories_selected.dart';
 import 'package:flutter/material.dart';
 
+import '../../common/localizations.dart';
 import '../../data/models/categories.dart';
 
 class UploadUpdateItemProvider with ChangeNotifier {
@@ -114,15 +115,16 @@ class UploadUpdateItemProvider with ChangeNotifier {
     try {
       bool result = await HandleApi.deleteAlbum(userId, id);
 
-      String message = !result ? 'Berhasil hapus data' : 'Gagal hapus data';
+      String message = !result
+          ? AppLocalizations.of(context)!.successDeleteDataText
+          : AppLocalizations.of(context)!.failDeleteDataText;
 
       snackbarError(context, duration: 3, message: message);
       return result;
     } catch (e) {
       snackbarError(context,
           duration: 3,
-          message:
-              'Delete data gagal, pastikan anda terhubung dengan internet');
+          message: AppLocalizations.of(context)!.noInternetDeleteText);
     }
   }
 }

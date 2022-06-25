@@ -90,6 +90,7 @@ class _ImagePickState extends State<ImagePick> {
                             },
                             child: Text(
                               AppLocalizations.of(context)!.changeImageText,
+                              style: buttonSmall,
                             ),
                           ),
                         ],

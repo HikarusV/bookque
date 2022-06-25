@@ -109,5 +109,14 @@
   "morningText": "Good Morning",
   "afternoon1Text": "Good Afternoon",
   "afternoon2Text": "Good Afternoon",
-  "nightText": "Good Night"
+  "nightText": "Good Night",
+  "fontScalingText": "Font Scaling",
+  "wrongEmailText": "Wrong Email Format",
+  "cantFindUserText": "User not found, please check email address again or User may have been deleted",
+  "wrongPasswordText": "Wrong Password, please try again",
+  "successText": "Success",
+  "sorryProblemText": "Sorry There's a Problem",
+  "successDeleteDataText": "Successfully delete data",
+  "failDeleteDataText": "Failed to delete data",
+  "noInternetDeleteText": "Delete data failed, make sure you are connected to the internet"
 }
