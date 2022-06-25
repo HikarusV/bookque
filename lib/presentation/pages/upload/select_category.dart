@@ -1,5 +1,7 @@
+import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../data/models/categories.dart';
@@ -33,11 +35,20 @@ class SelectCategory extends StatelessWidget {
               ),
               Flexible(
                 flex: 0,
-                child: FullButton(
-                  onPressed: onFinish,
-                  text: AppLocalizations.of(context)!.saveText,
-                  marginTop: 15,
-                  marginBottom: 15,
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                        'categories : ${context.watch<UploadUpdateItemProvider>().itemCat.items.length}/5'),
+                    FullButton(
+                      onPressed: onFinish,
+                      text: AppLocalizations.of(context)!.saveText,
+                      marginTop: 15,
+                      marginBottom: 15,
+                    )
+                  ],
                 ),
               )
             ],

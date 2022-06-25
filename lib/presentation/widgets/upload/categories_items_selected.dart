@@ -1,4 +1,6 @@
+import 'package:bookque/presentation/provider/upload_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/styles.dart';
 import 'list_categories_selected.dart';
@@ -37,13 +39,15 @@ class _CategoriesItemsSelectedState extends State<CategoriesItemsSelected> {
       onTap: () => setState(() {
         if (!isSelected) {
           if (widget.count.canAdd()) {
-            widget.count.addSelectedItem(widget.id);
+            widget.count.addSelectedItem(widget.title, widget.id);
             isSelected = !isSelected;
           }
         } else {
-          widget.count.lessSelectedItem(widget.id);
+          widget.count.lessSelectedItem(
+              ListCategoriesItemsSelect(widget.id, widget.title));
           isSelected = !isSelected;
         }
+        context.read<UploadUpdateItemProvider>().updateCache();
       }),
       child: Container(
         padding: const EdgeInsets.all(10),

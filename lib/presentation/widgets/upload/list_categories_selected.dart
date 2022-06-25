@@ -18,7 +18,7 @@ class ListCategoriesSelected extends StatelessWidget {
         title: items[index].name,
         id: items[index].id,
         count: count,
-        cacheSelected: count.items.contains(items[index].name.toLowerCase()),
+        cacheSelected: count.containId(items[index].id) != -1,
       ),
     );
   }
@@ -27,7 +27,7 @@ class ListCategoriesSelected extends StatelessWidget {
 class CategoriesSelectCount {
   CategoriesSelectCount(
       {this.maxItems = 5, this.selectedCat = 0, required this.items});
-  List<String> items;
+  List<ListCategoriesItemsSelect> items;
   late int maxItems;
   int selectedCat = 0;
 
@@ -38,19 +38,52 @@ class CategoriesSelectCount {
     return false;
   }
 
-  void addSelectedItem(String item) {
-    Set<String> buffer = items.toSet();
-    buffer.add(item);
-    items = buffer.toList();
+  int containId(String idItemsTarget) {
+    int index = 0;
+    for (ListCategoriesItemsSelect i in items) {
+      if (i.id == idItemsTarget) {
+        return index;
+      }
+      index++;
+    }
+    return -1;
+  }
+
+  void addSelectedItem(String itemName, String itemId) {
+    items.add(ListCategoriesItemsSelect(itemId, itemName));
     selectedCat++;
   }
 
-  void lessSelectedItem(String item) {
-    if (items.contains(item)) {
-      Set<String> buffer = items.toSet();
-      buffer.remove(item);
-      items = buffer.toList();
+  void lessSelectedItem(ListCategoriesItemsSelect item) {
+    int index = containId(item.id);
+    if (index != -1) {
+      items.removeAt(index);
     }
     selectedCat--;
   }
+
+  String getText() {
+    List resultText = [];
+    for (var i in items) {
+      resultText.add(i.name);
+    }
+    String result = resultText.toString();
+    return result.substring(1, result.length - 1);
+  }
+
+  String getIdText() {
+    List resultText = [];
+    for (var i in items) {
+      resultText.add(i.id);
+    }
+    String result = resultText.toString();
+    return result.substring(1, result.length - 1);
+  }
+}
+
+class ListCategoriesItemsSelect {
+  String id;
+  String name;
+
+  ListCategoriesItemsSelect(this.id, this.name);
 }

@@ -44,29 +44,23 @@ class ChooseCategories extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Consumer<UploadUpdateItemProvider>(
-                      builder: (context, value, _) => Expanded(
-                        child: Container(
-                          child: (value.itemCat.items.isNotEmpty)
-                              ? Text(
-                                  value.itemCat.items
-                                      .toString()
-                                      .substring(
-                                          1,
-                                          (value.itemCat.items
-                                                  .toString()
-                                                  .length -
-                                              1))
-                                      .replaceAll(RegExp(r'\s+'), ''),
-                                  overflow: TextOverflow.ellipsis,
-                                  style: subText,
-                                )
-                              : Text(
-                                  AppLocalizations.of(context)!
-                                      .categoryUploadPlaceholderText,
-                                  style: subText,
-                                ),
-                        ),
-                      ),
+                      builder: (context, value, _) {
+                        return Expanded(
+                          child: Container(
+                            child: (value.itemCat.items.isNotEmpty)
+                                ? Text(
+                                    value.itemCat.getText(),
+                                    overflow: TextOverflow.ellipsis,
+                                    style: subText,
+                                  )
+                                : Text(
+                                    AppLocalizations.of(context)!
+                                        .categoryUploadPlaceholderText,
+                                    style: subText,
+                                  ),
+                          ),
+                        );
+                      },
                     ),
                     const Flexible(
                       flex: 0,

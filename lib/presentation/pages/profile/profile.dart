@@ -93,7 +93,6 @@ class _ProfileState extends State<Profile> {
                 return null;
               },
             );
-            print('debug upload : ${result.runtimeType}');
             if (result.runtimeType == Items) {
               context.read<ProfileItemsProvider>().addNewData(result);
             }

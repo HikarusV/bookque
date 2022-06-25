@@ -28,6 +28,11 @@ class UploadUpdateItemProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void initItemsCat(List<ListCategoriesItemsSelect> itemList) {
+    itemCat.items.addAll(itemList);
+    notifyListeners();
+  }
+
   void clearCache() {
     itemCat.selectedCat = 0;
     itemCat.items.clear();
@@ -54,9 +59,10 @@ class UploadUpdateItemProvider with ChangeNotifier {
       } else if (itemCat.items.isEmpty) {
         throw 'cat';
       }
-      String cat = itemCat.items
-          .toString()
-          .substring(1, (itemCat.items.toString().length - 1))
+
+      String cat = itemCat
+          .getIdText()
+          .replaceAll(RegExp("'"), '')
           .replaceAll(RegExp(r'\s+'), '');
 
       final bytes = File(images!.path).readAsBytesSync();

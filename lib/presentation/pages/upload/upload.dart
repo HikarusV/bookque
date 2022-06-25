@@ -19,6 +19,7 @@ import '../../widgets/auth/text_input.dart';
 import '../../widgets/custom_scaffold.dart';
 import '../../widgets/upload/choose_categories.dart';
 import '../../widgets/upload/image_picker.dart';
+import '../../widgets/upload/list_categories_selected.dart';
 
 class Upload extends StatefulWidget {
   static const String routeName = 'UploadPage';
@@ -67,20 +68,24 @@ class _UploadState extends State<Upload> {
   @override
   void initState() {
     super.initState();
-    List<String>? buffer;
+    List<ListCategoriesItemsSelect>? buffer = [];
     if (widget.items != null) {
-      buffer = widget.items!.categories;
+      for (var i in listCategory) {
+        if (widget.items!.categories.contains(i.id)) {
+          buffer.add(ListCategoriesItemsSelect(i.id, i.name));
+        }
+      }
+
       url.text = widget.items!.url;
       title.text = widget.items!.title;
       nama.text = widget.items!.author;
       desc.text = widget.items!.longdesc;
 
       /// if type and categories want to change
-      buffer.removeAt(0);
 
       Future.microtask(() =>
           Provider.of<UploadUpdateItemProvider>(context, listen: false)
-            ..itemCat.items.addAll(buffer!));
+            ..itemCat.items.addAll(buffer));
     }
     Future.microtask(() =>
         Provider.of<UploadUpdateItemProvider>(context, listen: false)
@@ -181,7 +186,7 @@ class _UploadState extends State<Upload> {
                         MaterialPageRoute(
                           builder: (context) => SelectCategory(
                             count: context
-                                .read<UploadUpdateItemProvider>()
+                                .watch<UploadUpdateItemProvider>()
                                 .itemCat,
                             onFinish: () {
                               context
