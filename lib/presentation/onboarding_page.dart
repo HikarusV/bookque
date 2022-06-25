@@ -109,8 +109,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-              onPressed: () => Navigator.of(context)
-                  .pushReplacementNamed(AuthAccount.routeName),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(AuthAccount.routeName),
               child: isLastPage
                   ? const Text('')
                   : Text(
@@ -136,8 +136,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
             isLastPage
                 ? TextButton(
-                    onPressed: () => Navigator.of(context)
-                        .pushReplacementNamed(AuthAccount.routeName),
+                    onPressed: () =>
+                        Navigator.of(context).pushNamed(AuthAccount.routeName),
                     child: Text(
                       AppLocalizations.of(context)!.onboardingStartText,
                       style: subText,

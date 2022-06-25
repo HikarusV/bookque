@@ -118,5 +118,7 @@
   "sorryProblemText": "Sorry There's a Problem",
   "successDeleteDataText": "Successfully delete data",
   "failDeleteDataText": "Failed to delete data",
-  "noInternetDeleteText": "Delete data failed, make sure you are connected to the internet"
+  "noInternetDeleteText": "Delete data failed, make sure you are connected to the internet",
+  "forgetPasswordDialogTitle": "Coming Soon!",
+  "forgetPasswordDialogContent": "This feature will be available soon!"
 }

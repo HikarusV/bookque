@@ -111,9 +111,12 @@ class Login extends StatelessWidget {
                                   context: context,
                                   builder: (context) {
                                     return AlertDialog(
-                                      title: const Text('Coming Soon!'),
-                                      content: const Text(
-                                          'This Feature Will Be Availavle Soon!'),
+                                      title: Text(
+                                          AppLocalizations.of(context)!.forgetPasswordDialogTitle
+                                      ),
+                                      content:  Text(
+                                          AppLocalizations.of(context)!.forgetPasswordDialogContent,
+                                      ),
                                       actions: [
                                         TextButton(
                                             onPressed: () {

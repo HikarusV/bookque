@@ -1,3 +1,4 @@
+import 'package:bookque/common/localizations.dart';
 import 'package:bookque/data/models/full_items.dart';
 import 'package:bookque/presentation/provider/detail_items_provider.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
@@ -69,8 +70,9 @@ class _DetailState extends State<Detail> {
                   return Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     height: 400,
-                    child: const ImageResult(
-                      text: 'Maaf Terdapat Suatu Masalah',
+                    child: ImageResult(
+                      text: AppLocalizations.of(context)!.sorryProblemText,
+                      pathImage: 'assets/problem.png',
                     ),
                   );
                 }

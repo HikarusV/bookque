@@ -133,7 +133,9 @@ class _ReportDialogState extends State<ReportDialog> {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
         child: Text(
           AppLocalizations.of(context)!.sendButtonText,
           style: buttonLarge,

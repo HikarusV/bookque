@@ -118,5 +118,7 @@
   "sorryProblemText": "Maaf Terdapat Suatu Masalah",
   "successDeleteDataText": "Berhasil hapus data",
   "failDeleteDataText": "Gagal hapus data",
-  "noInternetDeleteText": "Delete data gagal, pastikan anda terhubung dengan internet"
+  "noInternetDeleteText": "Delete data gagal, pastikan anda terhubung dengan internet",
+  "forgetPasswordDialogTitle": "Segera Hadir!",
+  "forgetPasswordDialogContent": "Fitur ini akan segera hadir!"
 }
