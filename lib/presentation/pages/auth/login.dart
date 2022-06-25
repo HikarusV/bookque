@@ -76,12 +76,27 @@ class Login extends StatelessWidget {
                                   .signInMailPass(
                                       emailController.text, passController.text)
                                   .onError((error, stackTrace) {
+                                String message = error.toString();
+                                if (message
+                                    .contains('firebase_auth/invalid-email')) {
+                                  message = 'Format Email Salah';
+                                } else if (message
+                                    .contains('firebase_auth/user-not-found')) {
+                                  message =
+                                      'User tidak ditemukan, periksa kembali alamat email atau User mungkin telah dihapus';
+                                } else if (message
+                                    .contains('firebase_auth/wrong-password')) {
+                                  message =
+                                      'Password salah, silahkan coba lagi';
+                                } else {
+                                  print(message);
+                                }
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      error.toString(),
+                                      message,
                                     ),
-                                    duration: const Duration(seconds: 4),
+                                    duration: const Duration(seconds: 5),
                                   ),
                                 );
                               });

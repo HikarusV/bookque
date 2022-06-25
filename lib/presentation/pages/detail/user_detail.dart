@@ -69,6 +69,7 @@ class _UserDetailState extends State<UserDetail> {
               await context
                   .read<UploadUpdateItemProvider>()
                   .deletedData(
+                    context,
                     userId: context.read<AccountProv>().userData!.uid,
                     id: widget.id,
                   )

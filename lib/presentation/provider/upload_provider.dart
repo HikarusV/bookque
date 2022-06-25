@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:bookque/common/state_enum.dart';
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
+import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/upload/list_categories_selected.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ import '../../data/models/categories.dart';
 
 class UploadUpdateItemProvider with ChangeNotifier {
   ResultState _stateUploadItem = ResultState.noData;
-  File? images;
+  File? images = File('none');
   CategoriesSelectCount itemCat = CategoriesSelectCount(items: []);
   String _uploadItemsMessage = 'Empty';
 
@@ -40,6 +41,19 @@ class UploadUpdateItemProvider with ChangeNotifier {
       required String author,
       required String longDesc}) async {
     try {
+      if (images!.path == 'none') {
+        throw 'pic';
+      } else if (url.isEmpty) {
+        throw 'url';
+      } else if (title.isEmpty) {
+        throw 'title';
+      } else if (author.isEmpty) {
+        throw 'author';
+      } else if (longDesc.isEmpty) {
+        throw 'longdesc';
+      } else if (itemCat.items.isEmpty) {
+        throw 'cat';
+      }
       String cat = itemCat.items
           .toString()
           .substring(1, (itemCat.items.toString().length - 1))
@@ -51,13 +65,17 @@ class UploadUpdateItemProvider with ChangeNotifier {
       final response = await HandleApi.postItem(id, img64, uploadType[type],
           url, title, author, 'ShortDesc', longDesc, cat);
 
+      images = File('none');
+      clearCache();
+
       return response;
     } catch (e) {
-      return {'error': true};
+      return {'error': true, 'type': e.toString()};
     }
   }
 
-  Future<void> updateData({
+  Future<void> updateData(
+    BuildContext context, {
     required String idUser,
     required String id,
     String cover = "none",
@@ -67,21 +85,38 @@ class UploadUpdateItemProvider with ChangeNotifier {
     String shortDescription = "none",
     String longDesc = "none",
   }) async {
-    final response = await HandleApi.putItemUser(
-      idUser: idUser,
-      id: id,
-      url: url,
-      title: title,
-      author: author,
-      shortDescription: shortDescription,
-      longDesc: longDesc,
-    );
-    clearCache();
+    try {
+      final response = await HandleApi.putItemUser(
+        idUser: idUser,
+        id: id,
+        url: url,
+        title: title,
+        author: author,
+        shortDescription: shortDescription,
+        longDesc: longDesc,
+      );
+      clearCache();
+      snackbarError(context,
+          duration: 3, message: '${response['status']} Update Data');
+    } catch (e) {
+      snackbarError(context, duration: 3, message: e.toString());
+    }
   }
 
-  Future deletedData({required String userId, required id}) async {
-    bool result = await HandleApi.deleteAlbum(userId, id);
+  Future deletedData(BuildContext context,
+      {required String userId, required id}) async {
+    try {
+      bool result = await HandleApi.deleteAlbum(userId, id);
 
-    return result;
+      String message = !result ? 'Berhasil hapus data' : 'Gagal hapus data';
+
+      snackbarError(context, duration: 3, message: message);
+      return result;
+    } catch (e) {
+      snackbarError(context,
+          duration: 3,
+          message:
+              'Delete data gagal, pastikan anda terhubung dengan internet');
+    }
   }
 }

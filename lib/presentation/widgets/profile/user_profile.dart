@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/styles.dart';
+import '../../provider/internet_provider.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -14,9 +15,14 @@ class UserProfile extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(right: 15, top: 7, bottom: 6),
           child: CircleAvatar(
-            backgroundImage: NetworkImage(
-                context.watch<AccountProv>().userData!.photoURL ??
-                    'https://graph.facebook.com/111968404870160/picture'),
+            backgroundImage: (context.watch<InternetProvider>().isInternetError
+                    ? const AssetImage('assets/logo.png')
+                    : NetworkImage(context
+                            .watch<AccountProv>()
+                            .userData!
+                            .photoURL ??
+                        'https://graph.facebook.com/111968404870160/picture'))
+                as ImageProvider,
             radius: 32,
             backgroundColor: Colors.transparent,
           ),

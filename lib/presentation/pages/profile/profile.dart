@@ -63,7 +63,7 @@ class _ProfileState extends State<Profile> {
                 List items = [];
                 bool hasData = false;
                 if (value.stateProfileItems == ResultState.loading) {
-                  items = CustomShimmer.bookItem(12);
+                  items = CustomShimmer.bookItem(9);
                 } else if (value.stateProfileItems == ResultState.hasData) {
                   hasData = true;
                   items = value.dataProfileItems;
@@ -87,9 +87,13 @@ class _ProfileState extends State<Profile> {
             await Navigator.of(context)
                 .pushNamed(Upload.routeName)
                 .then((value) => result = value)
-                .whenComplete(() {
-              result = null;
-            });
+                .onError(
+              (e, _) {
+                result = null;
+                return null;
+              },
+            );
+            print('debug upload : ${result.runtimeType}');
             if (result.runtimeType == Items) {
               context.read<ProfileItemsProvider>().addNewData(result);
             }

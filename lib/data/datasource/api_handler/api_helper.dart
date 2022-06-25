@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:bookque/data/detail_items.dart';
 import 'package:bookque/data/list_items.dart';
+import 'package:bookque/data/models/full_items.dart';
 import 'package:bookque/data/profile.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,13 +25,18 @@ class HandleApi {
   }
 
   static Future<UserItems> getItems(String userId) async {
-    final url = 'http://103.214.185.190:5000/' + userId + '/items';
-    final response = await api!.get(url);
+    try {
+      final url = 'http://103.214.185.190:5000/' + userId + '/items';
+      final response = await api!.get(url);
 
-    Map<String, dynamic> jsonResponse = jsonDecode(response);
+      Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    final items = UserItems.fromMap(jsonResponse);
-    return items;
+      final items = UserItems.fromMap(jsonResponse);
+      return items;
+    } on SocketException catch (e) {
+      return UserItems(
+          userid: '', message: e.toString(), items: [], error: true);
+    }
   }
 
   static Future<Profile> getUser(String userId) async {
@@ -44,71 +51,93 @@ class HandleApi {
   }
 
   static Future<DetailItems> getDetailItems(String id) async {
-    final url = 'http://103.214.185.190:5000/detail/item/' + id;
+    try {
+      final url = 'http://103.214.185.190:5000/detail/item/' + id;
 
-    final response = await api!.get(url);
-    Map<String, dynamic> jsonResponse = jsonDecode(response);
-    // print(jsonResponse);
-    final items = DetailItems.fromMap(jsonResponse);
+      final response = await api!.get(url);
+      Map<String, dynamic> jsonResponse = jsonDecode(response);
+      // print(jsonResponse);
+      final items = DetailItems.fromMap(jsonResponse);
 
-    return items;
+      return items;
+    } on SocketException catch (e) {
+      return DetailItems(
+          error: true, message: e.toString(), items: FullItems());
+    }
   }
 
   static Future<Map<String, dynamic>> getCategory(String type) async {
-    final url = 'http://103.214.185.190:5000/items/category?cat=' + type;
+    try {
+      final url = 'http://103.214.185.190:5000/items/category?cat=' + type;
 
-    final response = await api!.get(url);
-    Map<String, dynamic> jsonResponse = jsonDecode(response);
+      final response = await api!.get(url);
+      Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    return {
-      'error': jsonResponse['error'],
-      'items': _MapToList(jsonResponse),
-      'message': jsonResponse['message'],
-    };
+      return {
+        'error': jsonResponse['error'],
+        'items': _MapToList(jsonResponse),
+        'message': jsonResponse['message'],
+      };
+    } on SocketException catch (e) {
+      return {'error': true};
+    }
   }
 
   static Future<Map<String, dynamic>> getRecommendationRandomItem() async {
-    const url = 'http://103.214.185.190:5000/req/random';
+    try {
+      const url = 'http://103.214.185.190:5000/req/random';
 
-    final response = await api!.get(url);
-    Map<String, dynamic> jsonResponse = jsonDecode(response);
+      final response = await api!.get(url);
+      Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    return {
-      'error': jsonResponse['error'],
-      'items': _MapToList(jsonResponse),
-      'message': jsonResponse['message'],
-    };
+      return {
+        'error': jsonResponse['error'],
+        'items': _MapToList(jsonResponse),
+        'message': jsonResponse['message'],
+      };
+    } on SocketException catch (e) {
+      return {'error': true};
+    }
 
     // return jsonResponse;
   }
 
   static Future<Map<String, dynamic>> getNewestItems(String userId,
       {int pages = 1}) async {
-    final url = 'http://103.214.185.190:5000/' + userId + '/news?pages=$pages';
+    try {
+      final url =
+          'http://103.214.185.190:5000/' + userId + '/news?pages=$pages';
 
-    final response = await api!.get(url);
-    Map<String, dynamic> jsonResponse = jsonDecode(response);
+      final response = await api!.get(url);
+      Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    return {
-      'error': jsonResponse['error'],
-      'items': _MapToList(jsonResponse),
-      'message': jsonResponse['message'],
-    };
+      return {
+        'error': jsonResponse['error'],
+        'items': _MapToList(jsonResponse),
+        'message': jsonResponse['message'],
+      };
+    } on SocketException catch (e) {
+      return {'error': true};
+    }
 
     // return jsonResponse;
   }
 
   static Future<Map<String, dynamic>> getSearch(String query) async {
-    final url = 'http://103.214.185.190:5000/search/query?query=' + query;
+    try {
+      final url = 'http://103.214.185.190:5000/search/query?query=' + query;
 
-    final response = await api!.get(url);
-    Map<String, dynamic> jsonResponse = jsonDecode(response);
+      final response = await api!.get(url);
+      Map<String, dynamic> jsonResponse = jsonDecode(response);
 
-    return {
-      'error': jsonResponse['error'],
-      'items': _MapToList(jsonResponse),
-      'message': jsonResponse['message'],
-    };
+      return {
+        'error': jsonResponse['error'],
+        'items': _MapToList(jsonResponse),
+        'message': jsonResponse['message'],
+      };
+    } on SocketException catch (e) {
+      return {'error': true};
+    }
 
     // return jsonResponse;
   }
@@ -125,7 +154,7 @@ class HandleApi {
         }),
       );
       return jsonDecode(response.body);
-    } catch (e) {
+    } on SocketException catch (e) {
       print(e);
       return {'error': true};
     }
@@ -219,8 +248,7 @@ class HandleApi {
       Map<String, dynamic> result = jsonDecode(response.body);
       return result;
     } catch (e) {
-      print(e);
-      return {'error': true};
+      throw 'socket';
     }
   }
 
@@ -234,31 +262,35 @@ class HandleApi {
     String shortDescription = "none",
     String longDesc = "none",
   }) async {
-    List atribut = [cover, url, title, author, shortDescription, longDesc];
-    List atributName = [
-      "imagedata",
-      "url",
-      "title",
-      "author",
-      "shortDescription",
-      "longdesc"
-    ];
+    try {
+      List atribut = [cover, url, title, author, shortDescription, longDesc];
+      List atributName = [
+        "imagedata",
+        "url",
+        "title",
+        "author",
+        "shortDescription",
+        "longdesc"
+      ];
 
-    Map<String, dynamic> result = <String, dynamic>{};
-    for (int i = 0; i < atributName.length; i++) {
-      if (!(atribut[i] == "none")) {
-        result[atributName[i]] = atribut[i];
+      Map<String, dynamic> result = <String, dynamic>{};
+      for (int i = 0; i < atributName.length; i++) {
+        if (!(atribut[i] == "none")) {
+          result[atributName[i]] = atribut[i];
+        }
       }
-    }
 
-    final response = await http.put(
-      Uri.parse('http://103.214.185.190:5000/' + idUser + '/items?id=' + id),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(result),
-    );
-    return jsonDecode(response.body);
+      final response = await http.put(
+        Uri.parse('http://103.214.185.190:5000/' + idUser + '/items?id=' + id),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(result),
+      );
+      return jsonDecode(response.body);
+    } on Exception catch (e) {
+      throw 'gagal upload, pastikan anda terhubung dengan internet';
+    }
   }
 
   static Future<http.Response> putProfile(
@@ -301,14 +333,17 @@ class HandleApi {
   }
 
   static Future<bool> deleteAlbum(String userId, String id) async {
-    final http.Response response = await http.delete(
-      Uri.parse('http://103.214.185.190:5000/' + userId + '/items?id=' + id),
-      // headers: <String, String>{
-      //   'Content-Type': 'application/json; charset=UTF-8',
-      // },
-    );
-    print(response.body);
-    Map<String, dynamic> result = jsonDecode(response.body);
-    return result['error'];
+    try {
+      final http.Response response = await http.delete(
+        Uri.parse('http://103.214.185.190:5000/' + userId + '/items?id=' + id),
+        // headers: <String, String>{
+        //   'Content-Type': 'application/json; charset=UTF-8',
+        // },
+      );
+      Map<String, dynamic> result = jsonDecode(response.body);
+      return result['error'];
+    } catch (e) {
+      return true;
+    }
   }
 }

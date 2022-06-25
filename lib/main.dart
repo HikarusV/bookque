@@ -15,6 +15,7 @@ import 'package:bookque/presentation/provider/categories_provider.dart';
 import 'package:bookque/presentation/provider/database_provider.dart';
 import 'package:bookque/presentation/provider/detail_items_provider.dart';
 import 'package:bookque/presentation/provider/home_provider.dart';
+import 'package:bookque/presentation/provider/internet_provider.dart';
 import 'package:bookque/presentation/provider/localizations_provider.dart';
 import 'package:bookque/presentation/provider/profile_items_provider.dart';
 import 'package:bookque/presentation/provider/search_provider.dart';
@@ -59,6 +60,9 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider<InternetProvider>(
+          create: (context) => InternetProvider()..init(),
+        ),
         ChangeNotifierProvider<AccountProv>(
           create: (context) => AccountProv(),
         ),

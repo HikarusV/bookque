@@ -1,5 +1,6 @@
 import 'package:bookque/common/state_enum.dart';
 import 'package:bookque/presentation/provider/home_provider.dart';
+import 'package:bookque/presentation/provider/internet_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -97,11 +98,16 @@ class _HomeState extends State<Home> {
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(90)),
                                 child: CircleAvatar(
-                                  backgroundImage: NetworkImage(context
-                                          .watch<AccountProv>()
-                                          .userData!
-                                          .photoURL ??
-                                      'https://graph.facebook.com/111968404870160/picture'),
+                                  backgroundImage: (context
+                                              .watch<InternetProvider>()
+                                              .isInternetError
+                                          ? const AssetImage('assets/logo.png')
+                                          : NetworkImage(context
+                                                  .watch<AccountProv>()
+                                                  .userData!
+                                                  .photoURL ??
+                                              'https://graph.facebook.com/111968404870160/picture'))
+                                      as ImageProvider,
                                   radius: 32,
                                   backgroundColor: Colors.transparent,
                                 ),
@@ -140,6 +146,8 @@ class _HomeState extends State<Home> {
                                 );
                               } else if (value.getstaterecommendationData ==
                                   ResultState.error) {
+                                print(value.messageNewsData
+                                    .contains('SocketException'));
                                 return Text(value.messageNewsData);
                               }
                               return const Text('');

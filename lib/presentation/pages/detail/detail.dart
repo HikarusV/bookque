@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 
 import '../../../common/state_enum.dart';
 import '../../widgets/detail/detail_data_prov_pages.dart';
+import '../../widgets/loading_widget/detail_loading.dart';
+import '../../widgets/search/search_image_result.dart';
 
 class Detail extends StatefulWidget {
   const Detail({Key? key, required this.id, this.tagPrefix = 'id-'})
@@ -56,10 +58,7 @@ class _DetailState extends State<Detail> {
             child: Consumer<DetailItemsProvider>(
               builder: (context, value, _) {
                 if (value.stateDetailItems == ResultState.loading) {
-                  return const Center(
-                    heightFactor: 10,
-                    child: CircularProgressIndicator(),
-                  );
+                  return const DetailLoading();
                 } else if (value.stateDetailItems == ResultState.hasData &&
                     value.dataDetailItems.containsKey(widget.id)) {
                   return DetailDataProvPages(
@@ -67,7 +66,13 @@ class _DetailState extends State<Detail> {
                     item: value.dataDetailItems[widget.id] ?? FullItems(),
                   );
                 } else if (value.stateDetailItems == ResultState.error) {
-                  return Text(value.detailItemsMessage);
+                  return Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    height: 400,
+                    child: const ImageResult(
+                      text: 'Sepertinya ada yang tidak beres nih',
+                    ),
+                  );
                 }
                 return const Text('');
               },

@@ -2,6 +2,7 @@ import 'package:bookque/data/models/categories.dart';
 import 'package:bookque/presentation/pages/upload/select_category.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:bookque/presentation/provider/upload_provider.dart';
+import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:bookque/presentation/widgets/upload/type_upload.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -41,6 +42,26 @@ class _UploadState extends State<Upload> {
   TextEditingController desc = TextEditingController();
 
   GroupButtonController type = GroupButtonController()..selectIndex((1));
+
+  List errorType = ['pic', 'url', 'title', 'author', 'longdesc', 'cat'];
+
+  String getErrorMessageByType(BuildContext context, String key) {
+    List errorMessage = [
+      'Gambar tidak boleh kosong',
+      'Tautan tidak boleh kosong',
+      'judul tidak boleh kosong',
+      'Nama Penulis tidak boleh kosong',
+      'Deskripsi tidak boleh kosong',
+      'Harus memilih kategori minimal 1'
+    ];
+
+    int index = errorType.indexOf(key);
+    String message = index == -1
+        ? 'Gagal Upload, Silahkan cek koneksi internet dan coba lagi nanti'
+        : errorMessage[index];
+
+    return message;
+  }
 
   // final CategoriesSelectCount count = CategoriesSelectCount(items: []);
   @override
@@ -203,6 +224,11 @@ class _UploadState extends State<Upload> {
                                 imageid: result['items']['imageid'],
                                 author: nama.text,
                                 title: title.text));
+                      } else {
+                        snackbarError(context,
+                            duration: 3,
+                            message:
+                                getErrorMessageByType(context, result['type']));
                       }
                     } else {
                       /// If categories and type want to change
@@ -218,6 +244,7 @@ class _UploadState extends State<Upload> {
                       await context
                           .read<UploadUpdateItemProvider>()
                           .updateData(
+                            context,
                             idUser: context.read<AccountProv>().userData!.uid,
                             id: widget.items!.itemid,
                             url: (url.text != widget.items!.url)
