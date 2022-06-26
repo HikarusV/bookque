@@ -170,12 +170,7 @@ class Register extends StatelessWidget {
               controller: TextEditingController(),
 
               /// whenValid: () => Navigator.pop(context), //old function
-              whenValid: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SetupProfile(
-                            isRegist: true,
-                          ))),
+              whenValid: () => Navigator.pop(context),
               whenError: () => print('Gagal broh'),
             ),
           ),

@@ -75,7 +75,7 @@ class _ProfileMakerState extends State<ProfileMaker> {
                               : Container(),
                           Column(),
                           const SizedBox(
-                            height: 80,
+                            height: 60,
                           ),
                           NameTag(
                             controller: value.name,

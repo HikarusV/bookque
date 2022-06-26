@@ -1,5 +1,3 @@
-import 'package:bookque/presentation/pages/newspaper/newspaper.dart';
-import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -33,39 +31,8 @@ class _MainPageState extends State<MainPage> {
       ),
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 9, right: 9),
-        child:
-            //     BottomNavigationBar(
-            //   type: BottomNavigationBarType.fixed,
-            //   backgroundColor: Theme.of(context).colorScheme.onPrimary,
-            //   selectedItemColor: Theme.of(context).colorScheme.primary,
-            //   unselectedItemColor: Theme.of(context).colorScheme.onSurfaceVariant,
-            //   showUnselectedLabels: false,
-            //   currentIndex: currentIndex,
-            //   onTap: (index) {
-            //     setState(() => currentIndex = index);
-            //   },
-            //   items: const [
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.home),
-            //       label: 'Home',
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.newspaper),
-            //       label: "NewsPaper",
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.compass_calibration),
-            //       label: "Explore",
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.person),
-            //       label: "Profile",
-            //     ),
-            //   ],
-            // )
-
-            SalomonBottomBar(
+        padding: const EdgeInsets.only(left: 15, right: 15),
+        child: SalomonBottomBar(
           currentIndex: currentIndex,
           onTap: (index) {
             setState(() => currentIndex = index);
@@ -77,12 +44,13 @@ class _MainPageState extends State<MainPage> {
               selectedColor: Theme.of(context).colorScheme.primary,
               unselectedColor: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
-            // SalomonBottomBarItem(
-            //   icon: const Icon(Icons.newspaper),
-            //   title: const Text("NewsPaper"),
-            //   selectedColor: Theme.of(context).colorScheme.primary,
-            //   unselectedColor: Theme.of(context).colorScheme.onSurfaceVariant,
-            // ),
+
+            /// SalomonBottomBarItem(
+            ///   icon: const Icon(Icons.newspaper),
+            ///   title: const Text("NewsPaper"),
+            ///   selectedColor: Theme.of(context).colorScheme.primary,
+            ///   unselectedColor: Theme.of(context).colorScheme.onSurfaceVariant,
+            /// ),
             SalomonBottomBarItem(
               icon: const Icon(Icons.bookmark),
               title: const Text("Bookmark"),

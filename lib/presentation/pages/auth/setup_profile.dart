@@ -17,24 +17,28 @@ class SetupProfile extends StatelessWidget {
     String displayName = context.read<AccountProv>().userData!.displayName ??
         globalLocalData.getString('name') ??
         'User';
-    return CustomScaffold(
-      title: AppLocalizations.of(context)!.accountText,
-      child: ChangeNotifierProvider<ProfileMakerProvider>(
-        create: (_) => ProfileMakerProvider(),
-        child: ProfileMaker(
-          onFinish: () {
-            if (!isRegist) {
-              Navigator.pop(context);
-            } else {
-              Navigator.popUntil(context, (route) => route.isFirst);
-            }
-          },
-          oldUsername: displayName.substring(
-              0, (displayName.length <= 13) ? displayName.length : 13),
-          imageUrl: context.read<AccountProv>().userData!.photoURL ?? 'none',
-          usingRequestNewImage: isRegist,
-        ),
-      ),
-    );
+    return isRegist
+        ? Scaffold(
+            body: profileMakerChild(context, displayName),
+          )
+        : CustomScaffold(
+            title: AppLocalizations.of(context)!.accountText,
+            child: profileMakerChild(context, displayName),
+          );
   }
+
+  Widget profileMakerChild(BuildContext context, String displayName) =>
+      ProfileMaker(
+        onFinish: () {
+          if (!isRegist) {
+            Navigator.pop(context);
+          } else {
+            context.read<AccountProv>().reloadState();
+          }
+        },
+        oldUsername: displayName.substring(
+            0, (displayName.length <= 13) ? displayName.length : 13),
+        imageUrl: context.read<AccountProv>().userData!.photoURL ?? 'none',
+        usingRequestNewImage: isRegist,
+      );
 }

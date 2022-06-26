@@ -19,6 +19,10 @@ class AccountProv extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future reloadState() async {
+    FirebaseAuth.instance.authStateChanges();
+  }
+
   void getCurentUser() {
     userData = FirebaseAuth.instance.currentUser;
     // print(userData ?? 'kosong');

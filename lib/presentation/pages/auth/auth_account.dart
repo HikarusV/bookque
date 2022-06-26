@@ -1,7 +1,6 @@
 import 'package:bookque/presentation/main_page.dart';
 import 'package:bookque/presentation/pages/auth/setup_profile.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
-import 'package:bookque/presentation/provider/internet_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

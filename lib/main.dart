@@ -18,6 +18,7 @@ import 'package:bookque/presentation/provider/home_provider.dart';
 import 'package:bookque/presentation/provider/internet_provider.dart';
 import 'package:bookque/presentation/provider/localizations_provider.dart';
 import 'package:bookque/presentation/provider/profile_items_provider.dart';
+import 'package:bookque/presentation/provider/profile_maker_provider.dart';
 import 'package:bookque/presentation/provider/search_provider.dart';
 import 'package:bookque/presentation/provider/settings_provider.dart';
 import 'package:bookque/presentation/provider/upload_provider.dart';
@@ -95,6 +96,9 @@ void main() async {
         ),
         ChangeNotifierProvider<DatabaseProvider>(
           create: (context) => DatabaseProvider(),
+        ),
+        ChangeNotifierProvider<ProfileMakerProvider>(
+          create: (context) => ProfileMakerProvider(),
         ),
       ],
       child: const MyApp(),

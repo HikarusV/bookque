@@ -11,7 +11,7 @@ class ProfileMakerProvider with ChangeNotifier {
   String? author;
 
   void getImageUnsplash(String username) async {
-    name.text = username;
+    name.text = username.length > 2 ? username : "User";
     state = ResultState.loading;
     notifyListeners();
 
@@ -26,7 +26,9 @@ class ProfileMakerProvider with ChangeNotifier {
     } catch (e) {
       imageUrl = 'https://graph.facebook.com/111968404870160/picture';
       state = ResultState.error;
-      notifyListeners();
+      try {
+        notifyListeners();
+      } finally {}
     }
   }
 
