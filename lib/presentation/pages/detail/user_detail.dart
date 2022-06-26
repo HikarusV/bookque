@@ -13,6 +13,7 @@ import '../../../common/localizations.dart';
 import '../../../common/state_enum.dart';
 import '../../../data/models/full_items.dart';
 import '../../widgets/detail/detail_data_prov_pages.dart';
+import '../../widgets/loading_widget/detail_loading.dart';
 
 class UserDetail extends StatefulWidget {
   static const String routeName = 'UserDetailPages';
@@ -120,9 +121,7 @@ class _UserDetailState extends State<UserDetail> {
             child: Consumer<UserDetailItemsProvider>(
               builder: (context, value, _) {
                 if (value.stateUserDetailItems == ResultState.loading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const DetailLoading();
                 } else if (value.stateUserDetailItems == ResultState.hasData &&
                     value.dataUserDetailItems.containsKey(widget.id)) {
                   return DetailDataProvPages(

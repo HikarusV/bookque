@@ -44,6 +44,9 @@ class RowBooks extends StatelessWidget {
                           color: Colors.grey.shade300,
                         ),
                         imageUrl: listData[index].imageid,
+                        errorWidget: (context, error, _) => Container(
+                          color: Colors.grey.shade300,
+                        ),
                         width: 124,
                         height: 170,
                         fit: BoxFit.fill,

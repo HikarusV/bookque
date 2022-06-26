@@ -13,20 +13,25 @@ class DetailItemsProvider with ChangeNotifier {
   String get detailItemsMessage => _detailItemsMessage;
 
   void fetchDetailItemById(String id) async {
+    bool isFirstLoad = true;
     _stateDetailItems = ResultState.loading;
     notifyListeners();
-    // await Future.delayed(const Duration(seconds: 2));
 
     try {
-      final result = await HandleApi.getDetailItems(id);
+      while (_stateDetailItems == ResultState.loading) {
+        if (!isFirstLoad) {
+          await Future.delayed(const Duration(seconds: 2));
+        }
+        isFirstLoad = false;
+        final result = await HandleApi.getDetailItems(id);
 
-      if (!result.error) {
-        _stateDetailItems = ResultState.hasData;
-        _dataDetailItems[id] = result.items;
+        if (!result.error) {
+          _stateDetailItems = ResultState.hasData;
+          _dataDetailItems[id] = result.items;
+          _detailItemsMessage = result.message;
+          notifyListeners();
+        }
       }
-
-      _detailItemsMessage = result.message;
-      notifyListeners();
     } catch (e) {
       _detailItemsMessage = e.toString();
       _stateDetailItems = ResultState.error;

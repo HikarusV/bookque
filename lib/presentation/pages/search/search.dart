@@ -1,3 +1,4 @@
+import 'package:bookque/presentation/provider/internet_provider.dart';
 import 'package:bookque/presentation/widgets/search/search_image_nodata.dart';
 import 'package:bookque/presentation/widgets/search/search_image_result.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String textSearch = '';
+
     return CustomScaffold(
       title: 'Search',
       child: Container(
@@ -41,6 +44,7 @@ class Search extends StatelessWidget {
                           builder: (context, value, _) {
                             return SearchBox(
                               onEventSubmited: (text) {
+                                textSearch = text;
                                 value.searchKeyword(text);
                               },
                             );
@@ -67,7 +71,6 @@ class Search extends StatelessWidget {
                 behavior: ScrollBehaviorWithoutGlow(),
                 child: Consumer<SearchProvider>(
                   builder: (context, value, _) {
-                    print('state : ${value.stateSearch}');
                     if (value.stateSearch == ResultState.loading) {
                       return const Center(child: CircularProgressIndicator());
                     } else if (value.stateSearch == ResultState.hasData) {
@@ -83,7 +86,12 @@ class Search extends StatelessWidget {
                         listData: value.dataSearch,
                       );
                     } else if (value.stateSearch == ResultState.error) {
-                      return Text(value.searchMessage);
+                      return ImageResult(
+                        text: AppLocalizations.of(context)!.problemWithInternet,
+                        pathImage: 'assets/problem.png',
+                        withRefresh: true,
+                        onPressed: () => value.searchKeyword(textSearch),
+                      );
                     }
                     return ImageResult(
                       text: AppLocalizations.of(context)!.searchContentText,

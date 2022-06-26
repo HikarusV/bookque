@@ -48,17 +48,17 @@ class _UploadState extends State<Upload> {
 
   String getErrorMessageByType(BuildContext context, String key) {
     List errorMessage = [
-      'Gambar tidak boleh kosong',
-      'Tautan tidak boleh kosong',
-      'judul tidak boleh kosong',
-      'Nama Penulis tidak boleh kosong',
-      'Deskripsi tidak boleh kosong',
-      'Harus memilih kategori minimal 1'
+      AppLocalizations.of(context)!.emptyImageText,
+      AppLocalizations.of(context)!.emptyLinkText,
+      AppLocalizations.of(context)!.emptyTitleText,
+      AppLocalizations.of(context)!.emptyAuthorText,
+      AppLocalizations.of(context)!.emptyDescText,
+      AppLocalizations.of(context)!.emptyCategoryText,
     ];
 
     int index = errorType.indexOf(key);
     String message = index == -1
-        ? 'Gagal Upload, Silahkan cek koneksi internet dan coba lagi nanti'
+        ? AppLocalizations.of(context)!.noInternetUploadText
         : errorMessage[index];
 
     return message;

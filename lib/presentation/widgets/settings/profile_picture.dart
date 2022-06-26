@@ -4,6 +4,9 @@ import 'package:bookque/common/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/internet_provider.dart';
 
 class ProfilePicturePicker extends StatefulWidget {
   const ProfilePicturePicker({Key? key, required this.urlNetwork})
@@ -24,12 +27,14 @@ class _ProfilePicturePickerState extends State<ProfilePicturePicker> {
         ClipOval(
           child: SizedBox.fromSize(
             size: const Size.fromRadius(80),
-            child: image != null
-                ? Image.file(image!, fit: BoxFit.fill)
-                : Image.network(
-                    widget.urlNetwork,
-                    fit: BoxFit.cover,
-                  ),
+            child: context.read<InternetProvider>().isInternetError
+                ? Image.asset('assets/profile.png')
+                : image != null
+                    ? Image.file(image!, fit: BoxFit.fill)
+                    : Image.network(
+                        widget.urlNetwork,
+                        fit: BoxFit.cover,
+                      ),
           ),
         ),
         Positioned(

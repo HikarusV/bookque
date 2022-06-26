@@ -120,5 +120,13 @@
   "failDeleteDataText": "Failed to delete data",
   "noInternetDeleteText": "Delete data failed, make sure you are connected to the internet",
   "forgetPasswordDialogTitle": "Coming Soon!",
-  "forgetPasswordDialogContent": "This feature will be available soon!"
+  "forgetPasswordDialogContent": "This feature will be available soon!",
+  "problemWithInternet": "Make sure your device is connected to the internet",
+  "emptyImageText": "Image cannot be empty",
+  "emptyLinkText": "Link cannot be empty",
+  "emptyTitleText": "Title cannot be empty",
+  "emptyAuthorText": "Author name cannot be empty",
+  "emptyDescText": "Description cannot be empty",
+  "emptyCategoryText": "Must select category at least 1",
+  "noInternetUploadText": "Failed to upload, please check internet connection and try again later"
 }

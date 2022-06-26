@@ -40,19 +40,25 @@ class ProfileItemsProvider with ChangeNotifier {
   }
 
   void fetchProfileItemById(String id) async {
+    bool isFirstLoad = true;
     _stateProfileItems = ResultState.loading;
     notifyListeners();
     // await Future.delayed(const Duration(seconds: 2));
 
     try {
-      final result = await HandleApi.getItems(id);
-      if (!result.error) {
-        _stateProfileItems = ResultState.hasData;
-        _dataProfileItems = result.items;
+      while (_stateProfileItems == ResultState.loading) {
+        if (!isFirstLoad) {
+          await Future.delayed(const Duration(seconds: 2));
+        }
+        isFirstLoad = false;
+        final result = await HandleApi.getItems(id);
+        if (!result.error) {
+          _stateProfileItems = ResultState.hasData;
+          _dataProfileItems = result.items;
+          _profiletemsMessage = result.message;
+          notifyListeners();
+        }
       }
-
-      _profiletemsMessage = result.message;
-      notifyListeners();
     } catch (e) {
       _profiletemsMessage = e.toString();
       _stateProfileItems = ResultState.error;

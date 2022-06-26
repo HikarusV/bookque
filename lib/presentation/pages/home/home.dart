@@ -97,20 +97,34 @@ class _HomeState extends State<Home> {
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(90)),
-                                child: CircleAvatar(
-                                  backgroundImage: (context
-                                              .watch<InternetProvider>()
-                                              .isInternetError
-                                          ? const AssetImage('assets/logo.png')
-                                          : NetworkImage(context
-                                                  .watch<AccountProv>()
-                                                  .userData!
-                                                  .photoURL ??
-                                              'https://graph.facebook.com/111968404870160/picture'))
-                                      as ImageProvider,
-                                  radius: 32,
-                                  backgroundColor: Colors.transparent,
-                                ),
+                                child: Consumer<InternetProvider>(
+                                    builder: (context, value, _) {
+                                  if (value.stateInternet ==
+                                      ResultState.hasData) {
+                                    return CircleAvatar(
+                                      backgroundImage: (context
+                                                  .watch<InternetProvider>()
+                                                  .isInternetError
+                                              ? const AssetImage(
+                                                  'assets/profile.png')
+                                              : NetworkImage(context
+                                                      .watch<AccountProv>()
+                                                      .userData!
+                                                      .photoURL ??
+                                                  'https://graph.facebook.com/111968404870160/picture'))
+                                          as ImageProvider,
+                                      radius: 32,
+                                      backgroundColor: Colors.transparent,
+                                    );
+                                  } else {
+                                    return ClipOval(
+                                      child: SizedBox.fromSize(
+                                          size: const Size.fromRadius(32),
+                                          child: Image.asset(
+                                              'assets/profile.png')),
+                                    );
+                                  }
+                                }),
                               ),
                             ],
                           ),
@@ -146,8 +160,6 @@ class _HomeState extends State<Home> {
                                 );
                               } else if (value.getstaterecommendationData ==
                                   ResultState.error) {
-                                print(value.messageNewsData
-                                    .contains('SocketException'));
                                 return Text(value.messageNewsData);
                               }
                               return const Text('');

@@ -26,17 +26,25 @@ class HomeProvider with ChangeNotifier {
   List<Items> dataNewsItems = [];
 
   Future<void> fetchRecomendationData() async {
+    bool isFirstLoad = true;
+
     _staterecommendationData = ResultState.loading;
     notifyListeners();
 
     try {
-      final result = await HandleApi.getRecommendationRandomItem();
+      while (_staterecommendationData == ResultState.loading) {
+        isFirstLoad = false;
+        final result = await HandleApi.getRecommendationRandomItem();
+        if (!isFirstLoad) {
+          await Future.delayed(const Duration(seconds: 2));
+        }
 
-      if (!result['error']) {
-        messageRecomendationData = result['message'];
-        dataRandomRecomendationItems = result['items'];
-        _staterecommendationData = ResultState.hasData;
-        notifyListeners();
+        if (!result['error']) {
+          messageRecomendationData = result['message'];
+          dataRandomRecomendationItems = result['items'];
+          _staterecommendationData = ResultState.hasData;
+          notifyListeners();
+        }
       }
     } catch (e) {
       messageRecomendationData = e.toString();
@@ -71,6 +79,7 @@ class HomeProvider with ChangeNotifier {
 
   Future<void> fetchNewsData(String userid) async {
     _pages = 1;
+    bool isFirstLoad = true;
 
     _statenewsData = ResultState.loading;
     notifyListeners();
@@ -80,16 +89,21 @@ class HomeProvider with ChangeNotifier {
     );
 
     try {
-      final result = await HandleApi.getNewestItems(userid, pages: _pages);
-
-      if (!result['error']) {
-        dataNewsItems = result['items'];
-        messageNewsData = result['message'];
-        _statenewsData = ResultState.hasData;
-        changeNextButton();
+      while (_statenewsData == ResultState.loading) {
+        final result = await HandleApi.getNewestItems(userid, pages: _pages);
+        if (!isFirstLoad) {
+          await Future.delayed(const Duration(seconds: 2));
+        }
+        isFirstLoad = false;
+        if (!result['error']) {
+          dataNewsItems = result['items'];
+          messageNewsData = result['message'];
+          _statenewsData = ResultState.hasData;
+          changeNextButton();
+          notifyListeners();
+        }
         notifyListeners();
       }
-      notifyListeners();
     } catch (e) {
       _statenewsData = ResultState.error;
       messageNewsData = e.toString();

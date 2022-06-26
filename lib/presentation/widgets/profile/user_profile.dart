@@ -2,6 +2,7 @@ import 'package:bookque/presentation/provider/account_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/state_enum.dart';
 import '../../../common/styles.dart';
 import '../../provider/internet_provider.dart';
 
@@ -14,18 +15,30 @@ class UserProfile extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.only(right: 15, top: 7, bottom: 6),
-          child: CircleAvatar(
-            backgroundImage: (context.watch<InternetProvider>().isInternetError
-                    ? const AssetImage('assets/logo.png')
-                    : NetworkImage(context
-                            .watch<AccountProv>()
-                            .userData!
-                            .photoURL ??
-                        'https://graph.facebook.com/111968404870160/picture'))
-                as ImageProvider,
-            radius: 32,
-            backgroundColor: Colors.transparent,
-          ),
+          child: Consumer<InternetProvider>(builder: (context, value, _) {
+            if (value.stateInternet == ResultState.hasData) {
+              return CircleAvatar(
+                backgroundImage: (context
+                            .watch<InternetProvider>()
+                            .isInternetError
+                        ? const AssetImage('assets/profile.png')
+                        : NetworkImage(context
+                                .watch<AccountProv>()
+                                .userData!
+                                .photoURL ??
+                            'https://graph.facebook.com/111968404870160/picture'))
+                    as ImageProvider,
+                radius: 32,
+                backgroundColor: Colors.transparent,
+              );
+            } else {
+              return ClipOval(
+                child: SizedBox.fromSize(
+                    size: const Size.fromRadius(32),
+                    child: Image.asset('assets/profile.png')),
+              );
+            }
+          }),
         ),
         Expanded(
           child: Column(

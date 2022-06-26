@@ -120,5 +120,13 @@
   "failDeleteDataText": "Gagal hapus data",
   "noInternetDeleteText": "Delete data gagal, pastikan anda terhubung dengan internet",
   "forgetPasswordDialogTitle": "Segera Hadir!",
-  "forgetPasswordDialogContent": "Fitur ini akan segera hadir!"
+  "forgetPasswordDialogContent": "Fitur ini akan segera hadir!",
+  "problemWithInternet": "Pastikan perangkat anda tersambung dengan internet",
+  "emptyImageText": "Gambar tidak boleh kosong",
+  "emptyLinkText": "Tauran tidak boleh kosong",
+  "emptyTitleText": "Judul tidak boleh kosong",
+  "emptyAuthorText": "Nama Penulis tidak boleh kosong",
+  "emptyDescText": "Deskripsi tidak boleh kosong",
+  "emptyCategoryText": "Harus memilih kategori minimal 1",
+  "noInternetUploadText": "'Gagal mengunggah, harap periksa koneksi internet dan coba lagi nanti"
 }
