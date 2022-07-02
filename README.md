@@ -23,6 +23,7 @@ BookQue is a mobile application-based platform that provides and makes it easy t
 - LightTheme & DarkTheme
 - Support Indonesia and English Language
 - Interactive UI
+- Font scaling
 
 | Onboarding & Auth      | Home Page      | Profile Page     | Category and Search     |
 |------------|-------------|-------------|-------------|
@@ -84,6 +85,7 @@ Because there is data that is confidential and cannot be published, we cannot pu
 - [openlibrary](https://openlibrary.org/)
 - [manypixels](https://www.manypixels.co/gallery)
 - [Icons8](https://icons8.com/)
+- [unsplash](https://unsplash.com/)
 
 ## Demo
 
