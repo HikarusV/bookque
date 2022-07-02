@@ -1,8 +1,6 @@
 import 'package:bookque/data/items.dart';
-import 'package:bookque/presentation/provider/database_provider.dart';
 import 'package:bookque/presentation/widgets/home/double_list_books.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class BookmarkData extends StatelessWidget {
   final List<Items> listData;

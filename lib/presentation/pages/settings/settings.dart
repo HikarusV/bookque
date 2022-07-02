@@ -1,13 +1,9 @@
-import 'package:bookque/common/utils/system_notification.dart';
 import 'package:bookque/presentation/pages/auth/setup_profile.dart';
-import 'package:bookque/presentation/pages/profilemaker/profile_maker.dart';
 import 'package:bookque/presentation/pages/settings/about_us.dart';
-import 'package:bookque/presentation/pages/settings/account.dart';
 import 'package:bookque/presentation/pages/settings/help.dart';
 import 'package:bookque/presentation/pages/settings/permission.dart';
 import 'package:bookque/presentation/pages/settings/preference.dart';
 import 'package:bookque/presentation/provider/account_provider.dart';
-import 'package:bookque/presentation/provider/profile_maker_provider.dart';
 import 'package:bookque/presentation/widgets/custom_scaffold.dart';
 import 'package:bookque/presentation/widgets/settings/setting_button.dart';
 import 'package:flutter/material.dart';

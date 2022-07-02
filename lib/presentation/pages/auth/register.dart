@@ -2,7 +2,6 @@ import 'package:bookque/data/cache/cache_auth.dart';
 import 'package:bookque/data/datasource/api_handler/api_helper.dart';
 import 'package:bookque/main.dart';
 import 'package:bookque/presentation/pages/auth/code_validation.dart';
-import 'package:bookque/presentation/pages/auth/setup_profile.dart';
 import 'package:bookque/presentation/widgets/error/snackbar_error.dart';
 import 'package:bookque/presentation/widgets/scroll_behavior_without_glow.dart';
 import 'package:flutter/material.dart';

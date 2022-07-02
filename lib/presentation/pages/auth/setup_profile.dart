@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../main.dart';
-import '../../provider/profile_maker_provider.dart';
 import '../profilemaker/profile_maker.dart';
 
 class SetupProfile extends StatelessWidget {

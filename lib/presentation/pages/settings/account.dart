@@ -65,7 +65,7 @@ class Account extends StatelessWidget {
                         actions: [
                           TextButton(
                               onPressed: () => Navigator.pop(context),
-                              child: Text('ok')),
+                              child: const Text('ok')),
                         ],
                       ),
                     );

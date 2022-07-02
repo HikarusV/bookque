@@ -1,4 +1,3 @@
-import 'package:bookque/presentation/provider/internet_provider.dart';
 import 'package:bookque/presentation/widgets/search/search_image_nodata.dart';
 import 'package:bookque/presentation/widgets/search/search_image_result.dart';
 import 'package:flutter/material.dart';

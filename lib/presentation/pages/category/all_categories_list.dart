@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/state_enum.dart';
-import '../../provider/internet_provider.dart';
 import '../../widgets/home/double_list_books.dart';
 import '../../widgets/search/search_image_result.dart';
 

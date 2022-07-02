@@ -1,16 +1,13 @@
 import 'package:bookque/data/items.dart';
 import 'package:bookque/data/models/full_items.dart';
-import 'package:bookque/presentation/provider/internet_provider.dart';
 import 'package:bookque/presentation/widgets/detail/small_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/link.dart';
 
 import '../../../common/localizations.dart';
 import '../../../common/styles.dart';
 import '../../../data/models/poster.dart';
-import '../search/search_image_result.dart';
 import 'bookmark_button.dart';
 import 'container_detail_categories_item.dart';
 import 'detail_categories_item.dart';
