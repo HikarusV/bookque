@@ -90,6 +90,6 @@ Because there is data that is confidential and cannot be published, we cannot pu
 ## Demo
 
 ### Youtube
-[![Watch the video]([http://img.youtube.com/vi/9SesieWAHAM-dsG0/0.jpg](https://user-images.githubusercontent.com/83520627/177005157-2426ad44-4ec1-490c-932f-eb1820a925aa.png))](https://youtu.be/9SesieWAHAM "Demo")
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/9SesieWAHAM/0.jpg)](https://www.youtube.com/watch?v=9SesieWAHAM)
 
 # #Don't Plagiarize!
