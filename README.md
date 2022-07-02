@@ -24,9 +24,9 @@ BookQue is a mobile application-based platform that provides and makes it easy t
 - Support Indonesia and English Language
 - Interactive UI
 
-| Onboarding & Auth      | Home Page      | Profile Page     | Settings Page     |
+| Onboarding & Auth      | Home Page      | Profile Page     | Category and Search     |
 |------------|-------------|-------------|-------------|
-| <img src="https://user-images.githubusercontent.com/53927607/173183379-7d1db78b-0e2b-417c-96a5-d3802dad53cd.gif" width="200"> | <img src="https://user-images.githubusercontent.com/53927607/173183379-7d1db78b-0e2b-417c-96a5-d3802dad53cd.gif" width="200"> | <img src="https://user-images.githubusercontent.com/53927607/173183379-7d1db78b-0e2b-417c-96a5-d3802dad53cd.gif" width="200"> | <img src="https://user-images.githubusercontent.com/53927607/173183379-7d1db78b-0e2b-417c-96a5-d3802dad53cd.gif" width="200"> |
+| <img src="https://user-images.githubusercontent.com/83520627/177005517-484f13cd-e4e7-4b7e-af10-750807579d50.gif" width="200"> | <img src="https://user-images.githubusercontent.com/83520627/177005863-369885b0-1cfb-4f72-a59b-fe09a83e1c26.gif" width="200"> | <img src="https://user-images.githubusercontent.com/83520627/177005574-cd63b748-8fd3-4c15-a54d-cf884a8dbe79.gif" width="200"> | <img src="https://user-images.githubusercontent.com/83520627/177005928-67242ea6-9b0b-4541-823e-94a72ac60fd1.gif" width="200"> |
 
 <!-- | Detail & Bookmark Page     | Profile Page      | Upload Page      | Settings Page     |
 |------------|-------------|-------------|-------------|
@@ -69,8 +69,6 @@ BookQue is a mobile application-based platform that provides and makes it easy t
 - [lazy_load_indexed_stack](https://pub.dev/packages/lazy_load_indexed_stack)
 - [flutter_staggered_animations](https://pub.dev/packages/flutter_staggered_animations)
 - [shared_preferences](https://pub.dev/packages/shared_preferences)
-- [mockito](https://pub.dev/packages/mockito)
-- [build_runner](https://pub.dev/packages/build_runner)
 
 ## Back-End
 Because there is data that is confidential and cannot be published, we cannot publish Back-End programs via Github.
@@ -93,3 +91,12 @@ Because there is data that is confidential and cannot be published, we cannot pu
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/9SesieWAHAM/0.jpg)](https://www.youtube.com/watch?v=9SesieWAHAM)
 
 # #Don't Plagiarize!
+
+
+
+
+
+
+
+
+
