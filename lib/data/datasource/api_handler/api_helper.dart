@@ -26,7 +26,7 @@ class HandleApi {
 
   static Future<UserItems> getItems(String userId) async {
     try {
-      final url = 'http://103.214.185.190:5000/' + userId + '/items';
+      final url = 'http://41.216.186.97:5000/' + userId + '/items';
       final response = await api!.get(url);
 
       Map<String, dynamic> jsonResponse = jsonDecode(response);
@@ -40,7 +40,7 @@ class HandleApi {
   }
 
   static Future<Profile> getUser(String userId) async {
-    final url = 'http://103.214.185.190:5000/' + userId + '/profile';
+    final url = 'http://41.216.186.97:5000/' + userId + '/profile';
 
     final response = await api!.get(url);
     var jsonResponse = jsonDecode(response);
@@ -52,7 +52,7 @@ class HandleApi {
 
   static Future<DetailItems> getDetailItems(String id) async {
     try {
-      final url = 'http://103.214.185.190:5000/detail/item/' + id;
+      final url = 'http://41.216.186.97:5000/detail/item/' + id;
 
       final response = await api!.get(url);
       Map<String, dynamic> jsonResponse = jsonDecode(response);
@@ -68,7 +68,7 @@ class HandleApi {
 
   static Future<Map<String, dynamic>> getCategory(String type) async {
     try {
-      final url = 'http://103.214.185.190:5000/items/category?cat=' + type;
+      final url = 'http://41.216.186.97:5000/items/category?cat=' + type;
 
       final response = await api!.get(url);
       Map<String, dynamic> jsonResponse = jsonDecode(response);
@@ -78,14 +78,14 @@ class HandleApi {
         'items': _MapToList(jsonResponse),
         'message': jsonResponse['message'],
       };
-    } on SocketException catch (e) {
+    } on SocketException {
       return {'error': true};
     }
   }
 
   static Future<Map<String, dynamic>> getRecommendationRandomItem() async {
     try {
-      const url = 'http://103.214.185.190:5000/req/random';
+      const url = 'http://41.216.186.97:5000/req/random';
 
       final response = await api!.get(url);
       Map<String, dynamic> jsonResponse = jsonDecode(response);
@@ -95,7 +95,7 @@ class HandleApi {
         'items': _MapToList(jsonResponse),
         'message': jsonResponse['message'],
       };
-    } on SocketException catch (e) {
+    } on SocketException {
       return {'error': true};
     }
 
@@ -105,8 +105,7 @@ class HandleApi {
   static Future<Map<String, dynamic>> getNewestItems(String userId,
       {int pages = 1}) async {
     try {
-      final url =
-          'http://103.214.185.190:5000/' + userId + '/news?pages=$pages';
+      final url = 'http://41.216.186.97:5000/' + userId + '/news?pages=$pages';
 
       final response = await api!.get(url);
       Map<String, dynamic> jsonResponse = jsonDecode(response);
@@ -116,7 +115,7 @@ class HandleApi {
         'items': _MapToList(jsonResponse),
         'message': jsonResponse['message'],
       };
-    } on SocketException catch (e) {
+    } on SocketException {
       return {'error': true};
     }
 
@@ -125,7 +124,7 @@ class HandleApi {
 
   static Future<Map<String, dynamic>> getSearch(String query) async {
     try {
-      final url = 'http://103.214.185.190:5000/search/query?query=' + query;
+      final url = 'http://41.216.186.97:5000/search/query?query=' + query;
 
       final response = await api!.get(url);
       Map<String, dynamic> jsonResponse = jsonDecode(response);
@@ -135,7 +134,7 @@ class HandleApi {
         'items': _MapToList(jsonResponse),
         'message': jsonResponse['message'],
       };
-    } on SocketException catch (e) {
+    } on SocketException {
       return {'error': true};
     }
 
@@ -145,7 +144,7 @@ class HandleApi {
   static Future postEmailVerification(String email) async {
     try {
       final response = await http.post(
-        Uri.parse('http://103.214.185.190:5000/email/verify/regist'),
+        Uri.parse('http://41.216.186.97:5000/email/verify/regist'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -163,7 +162,7 @@ class HandleApi {
   static Future codeValidation(String email, String code) async {
     try {
       final codeResponse = await http.post(
-        Uri.parse('http://103.214.185.190:5000/email/verify/code'),
+        Uri.parse('http://41.216.186.97:5000/email/verify/code'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -182,7 +181,7 @@ class HandleApi {
   static Future postNewUser(String pass, String email, String name) async {
     try {
       final createResponse = await http.post(
-        Uri.parse('http://103.214.185.190:5000/user/adddata/email'),
+        Uri.parse('http://41.216.186.97:5000/user/adddata/email'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -201,7 +200,7 @@ class HandleApi {
       String userid, String email, String name) async {
     try {
       final codeResponse = await http.post(
-        Uri.parse('http://103.214.185.190:5000//credential/verify'),
+        Uri.parse('http://41.216.186.97:5000//credential/verify'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -230,7 +229,7 @@ class HandleApi {
       String categories) async {
     try {
       final response = await http.post(
-        Uri.parse('http://103.214.185.190:5000/' + idUser + '/items'),
+        Uri.parse('http://41.216.186.97:5000/' + idUser + '/items'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -281,14 +280,14 @@ class HandleApi {
       }
 
       final response = await http.put(
-        Uri.parse('http://103.214.185.190:5000/' + idUser + '/items?id=' + id),
+        Uri.parse('http://41.216.186.97:5000/' + idUser + '/items?id=' + id),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(result),
       );
       return jsonDecode(response.body);
-    } on Exception catch (e) {
+    } on Exception {
       throw 'gagal upload, pastikan anda terhubung dengan internet';
     }
   }
@@ -301,7 +300,7 @@ class HandleApi {
     int profilid,
   ) {
     return http.put(
-      Uri.parse('http://103.214.185.190:5000/' + idUser + '/profile/'),
+      Uri.parse('http://41.216.186.97:5000/' + idUser + '/profile/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -317,7 +316,7 @@ class HandleApi {
   static Future<http.Response> postReport(String id, String pornografi,
       String link, String kategori, String plagiat, String rasis) {
     return http.post(
-      Uri.parse('http://103.214.185.190:5000/report' + id),
+      Uri.parse('http://41.216.186.97:5000/report' + id),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -335,7 +334,7 @@ class HandleApi {
   static Future<bool> deleteAlbum(String userId, String id) async {
     try {
       final http.Response response = await http.delete(
-        Uri.parse('http://103.214.185.190:5000/' + userId + '/items?id=' + id),
+        Uri.parse('http://41.216.186.97:5000/' + userId + '/items?id=' + id),
         // headers: <String, String>{
         //   'Content-Type': 'application/json; charset=UTF-8',
         // },
